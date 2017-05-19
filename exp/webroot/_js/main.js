@@ -3,8 +3,9 @@ loadjs.ready(['dependencyIE', 'keyLibs'], {// loaded setup libs
 	success: function(){
 
 		loadjs([
-
-			'/_js/vendor/jquery.jsForm.min.js'
+			'https://cdn.jsdelivr.net/raphael/2.2.7/raphael.js'
+			,'https://cdn.jsdelivr.net/morris.js/0.5.1/morris.min.js'
+			,'https://cdn.jsdelivr.net/morris.js/0.5.1/morris.css'
 
 			], { success: function(){
 				libsLoaded()

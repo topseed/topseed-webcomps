@@ -42,12 +42,27 @@
         <p></p>
         <p>Hello from Page One!</p>
         <my-element>happy</my-element>
+        <div class="mui-panel">
+          <div id="myfirstchart" style="height: 450px;"></div>
+        </div>
       </div>
       <script>
         TS.onAppReady(UIinit)
         function UIinit() {
         	console.log('x')
+        
         }
+        
+        function initMorris() { // hoist
+        	Morris.Donut({
+        		element: 'myfirstchart',
+        		data: [
+        			{label: 'Download Sales', value: 12},
+        			{label: 'In-Store Sales', value: 30},
+        			{label: 'Mail-Order Sales', value: 20}
+        		]
+        	})//morris
+        } //init morris
         
         function compInit( ) {// 'closure|module'-iso?
         	class MyElement extends HTMLElement {

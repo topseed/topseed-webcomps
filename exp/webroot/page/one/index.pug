@@ -11,11 +11,26 @@ block main
 
 		my-element happy
 
+		.mui-panel
+			#myfirstchart(style='height: 450px;')
+
 	script.
 		TS.onAppReady(UIinit)
 		function UIinit() {
 			console.log('x')
+
 		}
+
+		function initMorris() { // hoist
+			Morris.Donut({
+				element: 'myfirstchart',
+				data: [
+					{label: 'Download Sales', value: 12},
+					{label: 'In-Store Sales', value: 30},
+					{label: 'Mail-Order Sales', value: 20}
+				]
+			})//morris
+		} //init morris
 
 		function compInit( ) {// 'closure|module'-iso?
 			class MyElement extends HTMLElement {

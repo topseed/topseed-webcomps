@@ -6,5 +6,6 @@
 	, "engines": { "npm" : ">=4.2", "node": ">=7.6" }
 	, "dependencies": { 
 		"express": ">=4.1"
+		,"phantom": ">=4.0"
 	}
 }
