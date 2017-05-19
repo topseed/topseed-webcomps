@@ -1,0 +1,40 @@
+extends  ../_part/_baseShell
+
+block head
+	include ../_part/_header
+
+block main
+	.mui-container-fluid
+		p
+			br
+		.mui-row
+			.mui-col-md-6
+				p Oh hi
+			.mui-col-md-6
+				.mui-panel
+					form.mui-form#frm1(onsubmit='return false')
+						legend Join/Log-in
+						.mui-textfield
+							input(type='text', name='data.userEmail')
+							label eMail
+						.mui-textfield
+							input(type='password', name='data.password')
+							label Password
+						button.mui-btn.mui-btn--raised(type='submit')#join New/Join
+						button.mui-btn.mui-btn--raised(type='submit')#login Existing/Log-in
+
+	script.
+		ST.onAppReady(UIinit)
+		function UIinit() {
+			console.log('x')
+			$('#frm1').jsForm()
+			
+			$('#join').click(function(e) { 
+				e.preventDefault()
+				//instead of $('input[name="data.userEmail"]').val()
+				console.log(JSON.stringify( $('#frm1').jsForm('get') ))
+			})
+		}
+
+block footer
+	include ../_part/_footer

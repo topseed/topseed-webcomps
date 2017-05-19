@@ -1,0 +1,34 @@
+extends  ../../_part/_baseShell
+
+block head
+	title Page One
+	include ../../_part/_header
+
+block main
+	.mui-container-fluid
+		p
+		p Hello from Page One!
+
+		my-element happy
+
+	script.
+		TS.onAppReady(UIinit)
+		function UIinit() {
+			console.log('x')
+		}
+
+		function compInit( ) {// 'closure|module'-iso?
+			class MyElement extends HTMLElement {
+				constructor() {
+					super()
+					console.log('CONS')
+				}//()
+			}//class
+
+			const el = customElements.get('my-element')
+			if(!el) customElements.define('my-element', MyElement)
+		}//mod
+		compInit()
+
+block footer
+	include ../../_part/_footer

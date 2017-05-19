@@ -1,0 +1,26 @@
+###################### 
+**/.DS_Store
+**/.DS_Store?
+**/._*
+**/Thumbs.db
+Icon?
+Icon\r
+**/.dropbox
+**/.vscode/
+**/.idea/
+**/*.config
+
+**/package-lock.json
+
+###################### Other
+**/.project
+**/.cfignore
+
+**/*.log
+**/logs/**
+
+**/node_modules/**
+
+####### project
+YourServiceKey.json
+ServerConfig.js
