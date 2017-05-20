@@ -13,13 +13,13 @@ Nightmare.action('screenshotSelector', screenshotSelector)
  
 var nightmare = Nightmare()
 nightmare
-        .goto('http://localhost:8000/page/one/')
-        .viewport(800,600)
-        .wait('#morris-ready')
-        .screenshotSelector('#myfirstchart') // get the image in a buffer 
-        .then(function (data) {
-          fs.writeFileSync('aaaa.png', data)
-        })
+				.goto('http://localhost:8000/page/one/')
+				.viewport(800,600)
+				.wait('#morris-ready')
+				.screenshotSelector('#myfirstchart') // get the image in a buffer 
+				.then(function (data) {
+					//fs.writeFileSync('aaaa.png', data)
+				})
 
 
 //###################### start 

@@ -9,7 +9,7 @@ block main
 		p
 		p Hello from Page One!
 
-		my-element happy
+		chart-el happy
 
 		.mui-panel
 			#myfirstchart(style='width: 200px;')
@@ -18,8 +18,11 @@ block main
 	script.
 		TS.onAppReady(UIinit)
 		function UIinit() {
-			console.log('x')
+			console.log('.')
 			initMorris()
+
+			compInit()
+
 
 		}
 
@@ -27,27 +30,51 @@ block main
 			Morris.Donut({
 				element: 'myfirstchart',
 				data: [
-					{label: 'Download Sales', value: 12},
-					{label: 'In-Store Sales', value: 30},
+					{label: 'Download Sales',   value: 12},
+					{label: 'In-Store Sales',   value: 30},
 					{label: 'Mail-Order Sales', value: 20}
 				]
 			})//morris
-			$("#dd").append("<span id='morris-ready'>READY</span>")
+			$("#dd").append("<span id='chart-ready'></span>")
 
 		} //init morris
 
-		function compInit( ) {// 'closure|module'-iso?
-			class MyElement extends HTMLElement {
+		function compInit( ) {// 
+			class ChartEl extends HTMLElement {
 				constructor() {
 					super()
-					console.log('CONS')
+					this._emit = flyd.stream()
+					console.log('chart cons')
+					return this
 				}//()
+				static get observedAttributes() {return ['receiver','receiver','tst'] }
+				attributeChangedCallback(attr, oldValue, newValue) {
+					console.log(atttr)
+				}
+				set receiver(stream) {
+					this._rec = stream
+					flyd.on(_handleRec, stream)
+				}
+
+				_handleRec(el) {
+					console.log(el)
+				}
+				get emitter() {
+					return this._emit
+				}
+
+				tst() {
+					console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
+				}
+
 			}//class
 
-			const el = customElements.get('my-element')
-			if(!el) customElements.define('my-element', MyElement)
+			let el = customElements.get('chart-el')
+			if(!el) customElements.define('chart-el', ChartEl)
+			let M = document.querySelector('chart-el')
+			M.tst()
+
 		}//mod
-		compInit()
 
 block footer
 	include ../../_part/_footer
