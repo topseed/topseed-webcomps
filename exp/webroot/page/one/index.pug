@@ -9,21 +9,38 @@ block main
 		p
 		p Hello from Page One!
 
-		chart-el happy
+		chart-el not yet
 
 		.mui-panel
 			#myfirstchart(style='width: 200px;')
 		#dd
 
 	script.
+
+		function loadCompNX($here, url, cb) {
+			fetch(url, {
+				method: 'get'
+			}).then(function(reSPonse) {
+				if (!reSPonse.ok) {
+					console.log('not ok')
+					console.log(reSPonse)
+					throw Error(reSPonse.statusText)
+				}
+				return reSPonse.text()
+			}).then(function(txt) {
+				$here.append( txt )
+				cb()
+			})
+
+		}//()
+
 		TS.onAppReady(UIinit)
+
 		function UIinit() {
 			console.log('.')
-			initMorris()
+			loadCompNX($('#dd'),'/_webC/first.html', compInit)
 
-			compInit()
-
-
+			//initMorris()
 		}
 
 		function initMorris() { // hoist
@@ -40,34 +57,7 @@ block main
 		} //init morris
 
 		function compInit( ) {// 
-			class ChartEl extends HTMLElement {
-				constructor() {
-					super()
-					this._emit = flyd.stream()
-					console.log('chart cons')
-					return this
-				}//()
-				static get observedAttributes() {return ['receiver','receiver','tst'] }
-				attributeChangedCallback(attr, oldValue, newValue) {
-					console.log(atttr)
-				}
-				set receiver(stream) {
-					this._rec = stream
-					flyd.on(_handleRec, stream)
-				}
-
-				_handleRec(el) {
-					console.log(el)
-				}
-				get emitter() {
-					return this._emit
-				}
-
-				tst() {
-					console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
-				}
-
-			}//class
+			console.log('cinii')
 
 			let el = customElements.get('chart-el')
 			if(!el) customElements.define('chart-el', ChartEl)
@@ -75,6 +65,8 @@ block main
 			M.tst()
 
 		}//mod
+
+
 
 block footer
 	include ../../_part/_footer
