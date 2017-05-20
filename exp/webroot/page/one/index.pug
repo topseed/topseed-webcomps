@@ -16,30 +16,11 @@ block main
 		#dd
 
 	script.
-		/*
-		function loadCompNX($here, url, cb) {
-			fetch(url, {
-				method: 'get'
-			}).then(function(reSPonse) {
-				if (!reSPonse.ok) {
-					console.log('not ok')
-					console.log(reSPonse)
-					throw Error(reSPonse.statusText)
-				}
-				return reSPonse.text()
-			}).then(function(txt) {
-				$here.append( txt )
-				cb()
-			})
-
-		}//()
-		*/
 
 		TS.onAppReady(UIinit)
-
 		function UIinit() {
 			console.log('.')
-			loadCompNX($('#dd'),'/_webC/first.html', compInit)
+			TS.loadComp($('#dd'),'/_webC/first.html', compInit)
 
 			//initMorris()
 		}

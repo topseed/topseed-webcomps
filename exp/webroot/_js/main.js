@@ -1,5 +1,5 @@
 'use strict'
-loadjs.ready(['dependencyIE', 'keyLibs'], {// loaded setup libs
+loadjs.ready(['polyfills', 'keyLibs'], {// loaded setup libs
 	success: function(){
 
 		loadjs([

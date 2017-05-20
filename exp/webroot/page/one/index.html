@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/_sass/main.css">
     <script src="//code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/loadjs.min.js"></script>
-    <script src="https://cdn.rawgit.com/topseed/topseed-turbo/master/setup/setup-2.3.js"></script>
+    <script src="https://rawgit.com/topseed/topseed-turbo/master/setup/setup-latest.js"></script>
     <script src="/_js/main.js" async=""></script>
   </head>
   <body>
@@ -48,30 +48,10 @@
         <div id="dd"></div>
       </div>
       <script>
-        /*
-        function loadCompNX($here, url, cb) {
-        	fetch(url, {
-        		method: 'get'
-        	}).then(function(reSPonse) {
-        		if (!reSPonse.ok) {
-        			console.log('not ok')
-        			console.log(reSPonse)
-        			throw Error(reSPonse.statusText)
-        		}
-        		return reSPonse.text()
-        	}).then(function(txt) {
-        		$here.append( txt )
-        		cb()
-        	})
-        
-        }//()
-        */
-        
         TS.onAppReady(UIinit)
-        
         function UIinit() {
         	console.log('.')
-        	loadCompNX($('#dd'),'/_webC/first.html', compInit)
+        	TS.loadComp($('#dd'),'/_webC/first.html', compInit)
         
         	//initMorris()
         }
@@ -107,6 +87,7 @@
       <div id="footer_div"><a href="https://gitter.im/topseed/Lobby" target="_blank">Forum </a>
         <div id="footer_div--right"><a href="https://github.com/topseed/topseed" target="_blank">Kitchen Sink</a></div>
       </div>
+      <div id="comps"></div>
     </div>
   </body>
 </html>
