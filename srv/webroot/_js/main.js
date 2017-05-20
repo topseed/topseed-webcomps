@@ -2,17 +2,10 @@
 loadjs.ready(['polyfills', 'keyLibs'], {// loaded setup libs
 	success: function(){
 
-		loadjs([
-			'https://cdn.jsdelivr.net/raphael/2.2.7/raphael.js'
-			,'https://cdn.jsdelivr.net/morris.js/0.5.1/morris.min.js'
-			,'https://cdn.jsdelivr.net/morris.js/0.5.1/morris.css'
+		libsLoaded()
 
-			], { success: function(){
-				libsLoaded()
-			}
-	})//loadjs
 	}//suc
-})
+})//load
 
 function libsLoaded(){
 	console.log('Loaded libs')
