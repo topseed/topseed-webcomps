@@ -43,13 +43,15 @@
         <p>Hello from Page One!</p>
         <my-element>happy</my-element>
         <div class="mui-panel">
-          <div id="myfirstchart" style="height: 450px;"></div>
+          <div id="myfirstchart" style="width: 200px;"></div>
         </div>
+        <div id="dd"></div>
       </div>
       <script>
         TS.onAppReady(UIinit)
         function UIinit() {
         	console.log('x')
+        	initMorris()
         
         }
         
@@ -62,6 +64,8 @@
         			{label: 'Mail-Order Sales', value: 20}
         		]
         	})//morris
+        	$("#dd").append("<span id='morris-ready'>READY</span>")
+        
         } //init morris
         
         function compInit( ) {// 'closure|module'-iso?

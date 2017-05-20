@@ -12,12 +12,14 @@ block main
 		my-element happy
 
 		.mui-panel
-			#myfirstchart(style='height: 450px;')
+			#myfirstchart(style='width: 200px;')
+		#dd
 
 	script.
 		TS.onAppReady(UIinit)
 		function UIinit() {
 			console.log('x')
+			initMorris()
 
 		}
 
@@ -30,6 +32,8 @@ block main
 					{label: 'Mail-Order Sales', value: 20}
 				]
 			})//morris
+			$("#dd").append("<span id='morris-ready'>READY</span>")
+
 		} //init morris
 
 		function compInit( ) {// 'closure|module'-iso?
