@@ -11,34 +11,19 @@ block main
 
 		list-el not yet
 
-
-
-
 	script.
 		TS.onAppReady(UIinit)
-
 		function UIinit() {
 			console.log('.')
-			//TS.loadComp($('#comps'),'/_webComp/Chart.html', compInit)
-			loadjs([
-					'//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js'
-
-					], { success: function(){
-						compInit()
-					}
-			})//loadjs
+			TS.loadComp($('#comps'),'/_webComp/List.html', compInit)
 		}//()
 
-		function compInit( ) {// 
+		function compInit( ) {
 			console.log('cinit')
-			var options = {
-				valueNames: [ 
-								{ attr: 'href', name: 'url' }
-								,'head_line'
-							]
-				,item: '<li><a class="url head_line" ></a></li>'
-			}
+			let el = customElements.get('list-el')
+			if(!el) customElements.define('list-el', ListEl)
 
+			let ch = document.querySelector('list-el')
 			var values = [
 				{
 				url: 'Jonny Strömberg',
@@ -52,23 +37,9 @@ block main
 				url: 'Martina Elm',
 				head_line: 1986
 				}
-			];
+			]
+			ch.init(values)
 
-			var userList = new List('example-list', options, values);
-
-			if(true) return
-
-			let el = customElements.get('chart-el')
-			if(!el) customElements.define('chart-el', ChartEl)
-
-			let ch = document.querySelector('chart-el')
-
-			let data = [
-				{label: 'Download Sales',   value: 12},
-				{label: 'In-Store Sales',   value: 30},
-				{label: 'Mail-Order Sales', value: 20}
-				]
-			ch.init(data)
 		}//()
 
 

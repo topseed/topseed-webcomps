@@ -25,20 +25,19 @@
   		loadjs.ready(['morris'], {
   			success: function(){
   				Morris.Donut({
-  					element: thiz.shadowRoot.querySelector('#myChart', this)
+  					element: thiz.shadowRoot.querySelector('#myChart', this) //ctx
   					, data: data_
-  				})//morris
+  				})
   				$("#myChart").append("<span id='chart-ready'></span>")// MAGIC!!
-  
   		}//suc
   		})//load
   	}//()
   
   	loadDeps() {
   		loadjs([
-  			'https://cdn.jsdelivr.net/raphael/2.2.7/raphael.js'
-  			,'https://cdn.jsdelivr.net/morris.js/0.5.1/morris.min.js'
-  			,'https://cdn.jsdelivr.net/morris.js/0.5.1/morris.css'
+  				'https://cdn.jsdelivr.net/raphael/2.2.7/raphael.js'
+  				,'https://cdn.jsdelivr.net/morris.js/0.5.1/morris.min.js'
+  				,'https://cdn.jsdelivr.net/morris.js/0.5.1/morris.css'
   			], { success: function(){
   				loadjs.done('morris')
   			}

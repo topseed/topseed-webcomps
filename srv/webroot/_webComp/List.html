@@ -22,27 +22,30 @@
   		this.loadDeps()
   	}//()
   
-  	init(data_) {
+  	init(values) {
   		const thiz = this
-  		loadjs.ready(['morris'], {
+  		loadjs.ready(['list'], {
   			success: function(){
-  				Morris.Donut({
-  					element: thiz.shadowRoot.querySelector('#myChart', this)
-  					, data: data_
-  				})//morris
-  				$("#myChart").append("<span id='chart-ready'></span>")// MAGIC!!
+  				var options = {
+  					valueNames: [ 
+  									{ attr: 'href', name: 'url' }
+  									,'head_line'
+  								]
+  					,item: '<li><a class="url head_line" ></a></li>'
+  				}
+  				const lst = thiz.shadowRoot.querySelector('#myList', this)//ctx
+  				var userList = new List(lst, options, values)
+  				$("#myList").append("<span id='list-ready'></span>")// MAGIC!!
   
-  		}//suc
+  			}//suc
   		})//load
   	}//()
   
   	loadDeps() {
   		loadjs([
-  			'https://cdn.jsdelivr.net/raphael/2.2.7/raphael.js'
-  			,'https://cdn.jsdelivr.net/morris.js/0.5.1/morris.min.js'
-  			,'https://cdn.jsdelivr.net/morris.js/0.5.1/morris.css'
+  				'//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js'
   			], { success: function(){
-  				loadjs.done('morris')
+  				loadjs.done('list')
   			}
   		})//loadjs
   	}//()
