@@ -1,0 +1,39 @@
+extends  ../../_part/_baseShell
+
+block head
+	title Page One
+	include ../../_part/_header
+
+block main
+	.mui-container-fluid
+		p
+		p Hello from Page One!
+
+		chart-el not yet
+
+	script.
+		TS.onAppReady(UIinit)
+
+		function UIinit() {
+			console.log('.')
+			TS.loadComp($('#comps'),'/_webComp/Chart.html', compInit)
+
+		}
+
+		function compInit( ) {// 
+			let el = customElements.get('chart-el')
+			if(!el) customElements.define('chart-el', ChartEl)
+
+			let ch = document.querySelector('chart-el')
+
+			let data = [
+				{label: 'Download Sales',   value: 12},
+				{label: 'In-Store Sales',   value: 30},
+				{label: 'Mail-Order Sales', value: 20}
+				]
+			ch.init(data)
+		}//()
+
+
+block footer
+	include ../../_part/_footer
