@@ -1,17 +1,19 @@
-template#xchart-el
-	//style.
+template#xlist-el
+	style.
 		p { color: orange; }
 	//p I'm Shady
-	#myChart(style='width: 200px;')
+	#myList
+		input.search(placeholder='Search')
+		ul.list
 
 script.
-	console.log ('in temp chart')
-	class ChartEl extends HTMLElement {
+	console.log ('in temp list')
+	class ListEl extends HTMLElement {
 		constructor() {
 			super()
-			console.log('chart cons')
+			console.log('list cons')
 			let shadowRoot = this.attachShadow({mode: 'open'})
-			const t = document.querySelector('#xchart-el')
+			const t = document.querySelector('#xlist-el')
 			const instance = t.content.cloneNode(true)
 			shadowRoot.appendChild(instance)
 

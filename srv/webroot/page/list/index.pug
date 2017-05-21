@@ -9,18 +9,55 @@ block main
 		p
 		p Hello from Page One!
 
-		chart-el not yet
+		list-el not yet
+
+
+
 
 	script.
 		TS.onAppReady(UIinit)
 
 		function UIinit() {
 			console.log('.')
-			TS.loadComp($('#comps'),'/_webComp/Chart.html', compInit)
+			//TS.loadComp($('#comps'),'/_webComp/Chart.html', compInit)
+			loadjs([
+					'//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js'
 
-		}
+					], { success: function(){
+						compInit()
+					}
+			})//loadjs
+		}//()
 
 		function compInit( ) {// 
+			console.log('cinit')
+			var options = {
+				valueNames: [ 
+								{ attr: 'href', name: 'url' }
+								,'head_line'
+							]
+				,item: '<li><a class="url head_line" ></a></li>'
+			}
+
+			var values = [
+				{
+				url: 'Jonny Strömberg',
+				head_line: 1986
+				},
+				{
+				url: 'Jonas Arnklint',
+				head_line: 1985
+				},
+				{
+				url: 'Martina Elm',
+				head_line: 1986
+				}
+			];
+
+			var userList = new List('example-list', options, values);
+
+			if(true) return
+
 			let el = customElements.get('chart-el')
 			if(!el) customElements.define('chart-el', ChartEl)
 
