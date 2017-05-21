@@ -13,7 +13,7 @@ block main
 
 	script.
 		TS.onAppReady(UIinit)
-		function UIinit() {
+		function UIinit() {//don't forget #comps
 			console.log('.')
 			TS.loadComp($('#comps'),'/_webComp/Chart.html', compInit)
 		}
