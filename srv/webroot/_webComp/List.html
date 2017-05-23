@@ -1,14 +1,17 @@
 
 <template id="xlist-el">
-  <style>p { color: orange; }</style>
+  <style>li { color: orange; }</style>
   <!--p I'm Shady-->
-  <div id="myList">
-    <input class="search" placeholder="Search"/>
-    <ul class="list"></ul>
-  </div>
+  <div id="myList"></div>
 </template>
+<script id="Lst1Tpl" type="text/x-dot-template">
+  {{~it.array :value:index}}
+  	<li><a href={{=value.url}}> {{=value.head_line}}</a></li>
+  {{~}}
+</script>
 <script>
-  console.log ('in temp list')
+  //http://www.javascriptoo.com/dot-js
+  console.log ('in temp list ') // don't forget #comps
   class ListEl extends HTMLElement {
   	constructor() {
   		super()
@@ -19,35 +22,19 @@
   		shadowRoot.appendChild(instance)
   
   		//this._emit = flyd.stream()
-  		this.loadDeps()
   	}//()
   
   	init(values) {
-  		const thiz = this
-  		loadjs.ready(['list'], {
-  			success: function(){
-  				var options = {
-  					valueNames: [ 
-  									{ attr: 'href', name: 'url' }
-  									,'head_line'
-  								]
-  					,item: '<li><a class="url head_line" ></a></li>'
-  				}
-  				const lst = thiz.shadowRoot.querySelector('#myList', this)//ctx
-  				var userList = new List(lst, options, values)
-  				$("#myList").append("<span id='list-ready'></span>")// MAGIC!!
+  		const tpl1 = document.getElementById('Lst1Tpl').text
+  		var tpl1Foo = doT.template(tpl1)
   
-  			}//suc
-  		})//load
-  	}//()
+  		var data2 = {'array': values}
+  		var res = tpl1Foo(data2)
+  		//console.log(res)
+  		const lst = this.shadowRoot.querySelector('#myList', this)//ctx
+  		lst.innerHTML=res
   
-  	loadDeps() {
-  		loadjs([
-  				'//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js'
-  			], { success: function(){
-  				loadjs.done('list')
-  			}
-  		})//loadjs
+  		$("#myList", this).append("<span id='list-ready'></span>")// MAGIC!!
   	}//()
   
   	/*

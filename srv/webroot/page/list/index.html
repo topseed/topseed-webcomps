@@ -45,7 +45,7 @@
       </div>
       <script>
         TS.onAppReady(UIinit)
-        function UIinit() {
+        function UIinit() {//don't forget #comps
         	console.log('.')
         	TS.loadComp($('#comps'),'/_webComp/List.html', compInit)
         }//()
@@ -58,18 +58,19 @@
         	let ch = document.querySelector('list-el')
         	var values = [
         		{
-        		url: 'Jonny Strömberg',
-        		head_line: 1986
+        		url: 'http://www.yahoo.com',
+        		head_line: 'Yahoo'
         		},
         		{
-        		url: 'Jonas Arnklint',
-        		head_line: 1985
+        		url: 'http://mail.google.com',
+        		head_line: 'Gmail'
         		},
         		{
-        		url: 'Martina Elm',
-        		head_line: 1986
+        		url: 'https://www.cnet.com/news/',
+        		head_line: 'News'
         		}
         	]
+        
         	ch.init(values)
         
         }//()
