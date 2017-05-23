@@ -1,16 +1,14 @@
 {
 	"name": "country-select",
-	"version": "2.0.0",
-	"description": "A simple country selector using the paper-dropdown-menu",
+	"version": "0.0.1",
+	"description": "Collection",
 	"main": "country-select.html",
 	"authors": [
-		"Roman Kaufmann <roman.kaufmann.at@gmail.com>"
+		"wolfgang@gmail.com"
 	],
 	"license": "MIT",
 	"keywords": [
-		"country",
-		"select",
-		"polymer",
+		"element-collection",
 		"web",
 		"component",
 		"web component",
