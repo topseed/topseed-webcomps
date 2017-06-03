@@ -3,7 +3,7 @@
 	, "description": "Best Practices for Mobile-first Web Apps - Hello World"
 	, "repository": { "type": "git", "url" : "https://github.com/topseed/topseed-helloworld.git"}
 	, "license": "MIT"
-	, "engines": { "npm" : ">=4.2", "node": ">=7.6" }
+	, "engines": { "npm" : ">=5", "node": ">=8" }
 	, "dependencies": { 
 		"express": ">=4.1"
 
