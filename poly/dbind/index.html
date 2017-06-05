@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Page One</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/_sass/main.css">
+    <script src="//code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/loadjs.min.js"></script>
+    <script src="https://cdn.rawgit.com/topseed/topseed-turbo/master/setup/setup-2.5.js"></script>
+    <script src="/_js/main.js" async=""></script>
+  </head>
+  <body>
+    <div id="appbar">
+      <div id="appbar--brand" onclick="openDrawer()">&nbsp; ☰ &nbsp;<span class="mui--hidden-xs">Topseed&trade; Hello World</span></div>
+      <ul id="appbar--menu">
+        <li><a href="/page/one/">One</a></li>
+        <li><a href="/page/two/">Two</a></li>
+      </ul>
+    </div>
+    <div id="sidedrawer" onclick="closeDrawer()">
+      <div id="sidedrawer--brand">&nbsp; ☰ Topseed&trade; Hello World</div>
+      <div class="mui-divider"></div>
+      <ul id="sidedrawer--menu">
+        <li><a href="/page/one/">One</a></li>
+        <li><a href="/page/two/">Two</a></li>
+      </ul>
+    </div>
+    <script>
+      function openDrawer(px, e) {
+      	$('#sidedrawer').css('transform', 'translateX(201px)')
+      }
+      function closeDrawer(e) {
+      	$('#sidedrawer').css('transform', 'translateX(0px)')
+      }
+    </script>
+    <div id="content-wrapper">
+      <div class="mui-container-fluid">
+        <p></p>
+        <div id="bind1"></div>
+      </div>
+      <script id="exp1Tpl" type="text/x-dot-template">
+        {{~it.array :value:index}}
+        	<div>{{=value}}</div>
+        {{~}}
+        
+      </script>
+      <script>
+        TS.onAppReady(UIinit)
+        function UIinit() {
+        	//http://www.javascriptoo.com/dot-js
+        	console.log('x')
+        
+        	var tpl1 = document.getElementById('exp1Tpl').text
+        	var tpl1Foo = doT.template(tpl1)
+        	var data = {'array':['banana','apple','orange']}
+        	var res = tpl1Foo(data)
+        	console.log(res)
+        	document.getElementById('bind1').innerHTML = res
+        
+        }
+        
+        
+      </script>
+    </div>
+    <div id="footer">
+      <div id="footer_div"><a href="https://gitter.im/topseed/Lobby" target="_blank">Forum </a>
+        <div id="footer_div--right"><a href="https://github.com/topseed/topseed" target="_blank">Kitchen Sink</a></div>
+      </div>
+      <div id="comps"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+extends  ../_part/_baseShell
+
+block head
+	title Page One
+	include ../_part/_header
+
+block main
+	.mui-container-fluid
+		p
+		#bind1
+
+	script#exp1Tpl(type='text/x-dot-template').
+		{{~it.array :value:index}}
+			<div>{{=value}}</div>
+		{{~}}
+
+	script.
+		TS.onAppReady(UIinit)
+		function UIinit() {
+			//http://www.javascriptoo.com/dot-js
+			console.log('x')
+
+			var tpl1 = document.getElementById('exp1Tpl').text
+			var tpl1Foo = doT.template(tpl1)
+			var data = {'array':['banana','apple','orange']}
+			var res = tpl1Foo(data)
+			console.log(res)
+			document.getElementById('bind1').innerHTML = res
+
+		}
+
+
+block footer
+	include ../_part/_footer
+

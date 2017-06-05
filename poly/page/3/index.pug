@@ -1,0 +1,66 @@
+extends  ../../_part/_baseShell
+
+block head
+	title Fullpage Demo
+	include ../../_part/_header
+	//-link(rel='stylesheet', href='https://cdn.jsdelivr.net/jquery/3.2.0/jquery.min.js', rel='preload', as='script')
+	//-link(rel='stylesheet', href='/_js/vendor/jquery.fullpage.min.js', rel='preload', as='script')
+	//script(src='https://cdn.jsdelivr.net/jquery/3.2.0/jquery.min.js')
+	script(href='/_js/vendor/jquery.fullpage.min.js')
+	link(rel='stylesheet', href='/_js/vendor/jquery.fullpage.min.css')
+	
+block main
+	style.
+		.section {
+			background-size: cover;
+			background-attachment: fixed;
+			background-image: url(res/beach768.jpg);
+		}
+
+		.section1 {
+			background-image: url(res/beach768.jpg);
+		}
+		.section2 {
+			background-image: url(res/city768.jpg);
+		}
+		.section3{
+			background-image: url(res/light768.jpg);
+		}
+		.section4{
+			background-image: url(res/road768.jpg);
+		}
+
+	#fullpage
+		.section1.section
+			.mui-container-fluid
+				.mui-panel
+					H3 Section 1. Scroll down for more
+
+		.section2.section
+			.mui-container-fluid
+				.mui-panel
+					H3 Welcome to Section 2
+
+		.section3.section
+			.mui-container-fluid
+				.mui-panel
+					H3 Hi, I'm Section 3. We're friends now.
+
+		.section4.section
+			.mui-container-fluid
+				.mui-panel
+					H3 This is the last Section. Good Bye!
+
+
+	script.
+		ST.onAppReady(UIinit)
+		function UIinit() {
+			console.log('x')
+			$('#fullpage').fullpage({
+				//verticalCentered: false,
+				css3:false
+			})//config
+		}
+
+block footer
+	include ../../_part/_footer

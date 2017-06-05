@@ -1,0 +1,29 @@
+extends  ../_part/_baseShell
+
+block head
+	title Page One
+	include ../_part/_header
+
+block main
+	.mui-container-fluid
+
+		first-el
+
+	script.
+		TS.onAppReady(UIinit)
+		function UIinit() {
+			console.log('x')
+			//TS.loadComp($('#comps'),'/_webComp/first.html', UIComp1Init)
+		}
+
+		function UIComp1Init() {//this does not execute yet
+			var el = customElements.get('first-el')
+			if(!el) // if it is not defined, define:
+				customElements.define('first-el', FirstEl)// loaded w/ template
+
+			var m = document.querySelector('first-el')
+			m.tst() // talk to it
+		}
+
+block footer
+	include ../_part/_footer

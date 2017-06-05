@@ -1,0 +1,31 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/iron-icon/iron-icon.html">
+
+<dom-module id="icon-toggle">
+
+  <template>
+
+    <style>
+      /* shadow DOM styles go here */
+      :host {
+        display: inline-block;
+      }
+    </style>
+
+    <!-- shadow DOM goes here -->
+    <span>Not much here yet.</span>
+  </template>
+
+  <script>
+    class IconToggle extends Polymer.Element {
+      static get is() {
+        return "icon-toggle";
+      }
+      constructor() {
+        super();
+      }
+    }
+    customElements.define(IconToggle.is, IconToggle);
+  </script>
+</dom-module>
+

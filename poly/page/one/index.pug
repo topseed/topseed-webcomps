@@ -1,0 +1,20 @@
+extends  ../../_part/_baseShell
+
+block head
+	title Page One
+	include ../../_part/_header
+
+block main
+	.mui-container-fluid
+		p
+		include _hello.html
+
+		first-el
+	script.
+		TS.onAppReady(UIinit)
+		function UIinit() {
+			console.log('x')
+		}
+
+block footer
+	include ../../_part/_footer
