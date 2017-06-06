@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>Page One</title>
+    <title>Page Two</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +10,7 @@
     <link rel="import" href="https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/bower_components/polymer/polymer.html">
     <script src="//code.jquery.com/jquery-3.2.1.slim.min.js" async=""></script>
     <script src="https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/loadjs.min.js"></script>
-    <script src="https://rawgit.com/topseed/topseed-turbo/master/setup/setup-latest.js"></script>
+    <script src="https://cdn.rawgit.com/topseed/topseed-turbo/master/setup/setup-2.8.js"></script>
     <script src="/_js/main.js" async=""></script>
   </head>
   <body>
@@ -40,22 +40,13 @@
     </script>
     <div id="content-wrapper">
       <div class="mui-container-fluid">
-        <p>one</p>
-        <f-element></f-element>
+        <p></p>
+        <P>Page Two!</P>
       </div>
       <script>
         TS.onAppReady(UIinit)
-        
         function UIinit() {
         	console.log('x')
-        	TS.loadComp($('#comps'),'/_webComp/fel.html', UIComp1Init)
-        }
-        
-        function UIComp1Init() {
-        	console.log('X')
-        	var el = customElements.get(FElement.is)
-        	if(!el) // if it is not defined, define:
-        		customElements.define(FElement.is, FElement)// loaded w/ template
         }
         
       </script>
