@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>Page One</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,23 +39,31 @@
     </script>
     <div id="content-wrapper">
       <div class="mui-container-fluid">
-        <p>one</p>
-        <f-element></f-element>
+        <p><br></p>
+        <form class="mui-form" id="frm1" onsubmit="return false">
+          <legend>Add link</legend>
+          <div class="mui-textfield">
+            <input type="text" name="data.url">
+            <label>Url</label>
+          </div>
+          <div class="mui-textfield">
+            <input type="text" name="data.head_line">
+            <label>Headline</label>
+          </div>
+          <button class="mui-btn mui-btn--raised" type="submit" id="add">Add</button>
+        </form>
       </div>
       <script>
         TS.onAppReady(UIinit)
-        
         function UIinit() {
         	console.log('x')
-        	TS.loadComp($('#comps'),'/_webComp/fel.html', UIComp1Init)
-        }
         
-        function UIComp1Init() {
-        	console.log('X')
-        	var el = customElements.get(FElement.is)
-        	if(!el) // if it is not defined, define:
-        		customElements.define(FElement.is, FElement)// loaded w/ template
-        }
+        	$('#add').on('click', function(){
+        		const obj = $('#frm1').jsForm('get') 
+        		console.log(JSON.stringify( obj))
+        	})  // ad inited from here
+        
+        }//()
         
       </script>
     </div>

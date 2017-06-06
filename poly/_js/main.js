@@ -1,14 +1,20 @@
 'use strict'
+console.log('main')
+
 loadjs.ready(['polyfills', 'keyLibs'], {// loaded setup libs
 	success: function(){
-
+		console.log('almost ready?')
 		loadjs([
-
-			'/_js/vendor/jquery.jsForm.min.js'
+			'https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/bower_components/webcomponentsjs/webcomponents-loader.js'
+			,'/_js/vendor/jquery.jsForm.min.js'
 
 			], { success: function(){
-				libsLoaded()
-			}
+				console.log('almost ready!')
+				//window.addEventListener('WebComponentsReady', function() {
+					console.log('WebComponentsReady')
+					libsLoaded()
+				//})
+		}
 		})//loadjs
 	}//suc
 })
