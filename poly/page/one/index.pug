@@ -5,28 +5,23 @@ block head
 	include ../../_part/_header
 
 block main
-	dom-module#main-document-element
-		template
-			p
-				| Hi! I'm a Polymer element that was defined in the
-				| main document!
-		script.
-
 	.mui-container-fluid
 		p one
-		main-document-element
+		f-element
 
 	script.
 		TS.onAppReady(UIinit)
+
 		function UIinit() {
 			console.log('x')
-			class MainDocumentElement extends Polymer.Element {
-				static get is() { return 'main-document-element' }
-			}
-			//window.customElements.define(MainDocumentElement.is, MainDocumentElement)
-			var el = customElements.get(MainDocumentElement.is)
+			TS.loadComp($('#comps'),'/_webComp/fel.html', UIComp1Init)
+		}
+
+		function UIComp1Init() {
+			console.log('X')
+			var el = customElements.get(FElement.is)
 			if(!el) // if it is not defined, define:
-				customElements.define(MainDocumentElement.is, MainDocumentElement)// loaded w/ template
+				customElements.define(FElement.is, FElement)// loaded w/ template
 		}
 
 block footer

@@ -39,30 +39,23 @@
       }
     </script>
     <div id="content-wrapper">
-      <dom-module id="main-document-element">
-        <template>
-          <p>
-            Hi! I'm a Polymer element that was defined in the
-            main document!
-          </p>
-        </template>
-        <script></script>
-      </dom-module>
       <div class="mui-container-fluid">
         <p>one</p>
-        <main-document-element></main-document-element>
+        <f-element></f-element>
       </div>
       <script>
         TS.onAppReady(UIinit)
+        
         function UIinit() {
         	console.log('x')
-        	class MainDocumentElement extends Polymer.Element {
-        		static get is() { return 'main-document-element' }
-        	}
-        	//window.customElements.define(MainDocumentElement.is, MainDocumentElement)
-        	var el = customElements.get(MainDocumentElement.is)
+        	TS.loadComp($('#comps'),'/_webComp/fel.html', UIComp1Init)
+        }
+        
+        function UIComp1Init() {
+        	console.log('X')
+        	var el = customElements.get(FElement.is)
         	if(!el) // if it is not defined, define:
-        		customElements.define(MainDocumentElement.is, MainDocumentElement)// loaded w/ template
+        		customElements.define(FElement.is, FElement)// loaded w/ template
         }
         
       </script>
