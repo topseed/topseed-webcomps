@@ -10,12 +10,12 @@
 				"start": "node index"
 		},
 		"dependencies": {
-				"express": ">=4.1",
+				"express": ">=4.15",
 				"cors": ">=2.8",
 				"compression": ">=1.6",
 				"body-parser": ">=1.1",
+				"pug": ">=2.0.0-rc.2",
 				"is_js": ">=0.9",
-				"riot": ">=3.4",
 				"cheerio": ">=0.2",
 				"moment": ">=2.1",
 				"scribe-js": ">=2.0",
@@ -24,7 +24,7 @@
 				"node-fetch": ">=1.6",
 				"markdown-it": ">=8.3",
 				"flyd": ">=0.2.4",
-				"topseed-util": "=1.2.1",
+				"topseed-util": ">=2.0.2",
 				"node-cache": ">=4.1"
 		}
 }
