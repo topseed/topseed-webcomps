@@ -18,14 +18,6 @@ function endsWithSlash(str ) {
 	return str+_slash
 }
 
-function ifError(err, msg, res) {
-	if (err)  {
-		console.log(msg+': ' + err)
-		res.redirect('/index.html')// error - go home
-		res.end()
-		return true
-	} else return false
-}
 
 //**************** */
 exports.decide = function (req, res, next) {//decide based on port
@@ -39,7 +31,7 @@ exports.decide = function (req, res, next) {//decide based on port
 
 			const pgPath = U.getPath(ROOT,req)
 			console.log('requested:'+pgPath )
-			const requestedResource = pgPath + '.pug'
+			const requestedResource = pgPath + 'index.pug'
 
 			res.header('Content-Type', 'text/html')
 			U.cacheQuick(res)
@@ -48,7 +40,7 @@ exports.decide = function (req, res, next) {//decide based on port
 			res.send(html)
 
 		} catch(err) {
-			ifError(err, 'catch', res)
+			console.log('err', err)
 		}
 	}
 
