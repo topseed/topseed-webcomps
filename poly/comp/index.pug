@@ -6,14 +6,14 @@ block head
 
 block main
 	.mui-container-fluid
-
+		p ?
 		first-el
 
 	script.
 		TS.onAppReady(UIinit)
 		function UIinit() {
 			console.log('x')
-			//TS.loadComp($('#comps'),'/_webComp/first.html', UIComp1Init)
+			TS.loadComp($('#comps'),'/_webComp/first.html', UIComp1Init)
 		}
 
 		function UIComp1Init() {//this does not execute yet

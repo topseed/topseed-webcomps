@@ -9,20 +9,21 @@
     <link rel="icon" href="/favicon.ico">
     <link rel="stylesheet" href="/_sass/main.css">
     <script src="//code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <link rel="import" href="https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/bower_components/polymer/polymer.html">
     <script src="https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/loadjs.min.js"></script>
-    <script src="https://cdn.rawgit.com/topseed/topseed-turbo/master/setup/setup-2.5.js"></script>
+    <script src="https://cdn.rawgit.com/topseed/topseed-turbo/master/setup/setup-latest.js"></script>
     <script src="/_js/main.js" async=""></script>
   </head>
   <body>
     <div id="appbar">
-      <div id="appbar--brand" onclick="openDrawer()">&nbsp; ☰ &nbsp;<span class="mui--hidden-xs">Topseed&trade; Hello World</span></div>
+      <div id="appbar--brand" onclick="openDrawer()">&nbsp; ☰ &nbsp;<span class="mui--hidden-xs">Topseed&trade; Poly</span></div>
       <ul id="appbar--menu">
         <li><a href="/page/one/">One</a></li>
         <li><a href="/page/two/">Two</a></li>
       </ul>
     </div>
     <div id="sidedrawer" onclick="closeDrawer()">
-      <div id="sidedrawer--brand">&nbsp; ☰ Topseed&trade; Hello World</div>
+      <div id="sidedrawer--brand">&nbsp; ☰ Topseed&trade; Poly</div>
       <div class="mui-divider"></div>
       <ul id="sidedrawer--menu">
         <li><a href="/page/one/">One</a></li>
@@ -39,13 +40,14 @@
     </script>
     <div id="content-wrapper">
       <div class="mui-container-fluid">
+        <p>?</p>
         <first-el></first-el>
       </div>
       <script>
         TS.onAppReady(UIinit)
         function UIinit() {
         	console.log('x')
-        	//TS.loadComp($('#comps'),'/_webComp/first.html', UIComp1Init)
+        	TS.loadComp($('#comps'),'/_webComp/first.html', UIComp1Init)
         }
         
         function UIComp1Init() {//this does not execute yet
