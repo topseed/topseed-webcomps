@@ -8,7 +8,6 @@ Icon\r
 **/.dropbox
 **/.vscode/
 **/.idea/
-**/*.config
 
 **/package-lock.json
 

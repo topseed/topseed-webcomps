@@ -1,12 +1,13 @@
 const fs = require('fs')
 const pug = require('pug')
 
-const useragent = require('useragent')
-const isj = require('is_js')
+const transformer = require('jstransformer')
+const bs = transformer(require('jstransformer-babel'))
+
+//const isj = require('is_js')
+
 const Util = require('topseed-util')
 const U = new Util() 
-
-useragent(true)
 
 // ###################### middle filter
 const ROOT = './' + ServerConfig.WEBROOT
@@ -43,6 +44,5 @@ exports.decide = function (req, res, next) {//decide based on port
 			console.log('err', err)
 		}
 	}
-
 }//()
 
