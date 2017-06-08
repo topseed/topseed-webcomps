@@ -7,21 +7,21 @@ block head
 block main
 	.mui-container-fluid
 		p one
-		f-element
+		first-el
 
 	script.
 		TS.onAppReady(UIinit)
 
 		function UIinit() {
 			console.log('x')
-			TS.loadComp($('#comps'),'/_webComp/fel.html', UIComp1Init)
+			TS.loadComp($('#comps'),'/_webComp/first.html', UIComp1Init)
 		}
 
 		function UIComp1Init() {
 			console.log('X')
-			var el = customElements.get(FElement.is)
+			var el = customElements.get('first-el')
 			if(!el) // if it is not defined, define:
-				customElements.define(FElement.is, FElement)// loaded w/ template
+				customElements.define('first-el', FirstEl)// loaded w/ template
 		}
 
 block footer
