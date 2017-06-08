@@ -1,17 +1,15 @@
-import * as fs  from 'fs'
-import * as pug from 'pug'
+const fs = require('fs')
+const pug = require('pug')
 
-import * as useragent from 'useragent'
-import * as isj from 'is_js'
-import * as Util from 'topseed-util'
+const useragent = require('useragent')
+const isj = require('is_js')
+const Util = require('topseed-util')
 const U = new Util() 
 
-//useragent(true)
-import ServerConfig  = require ('../config/ServerConfig')
-const conf = new ServerConfig()
+useragent(true)
 
 // ###################### middle filter
-const ROOT = './' + conf.WEBROOT
+const ROOT = './' + ServerConfig.WEBROOT
 
 const _slash = '/'
 function endsWithSlash(str ) {
@@ -22,9 +20,7 @@ function endsWithSlash(str ) {
 
 
 //**************** */
-class Decider {
-
-decide (req, res, next) {//decide based on port
+exports.decide = function (req, res, next) {//decide based on port
 	res.header('X-TimeSent', U.getDt() )
 	U.cacheLong(res) // default is long, later we set to quick if needed	
 	if (req.path.indexOf('.') > 0 ) { // hasDot?
@@ -47,7 +43,6 @@ decide (req, res, next) {//decide based on port
 			console.log('err', err)
 		}
 	}
-}//()
 
-} export = Decider
+}//()
 
