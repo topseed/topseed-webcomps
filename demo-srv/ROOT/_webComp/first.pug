@@ -3,19 +3,20 @@ template#xfirst-el
 		p { color: orange; }
 	p I'm Shady
 
-script.
-	class FirstEl extends HTMLElement {
-		constructor() {
-			super()
-			let shadowRoot = this.attachShadow({mode: 'open'})
-			const t = document.querySelector('#xfirst-el')// add the dom above
-			const instance = t.content.cloneNode(true)
-			shadowRoot.appendChild(instance)
+script
+	:babel
+		class FirstEl extends HTMLElement {
+			constructor() {
+				super()
+				let shadowRoot = this.attachShadow({mode: 'open'})
+				const t = document.querySelector('#xfirst-el')// add the dom above
+				const instance = t.content.cloneNode(true)
+				shadowRoot.appendChild(instance)
 
-		}//()
+			}//()
 
-		tst() {
-			console.log('XXX')
-		}
+			tst() {
+				console.log('XXX')
+			}
 
-	}//class
+		}//class
