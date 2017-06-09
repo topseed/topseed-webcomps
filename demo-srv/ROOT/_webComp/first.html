@@ -1,0 +1,24 @@
+
+<template id="xfirst-el">
+  <style>p { color: orange; }</style>
+  <p>I'm Shady</p>
+</template>
+<script>
+  //:babel
+  class FirstEl extends HTMLElement {
+  	constructor() {
+  		super()
+  		console.log('bc')
+  		var shadowRoot = this.attachShadow({mode: 'open'})
+  		const t = document.querySelector('#xfirst-el')// add the dom above
+  		const instance = t.content.cloneNode(true)
+  		shadowRoot.appendChild(instance)
+  
+  	}//()
+  
+  	tst() {
+  		console.log('XXX')
+  	}
+  
+  }//class
+</script>

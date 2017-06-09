@@ -10,6 +10,7 @@
 				"start": "ts-node index"
 		},
 		"dependencies": {
+				"babel-plugin-transform-custom-element-classes": "^0.1.0",
 				"body-parser": ">=1.1",
 				"cheerio": ">=0.2",
 				"compression": ">=1.6",
