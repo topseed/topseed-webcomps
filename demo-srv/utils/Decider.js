@@ -20,13 +20,16 @@ function endsWithSlash(str ) {
 }
 */
 
+var options = {}
+options.pretty = true
+
 function pugComp(req,res) {
 	const pgPath = U.getPath(ROOT,req)
 	const requestedResource = U.replace(pgPath, '.html', '.pug')
 	console.log('requested:'+requestedResource )
 	res.header('Content-Type', 'text/html')
 	U.cacheQuick(res)
-	const html = pug.renderFile(requestedResource)
+	const html = pug.renderFile(requestedResource, options)
 	res.send(html)
 }
 
@@ -50,7 +53,7 @@ exports.decide = function (req, res, next) {//decide based on port
 			res.header('Content-Type', 'text/html')
 			U.cacheQuick(res)
 
-			const html = pug.renderFile(requestedResource)
+			const html = pug.renderFile(requestedResource, options)
 			res.send(html)
 
 		} catch(err) {

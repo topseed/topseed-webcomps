@@ -5,14 +5,10 @@ loadjs.ready(['polyfills', 'keyLibs'], {// loaded setup libs
 	success: function(){
 		console.log('almost ready?')
 		loadjs([
-			//'https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/bower_components/shadydom/shadydom.js'
-			//,'https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/bower_components/custom-elements/custom-elements.js'			
 			'/_js/vendor/jquery.jsForm.min.js'
 
 			], { success: function(){
 				console.log('almost ready!')
-				//window.addEventListener('WebComponentsReady', function() {
-					console.log('WebComponentsReady')
 					libsLoaded()
 				//})
 		}
