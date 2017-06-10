@@ -7,37 +7,25 @@ block head
 block main
 	.mui-container-fluid
 		p one
-		first-el
+		gauge-el
 
 	script.
 		TS.onAppReady(UIinit)
 
 		function UIinit() {
-			console.log('x')
-			TS.loadComp($('#comps'),'/_webComp/first.html', UIComp1Init)
+			TS.loadComp($('#comps'),'/_webComp/gauge.html', UIComp1Init)
 		}
 
 		function UIComp1Init() {
-			console.log('xx')
+			console.log('.')
 			var xx
-			if(!isCReg('xx')) {
-				xx = document.registerElement('first-el', {prototype: FirstEl})
-				cReg('xx',xx)
+			if(!TS.isCReg('gauge-el')) {
+				xx = document.registerElement('gauge-el', {prototype: GaugeEl})
+				TS.cReg('gauge-el',xx)
 			}
-			xx = isCReg('xx')
-			console.log(xx)
+			xx = TS.isCReg('gauge-el')
+			//console.log(xx)
 
-		}
-
-		function isCReg(name) {
-			if (window.creg && window.creg[name])
-				return window.creg[name]
-			return false
-		}
-		function cReg(name, obj) {
-			if(!window.creg)
-				window.creg = {}
-			window.creg[name] = obj 
 		}
 
 block footer

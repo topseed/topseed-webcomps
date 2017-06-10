@@ -8,11 +8,24 @@ block main
 	.mui-container-fluid
 		p
 		P Page Two!
-	
+
+		div
+			div(style='width:200px; height:160px')
+				#gauge1
+					div
+
 	script.
 		TS.onAppReady(UIinit)
 		function UIinit() {
 			console.log('x')
+			var c = $('#gauge1')[0]
+			var g = new JustGage({
+				parentNode : c,
+				value: 67,
+				min: 0,
+				max: 100,
+				title: 'Visitors'
+			})
 		}
 
 block footer
