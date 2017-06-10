@@ -18,10 +18,26 @@ block main
 		}
 
 		function UIComp1Init() {
-			console.log('X')
-			var el = customElements.get('first-el')
-			if(!el) // if it is not defined, define:
-				customElements.define('first-el', FirstEl)// loaded w/ template
+			console.log('xx')
+			var xx
+			if(!isCReg('xx')) {
+				xx = document.registerElement('first-el', {prototype: FirstEl})
+				cReg('xx',xx)
+			}
+			xx = isCReg('xx')
+			console.log(xx)
+
+		}
+
+		function isCReg(name) {
+			if (window.creg && window.creg[name])
+				return window.creg[name]
+			return false
+		}
+		function cReg(name, obj) {
+			if(!window.creg)
+				window.creg = {}
+			window.creg[name] = obj 
 		}
 
 block footer

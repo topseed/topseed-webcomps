@@ -4,20 +4,13 @@ template#xfirst-el
 	p I'm Shady
 
 script.
-	//:babel
-	class FirstEl extends HTMLElement {
-		constructor() {
-			super()
-			console.log('bc')
-			var shadowRoot = this.attachShadow({mode: 'open'})
-			const t = document.querySelector('#xfirst-el')// add the dom above
-			const instance = t.content.cloneNode(true)
-			shadowRoot.appendChild(instance)
+	var FirstEl = Object.create(HTMLElement.prototype, {
+		createdCallback: {
+			value: function() {
+				var t = document.querySelector('#xfirst-el');
+				var clone = document.importNode(t.content, true);
+				this.createShadowRoot().appendChild(clone);
+			}
+		}//create
+	})
 
-		}//()
-
-		tst() {
-			console.log('XXX')
-		}
-
-	}//class
