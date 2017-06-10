@@ -10,7 +10,6 @@
 				"start": "ts-node index"
 		},
 		"dependencies": {
-				"babel-plugin-transform-custom-element-classes": "^0.1.0",
 				"body-parser": ">=1.1",
 				"cheerio": ">=0.2",
 				"compression": ">=1.6",
@@ -25,10 +24,5 @@
 				"node-fetch": ">=1.6",
 				"pug": ">=2.0.0-rc.2",
 				"topseed-util": ">=20.1"
-		},
-		"devDependencies": {
-				"babel-cli": "^6.24.1",
-				"babel-preset-env": "^1.5.2",
-				"babel-preset-es2015": "^6.24.1"
 		}
 }
