@@ -7,7 +7,10 @@ loadjs.ready(['polyfills', 'keyLibs'], {// loaded setup libs
 		loadjs([
 			'/_js/vendor/jquery.jsForm.min.js'
 			,'https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/raphael.min.js'
-			,'/_js/vendor/justgage.js'
+
+			,'/_js/shadydom.min.js'
+
+		,'https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/template.js'
 
 			], { success: function(){
 				console.log('almost ready!')
