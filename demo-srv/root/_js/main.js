@@ -6,6 +6,7 @@ loadjs.ready(['polyfills', 'keyLibs'], {// loaded setup libs
 		console.log('almost ready?')
 		loadjs([
 			'/_js/vendor/jquery.jsForm.min.js'
+			,'//cdn.jsdelivr.net/justgage/1.0.1/justgage.min.js'
 
 			], { success: function(){
 				console.log('almost ready!')
