@@ -19,13 +19,8 @@ block main
 		function UIComp1Init() {
 			console.log('.')
 
-			var xx
-			if(!TS.isCReg('gauge-el')) {
-				xx = document.registerElement('gauge-el', {prototype: GaugeEl})
-				TS.cReg('gauge-el',xx)
-			}
-			xx = TS.isCReg('gauge-el')
-			//console.log(xx)
+			var xx = TS.cRegOrGet('gauge-el', GaugeEl)
+			console.log(xx)
 		}
 
 block footer

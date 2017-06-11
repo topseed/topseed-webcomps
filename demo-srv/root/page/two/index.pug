@@ -20,24 +20,8 @@ block main
 		function UIComp1Init() {
 			console.log('.')
 
-			var xx = cRegOrGet('circle-el', CircleEl)
-			/*if(!TS.isCReg('circle-el')) {
-				xx = document.registerElement('circle-el', {prototype: CircleEl})
-				TS.cReg('circle-el',xx)
-			}
-			xx = TS.isCReg('circle-el')
-			*/
+			var xx = TS.cRegOrGet('circle-el', CircleEl)
 			console.log(xx)
-		}
-
-		function cRegOrGet(tag, KlassEl) {
-			var xx
-			if(!TS.isCReg(tag)) {
-				xx = document.registerElement(tag, {prototype: KlassEl})
-				TS.cReg(tag,xx)
-			}
-			xx = TS.isCReg(tag)	
-			return xx
 		}
 
 block footer
