@@ -9,34 +9,35 @@ block main
 		p
 		P Page Two!
 
-		div
-			#c1
-				div
+		circle-el
 
 	script.
 		TS.onAppReady(UIinit)
 		function UIinit() {
-			console.log('xx')
-			//var c = $('#gauge1')[0]
-			var c = document.getElementById('c1')
-			console.log(c)
-			var myCircle = Circles.create({
-			el:                  c,
-			radius:              60,
-			value:               43,
-			maxValue:            100,
-			width:               10,
-			text:                function(value){return value + '%';},
-			colors:              ['#D3B6C6', '#4B253A'],
-			duration:            400,
-			wrpClass:            'circles-wrp',
-			textClass:           'circles-text',
-			valueStrokeClass:    'circles-valueStroke',
-			maxValueStrokeClass: 'circles-maxValueStroke',
-			styleWrapper:        true,
-			styleText:           true
-			})
+			TS.loadComp($('#comps'),'/_webComp/circle.html', UIComp1Init)
+		}
 
+		function UIComp1Init() {
+			console.log('.')
+
+			var xx = cRegOrGet('circle-el', CircleEl)
+			/*if(!TS.isCReg('circle-el')) {
+				xx = document.registerElement('circle-el', {prototype: CircleEl})
+				TS.cReg('circle-el',xx)
+			}
+			xx = TS.isCReg('circle-el')
+			*/
+			console.log(xx)
+		}
+
+		function cRegOrGet(tag, KlassEl) {
+			var xx
+			if(!TS.isCReg(tag)) {
+				xx = document.registerElement(tag, {prototype: KlassEl})
+				TS.cReg(tag,xx)
+			}
+			xx = TS.isCReg(tag)	
+			return xx
 		}
 
 block footer

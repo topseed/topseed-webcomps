@@ -1,32 +1,40 @@
-template#xgauge-el
+template#xcircle-el
 	style.
 		p { color: orange; }
 	p I'm Shady
-	#gauge1(style='width:400px; height:320px')
+	#c1
 
-//http://justgage.com/
+//http://github.com/lugolabs/circles
 script.
-	var GaugeEl = Object.create(HTMLElement.prototype)
-	GaugeEl.createdCallback = function() {
-		var t = document.querySelector('#xgauge-el')
+	var CircleEl = Object.create(HTMLElement.prototype)
+	CircleEl.createdCallback = function() {
+		var t = document.querySelector('#xcircle-el')
 		var clone = document.importNode(t.content, true)
 		//var shadow = this.createShadowRoot() NOPE
 		var shadow = this.attachShadow({mode: 'open'})
 
-		GaugeEl._shadow = shadow
+		CircleEl._shadow = shadow
 		shadow.appendChild(clone)
 
-		TS.loadNX('/_js/vendor/justgage.js', GaugeEl.loadedLib )
+		TS.loadNX('/_js/vendor/justgage.js', CircleEl.loadedLib )
 	}//created
-	GaugeEl.loadedLib = function() {
-		var c = $('#gauge1', GaugeEl._shadow)[0]
-		console.log('created')
-
-		var g = new JustGage({
-			parentNode : c,
-			value: 67,
-			min: 0,
-			max: 100,
-			title: 'Visitors'
-		})
+	CircleEl.loadedLib = function() {
+		var c = CircleEl._shadow.getElementById('c1')
+		console.log('created',c)
+		var myCircle = Circles.create({
+			el:                  c,
+			radius:              60,
+			value:               43,
+			maxValue:            100,
+			width:               10,
+			text:                function(value){return value + '%';},
+			colors:              ['#D3B6C6', '#4B253A'],
+			duration:            400,
+			wrpClass:            'circles-wrp',
+			textClass:           'circles-text',
+			valueStrokeClass:    'circles-valueStroke',
+			maxValueStrokeClass: 'circles-maxValueStroke',
+			styleWrapper:        true,
+			styleText:           true
+			})
 	}//loaded

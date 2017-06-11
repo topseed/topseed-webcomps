@@ -7,17 +7,18 @@ block head
 block main
 	.mui-container-fluid
 		p one
+
 		gauge-el
 
 	script.
 		TS.onAppReady(UIinit)
-
 		function UIinit() {
 			TS.loadComp($('#comps'),'/_webComp/gauge.html', UIComp1Init)
 		}
 
 		function UIComp1Init() {
 			console.log('.')
+
 			var xx
 			if(!TS.isCReg('gauge-el')) {
 				xx = document.registerElement('gauge-el', {prototype: GaugeEl})
@@ -25,7 +26,6 @@ block main
 			}
 			xx = TS.isCReg('gauge-el')
 			//console.log(xx)
-
 		}
 
 block footer
