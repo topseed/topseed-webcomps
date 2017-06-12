@@ -3,13 +3,11 @@ console.log('main')
 
 loadjs.ready(['polyfills', 'keyLibs'], {// loaded setup libs
 	success: function(){
-		console.log('almost ready?')
 		loadjs([
 			'https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/jquery.jsForm.min.js'
 			,'https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/raphael.min.js'
 
 			], { success: function(){
-				console.log('almost ready!')
 					libsLoaded()
 				//})
 		}
