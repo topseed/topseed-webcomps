@@ -14,6 +14,7 @@ script.
 		var shadow = this.attachShadow({mode: 'open'})
 
 		GaugeEl._shadow = shadow
+		console.log(shadow)
 		shadow.appendChild(clone)
 
 		TS.loadNX('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/justgage.js', GaugeEl.loadedLib )
