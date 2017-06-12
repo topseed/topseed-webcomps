@@ -8,8 +8,6 @@ loadjs.ready(['polyfills', 'keyLibs'], {// loaded setup libs
 			'https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/jquery.jsForm.min.js'
 			,'https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/raphael.min.js'
 
-			,'/_js/vendor/circlesMOD.js'
-
 			], { success: function(){
 				console.log('almost ready!')
 					libsLoaded()
