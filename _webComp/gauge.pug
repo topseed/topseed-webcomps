@@ -10,16 +10,8 @@ script.
 	GaugeEl.createdCallback = function() {
 		console.log('created')
 
-		var t = document.querySelector('#xgauge-el')
-		var clone = document.importNode(t.content, true)
-		//var shadow = this.createShadowRoot() NOPE
-		var shadow = this.attachShadow({mode: 'open'})
-
-		GaugeEl._shadow = shadow
-		console.log(shadow)
-		shadow.appendChild(clone)
+		GaugeEl._shadow = attachShad('#xgauge-el')
 		
-		this._bla = 'bla'
 		GaugeEl._loaded = false//trap
 		TS.loadNX('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/justgage.js', GaugeEl.loadedLib )
 	}//created
@@ -38,6 +30,13 @@ script.
 			title: 'Visitors'
 		})
 
-		console.log(this._bla)
-
 	}//loaded
+
+	function attachShad(templ) {
+		var t = document.querySelector(templ)
+		var clone = document.importNode(t.content, true)
+		//var shadow = this.createShadowRoot() NOPE
+		var shadow = this.attachShadow({mode: 'open'})
+		shadow.appendChild(clone)
+		return shadow
+	}
