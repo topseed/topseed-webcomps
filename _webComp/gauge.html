@@ -19,6 +19,7 @@
   	console.log(shadow)
   	shadow.appendChild(clone)
   	
+  	this._bla = 'bla'
   	GaugeEl._loaded = false//trap
   	TS.loadNX('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/justgage.js', GaugeEl.loadedLib )
   }//created
@@ -36,5 +37,8 @@
   		max: 100,
   		title: 'Visitors'
   	})
+  
+  	console.log(this._bla)
+  
   }//loaded
 </script>
