@@ -8,6 +8,8 @@
 <script>
   var GaugeEl = Object.create(HTMLElement.prototype)
   GaugeEl.createdCallback = function() {
+  	console.log('created')
+  
   	var t = document.querySelector('#xgauge-el')
   	var clone = document.importNode(t.content, true)
   	//var shadow = this.createShadowRoot() NOPE
@@ -21,7 +23,7 @@
   }//created
   GaugeEl.loadedLib = function() {
   	var c = $('#gauge1', GaugeEl._shadow)[0]
-  	console.log('created')
+  	console.log('loaded')
   
   	var g = new JustGage({
   		parentNode : c,

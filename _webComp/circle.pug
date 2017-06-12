@@ -8,6 +8,7 @@ template#xcircle-el
 script.
 	var CircleEl = Object.create(HTMLElement.prototype)
 	CircleEl.createdCallback = function() {
+		console.log('created')
 		var t = document.querySelector('#xcircle-el')
 		var clone = document.importNode(t.content, true)
 		//var shadow = this.createShadowRoot() NOPE
@@ -20,7 +21,7 @@ script.
 	}//created
 	CircleEl.loadedLib = function() {
 		var c = CircleEl._shadow.getElementById('c1')
-		('created')
+		console.log('loaded')
 		var myCircle = Circles.create({
 			el:                  c,
 			radius:              60,
