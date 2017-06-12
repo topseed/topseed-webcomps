@@ -17,9 +17,13 @@ script.
 		CircleEl._shadow = shadow
 		shadow.appendChild(clone)
 
+		CircleEl._loaded = false//trap
 		TS.loadNX('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/circlesMOD.js', CircleEl.loadedLib )
 	}//created
 	CircleEl.loadedLib = function() {
+		if(CircleEl._loaded) return
+		CircleEl._loaded = true
+
 		var c = CircleEl._shadow.getElementById('c1')
 		console.log('loaded')
 		var myCircle = Circles.create({
