@@ -2,15 +2,15 @@ template#xgauge-el
 	style.
 		p { color: orange; }
 	p I'm Shady
-	#gauge1(style='width:400px; height:320px')
+	div
+		#gauge1(style='width:400px; height:320px')
 
 //http://justgage.com/
 script.
 	var GaugeEl = Object.create(HTMLElement.prototype)
 	GaugeEl.createdCallback = function() {
+		GaugeEl._shadow = TS.attachShad('#xgauge-el')
 		console.log('created')
-
-		GaugeEl._shadow = attachShad('#xgauge-el')
 		
 		GaugeEl._loaded = false//trap
 		TS.loadNX('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/justgage.js', GaugeEl.loadedLib )
@@ -18,10 +18,9 @@ script.
 	GaugeEl.loadedLib = function() {
 		if(GaugeEl._loaded) return
 		GaugeEl._loaded = true
-
-		var c = $('#gauge1', GaugeEl._shadow)[0]
 		console.log('loaded')
 
+		var c = $('#gauge1', GaugeEl._shadow)[0]
 		var g = new JustGage({
 			parentNode : c,
 			value: 67,
@@ -29,14 +28,4 @@ script.
 			max: 100,
 			title: 'Visitors'
 		})
-
 	}//loaded
-
-	function attachShad(templ) {
-		var t = document.querySelector(templ)
-		var clone = document.importNode(t.content, true)
-		//var shadow = this.createShadowRoot() NOPE
-		var shadow = this.attachShadow({mode: 'open'})
-		shadow.appendChild(clone)
-		return shadow
-	}

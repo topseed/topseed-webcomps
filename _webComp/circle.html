@@ -2,20 +2,16 @@
 <template id="xcircle-el">
   <style>p { color: orange; }</style>
   <p>I'm Shady</p>
-  <div id="c1"></div>
+  <div>
+    <div id="c1"></div>
+  </div>
 </template>
 <!--http://github.com/lugolabs/circles-->
 <script>
   var CircleEl = Object.create(HTMLElement.prototype)
   CircleEl.createdCallback = function() {
   	console.log('created')
-  	var t = document.querySelector('#xcircle-el')
-  	var clone = document.importNode(t.content, true)
-  	//var shadow = this.createShadowRoot() NOPE
-  	var shadow = this.attachShadow({mode: 'open'})
-  
-  	CircleEl._shadow = shadow
-  	shadow.appendChild(clone)
+  	CircleEl._shadow = TS.attachShad('#xgauge-el')
   
   	CircleEl._loaded = false//trap
   	TS.loadNX('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/circlesMOD.js', CircleEl.loadedLib )
@@ -23,9 +19,9 @@
   CircleEl.loadedLib = function() {
   	if(CircleEl._loaded) return
   	CircleEl._loaded = true
+  	console.log('loaded')
   
   	var c = CircleEl._shadow.getElementById('c1')
-  	console.log('loaded')
   	var myCircle = Circles.create({
   		el:                  c,
   		radius:              60,
