@@ -17,13 +17,11 @@
   	ListEl._shadow = TW.attachShad('#xlist-el', this)
   }//()
   
-  init(values) {
+  ListEl.init =function (values) {
   	console.log('!init!')
   	const tpl1 = document.getElementById('Lst1Tpl').text
-  	var tpl1Foo = doT.template(tpl1)
-  
   	var data2 = {'array': values}
-  	var res = tpl1Foo(data2)
+  	var res = TW.dBind(tpl1,data2)
   	//console.log(res)
   	const lst = ListEl._shadow.querySelector('#myList')//ctx
   	lst.innerHTML=res
