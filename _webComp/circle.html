@@ -11,7 +11,7 @@
   var CircleEl = Object.create(HTMLElement.prototype)
   CircleEl.createdCallback = function() {
   	console.log('created')
-  	CircleEl._shadow = TS.attachShad('#xcircle-el', this)
+  	CircleEl._shadow = TW.attachShad('#xcircle-el', this)
   
   	CircleEl._loaded = false//trap
   	TS.loadNX('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/circlesMOD.js', CircleEl.loadedLib )

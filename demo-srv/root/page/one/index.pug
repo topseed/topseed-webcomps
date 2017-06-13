@@ -13,13 +13,13 @@ block main
 	script.
 		TS.onAppReady(UIinit)
 		function UIinit() {
-			TS.loadComp($('#comps'),'https://rawgit.com/topseed/topseed-webcomps/master/_webComp/gauge.html', UIComp1Init)
+			TW.loadComp($('#comps'),'https://rawgit.com/topseed/topseed-webcomps/master/_webComp/gauge.html', UIComp1Init)
 		}
 
 		function UIComp1Init() {
 			console.log('.')
 
-			var xx = TS.cRegOrGet('gauge-el', GaugeEl)
+			var xx = TW.cRegOrGet('gauge-el', GaugeEl)
 		}
 
 block footer
