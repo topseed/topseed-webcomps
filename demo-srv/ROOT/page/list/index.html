@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>Page Two</title>
+    <title>Page One</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <link rel="icon" href="/favicon.ico">
-    <script src="//code.jquery.com/jquery-3.2.1.slim.min.js" async=""></script>
+    <script src="//code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/loadjs.min.js"></script>
     <script src="https://rawgit.com/topseed/topseed-turbo/master/setup/setup-latest.js"></script>
     <script src="/_js/main.js" async=""></script>
@@ -40,20 +40,40 @@
     <div id="content-wrapper">
       <div class="mui-container-fluid">
         <p></p>
-        <P>Page Two!</P>
-        <circle-el></circle-el>
+        <p>Hello from Page One!</p>
+        <list-el>not yet</list-el>
       </div>
       <script>
         TS.onAppReady(UIinit)
-        function UIinit() {
-        	TW.loadComp($('#comps'),'https://rawgit.com/topseed/topseed-webcomps/master/_webComp/circle.html', UIComp1Init)
-        }
-        
-        function UIComp1Init() {
+        function UIinit() {//don't forget #comps
         	console.log('.')
+        	TS.loadComp($('#comps'),'/_webComp/List.html', compInit)
+        }//()
         
-        	var xx = TW.cRegOrGet('circle-el', CircleEl)
-        }
+        function compInit( ) {
+        	console.log('cinit')
+        	var xx = TW.cRegOrGet('list-el', ListEl)
+        
+        	let ch = document.querySelector('list-el')
+        	var values = [
+        		{
+        		url: 'http://www.yahoo.com',
+        		head_line: 'Yahoo'
+        		},
+        		{
+        		url: 'http://mail.google.com',
+        		head_line: 'Gmail'
+        		},
+        		{
+        		url: 'https://www.cnet.com/news/',
+        		head_line: 'News'
+        		}
+        	]
+        
+        	ch.init(values)
+        
+        }//()
+        
         
       </script>
     </div>

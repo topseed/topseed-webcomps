@@ -12,7 +12,7 @@ const fs = require('fs')
 Nightmare.action('screenshotSelector', screenshotSelector)
  
 var nightmare = Nightmare()
-nightmare
+/*nightmare
 				.goto('http://localhost:8000/page/one/')
 				.viewport(800,600)
 				.wait('#morris-ready')
@@ -20,7 +20,7 @@ nightmare
 				.then(function (data) {
 					//fs.writeFileSync('aaaa.png', data)
 				})
-
+*/
 
 //###################### start 
 server.use(express.static(ServerConfig.WEBROOT))
