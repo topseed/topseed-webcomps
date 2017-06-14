@@ -1,0 +1,46 @@
+extends  ../../_part/_baseShell
+
+block head
+	title CompCom
+	include ../../_part/_header
+
+block main
+	.mui-container-fluid
+
+		p Show how event in c-1 affects c-2.
+
+		c-1
+
+		c-2
+
+	script.
+		TS.onAppReady(UIinit)
+		
+		let _blx
+		
+		function UIinit() {
+			console.log('pg')
+
+			_blx = new BLX(null) // can / should have folder local class
+
+			TW.loadComp($('#comps'),'/_webComps/C1.html', UIComp1Init)
+			TW.loadComp($('#comps'),'/_webComps/C2.html', UIComp2Init)
+		}
+
+		function UIComp1Init() {
+			TW.cReg ('c-1', C1El)
+			var c = document.querySelector('c-1')
+			c.init(_blx) // talk to it
+		}
+
+		function UIComp2Init() {
+			TW.cReg ('c-2', C2El)
+			var c = document.querySelector('c-2')
+			c.init(_blx) // talk to it
+		}
+
+
+
+block footer
+	include ../../_part/_footer
+

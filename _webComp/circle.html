@@ -1,0 +1,42 @@
+
+<template id="xcircle-el">
+  <style>p { color: orange; }</style>
+  <p>I'm Shady</p>
+  <div>
+    <div id="c1"></div>
+  </div>
+</template>
+<!--http://github.com/lugolabs/circles-->
+<script>
+  var CircleEl = Object.create(HTMLElement.prototype)
+  CircleEl.createdCallback = function() {
+  	console.log('created')
+  	CircleEl._shadow = TW.attachShad('#xcircle-el', this)
+  
+  	CircleEl._loaded = false//trap
+  	TS.loadNX('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/circlesMOD.js', CircleEl.loadedLib )
+  }//created
+  CircleEl.loadedLib = function() {
+  	if(CircleEl._loaded) return
+  	CircleEl._loaded = true
+  	console.log('loaded')
+  
+  	var c = CircleEl._shadow.getElementById('c1')
+  	var myCircle = Circles.create({
+  		el:                  c,
+  		radius:              60,
+  		value:               43,
+  		maxValue:            100,
+  		width:               10,
+  		text:                function(value){return value + '%';},
+  		colors:              ['#D3B6C6', '#4B253A'],
+  		duration:            400,
+  		wrpClass:            'circles-wrp',
+  		textClass:           'circles-text',
+  		valueStrokeClass:    'circles-valueStroke',
+  		maxValueStrokeClass: 'circles-maxValueStroke',
+  		styleWrapper:        true,
+  		styleText:           true
+  		})
+  }//loaded
+</script>
