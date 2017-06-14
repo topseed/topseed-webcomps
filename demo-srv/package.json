@@ -2,7 +2,10 @@
 		"name": "topseed-webcomps",
 		"description": "Best Practices for Web Components",
 		"version": "1.0.1",
-		"repository": { "type": "git", "url" : "https://github.com/topseed/topseed-webcomps.git"},
+		"repository": {
+				"type": "git",
+				"url": "https://github.com/topseed/topseed-webcomps.git"
+		},
 		"engines": {
 				"npm": ">=5",
 				"node": ">=8"
