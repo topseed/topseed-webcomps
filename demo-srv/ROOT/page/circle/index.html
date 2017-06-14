@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>CompCom</title>
+    <title>Page Two</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,37 +41,21 @@
     </script>
     <div id="content-wrapper">
       <div class="mui-container-fluid">
-        <p>Show how event in c-1 affects c-2.</p>
-        <c-1></c-1>
-        <c-2></c-2>
+        <p></p>
+        <P>Page Two!</P>
+        <circle-el></circle-el>
       </div>
       <script>
         TS.onAppReady(UIinit)
-        
-        let _blx
-        
         function UIinit() {
-        	console.log('pg')
-        
-        	_blx = new BLX(null) // can / should have folder local class
-        
-        	TW.loadComp($('#comps'),'/_webComps/C1.html', UIComp1Init)
-        	TW.loadComp($('#comps'),'/_webComps/C2.html', UIComp2Init)
+        	TW.loadComp($('#comps'),'https://rawgit.com/topseed/topseed-webcomps/master/_webComp/circle.html', UIComp1Init)
         }
         
         function UIComp1Init() {
-        	TW.cRegOrGet('c-1', C1El)
-        	var c = document.querySelector('c-1')
-        	c.init(_blx) // talk to it
+        	console.log('.')
+        
+        	var xx = TWcReg('circle-el', CircleEl)
         }
-        
-        function UIComp2Init() {
-        	TW.cRegOrGet('c-2', C2El)
-        	var c = document.querySelector('c-2')
-        	c.init(_blx) // talk to it
-        }
-        
-        
         
       </script>
     </div>

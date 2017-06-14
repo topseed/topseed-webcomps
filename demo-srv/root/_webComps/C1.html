@@ -5,25 +5,17 @@
   <button id="but1"> But1 </button>
 </template>
 <script>
-  class C1El extends HTMLElement {
-  	constructor() {
-  		super()
-  		this._shadowRoot = this.attachShadow({mode: 'open'})
-  		const t = document.querySelector('#xc1-el')// add the dom above
-  		const instance = t.content.cloneNode(true)
-  		this._shadowRoot.appendChild(instance)
+  var C1El = Object.create(HTMLElement.prototype)
+  C1El.createdCallback = function() {
+  	C1El._shadow = TW.attachShad('#xc1-el', this)
+  }//()
   
-  
-  	}//()
-  
-  	init(blx) {
+  C1El.init = function(blx) {
   		console.log('comp1()')
-  		const $but = $('#but1', this._shadowRoot)
+  		const $but = $('#but1', C1El._shadow)
   		console.log($but)
   		const clicks = flyd.stream()
   		$but.on('click', clicks)
   		blx.regObserver('c1', clicks)
   	}
-  
-  }//class
 </script>
