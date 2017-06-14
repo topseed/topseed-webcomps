@@ -1,0 +1,27 @@
+extends  ../../_part/_baseShell
+
+block head
+	title Page Two
+	include ../../_part/_header
+
+block main
+	.mui-container-fluid
+		p
+		P Page Two!
+
+		circle-el
+
+	script.
+		TS.onAppReady(UIinit)
+		function UIinit() {
+			TW.loadComp($('#comps'),'https://rawgit.com/topseed/topseed-webcomps/master/_webComp/circle.html', UIComp1Init)
+		}
+
+		function UIComp1Init() {
+			console.log('.')
+
+			var xx = TW.cRegOrGet('circle-el', CircleEl)
+		}
+
+block footer
+	include ../../_part/_footer
