@@ -1,0 +1,54 @@
+extends  ../../_part/_baseShell
+
+block head
+	title Page Two
+	include ../../_part/_header
+
+block main
+	.mui-container-fluid
+		p
+		P Dashboard
+
+		.mui-col-xs-12.mui-col-md-6.mui-col-xl-4
+			circle-el
+		.mui-col-xs-12.mui-col-md-6.mui-col-xl-4
+			gauge-el
+		.mui-col-xs-12.mui-col-md-6.mui-col-xl-4
+			list-el
+
+
+	script.
+		TS.onAppReady(UIinit)
+		function UIinit() {
+			TW.loadComp($('#comps'),'https://rawgit.com/topseed/topseed-webcomps/master/_webComp/circle.html', 
+				function(){TW.cReg('circle-el', CircleEl)})
+			TW.loadComp($('#comps'),'https://rawgit.com/topseed/topseed-webcomps/master/_webComp/gauge.html', 
+				function(){TW.cReg('gauge-el', GaugeEl)})
+			TW.loadComp($('#comps'),'/_webComps/List.html', listInit)
+		}
+
+		function listInit( ) {
+			var xx = TW.cReg('list-el', ListEl)
+
+			let ch = document.querySelector('list-el')
+			var values = [
+				{
+				url: 'http://www.yahoo.com',
+				head_line: 'Yahoo'
+				},
+				{
+				url: 'http://mail.google.com',
+				head_line: 'Gmail'
+				},
+				{
+				url: 'https://www.cnet.com/news/',
+				head_line: 'News'
+				}
+			]
+			ch.init(values)
+		}//()
+
+
+
+block footer
+	include ../../_part/_footer
