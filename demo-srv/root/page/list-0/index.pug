@@ -21,8 +21,6 @@ block main
 
 		function UIinit() {
 
-			console.log('UIInit')
-
 			var values = [
 				{
 					url: 'http://www.yahoo.com',
@@ -41,11 +39,7 @@ block main
 			//http://www.javascriptoo.com/dot-js
 			var templateText = document.getElementById('MyListTemplate').text
 			var templateFunction = doT.template(templateText)
-			var res = templateFunction({'array': values})
-			console.log(res)
 			document.getElementById('myList').innerHTML = templateFunction({'array': values})
-
-			console.log('uiInit done')
 
 		}//()
 
