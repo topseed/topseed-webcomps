@@ -5,9 +5,11 @@ template#xlist-el
 	#myList
 
 script#Lst1Tpl(type='text/x-dot-template').
+	<ul>
 	{{~it.array :value:index}}
 		<li><a href={{=value.url}}> {{=value.head_line}}</a></li>
 	{{~}}
+	<ul>
 script.
 	//http://www.javascriptoo.com/dot-js
 	console.log ('in temp list ') // don't forget #comps

@@ -7,7 +7,7 @@ block head
 block main
 	.mui-container-fluid
 		p
-		p Hello from Page One!
+		p List as component:
 
 		list-el loading...
 
@@ -20,7 +20,7 @@ block main
 
 		function compInit( ) {
 			console.log('cinit')
-			var xx = TW.cReg ('list-el', ListEl)
+			var xx = TW.cReg('list-el', ListEl)
 
 			let ch = document.querySelector('list-el')
 			var values = [
