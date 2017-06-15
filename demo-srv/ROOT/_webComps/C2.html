@@ -4,21 +4,14 @@
   <p>Two</p>
 </template>
 <script>
-  class C2El extends HTMLElement {
-  	constructor() {
-  		super()
-  		let shadowRoot = this.attachShadow({mode: 'open'})
-  		const t = document.querySelector('#xc2-el')// add the dom above
-  		const instance = t.content.cloneNode(true)
-  		shadowRoot.appendChild(instance)
+  var C2El = Object.create(HTMLElement.prototype)
+  C2El.createdCallback = function() {
+  	C2El._shadow = TW.attachShad('#xc2-el', this)
+  }//()
   
-  	}//()
-  
-  	init(blx) {
-  		console.log('comp2()')
-  		console.log( blx.observer('c1') )
-  		flyd.on(function(e) { console.log(e); }, blx.observer('c1'))
-  	}
-  
-  }//class
+  C2El.init = function(blx) {
+  	console.log('comp2()')
+  	console.log( blx.observer('c1') )
+  	flyd.on(function(e) { console.log(e); }, blx.observer('c1'))
+  }
 </script>

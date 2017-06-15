@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>Page One</title>
+    <title>Page Two</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,40 +42,20 @@
     <div id="content-wrapper">
       <div class="mui-container-fluid">
         <p></p>
-        <p>Hello from Page One!</p>
-        <list-el>not yet</list-el>
+        <P>Page Two!</P>
+        <circle-el></circle-el>
       </div>
       <script>
         TS.onAppReady(UIinit)
-        function UIinit() {//don't forget #comps
+        function UIinit() {
+        	TW.loadComp($('#comps'),'https://rawgit.com/topseed/topseed-webcomps/master/_webComp/circle.html', UIComp1Init)
+        }
+        
+        function UIComp1Init() {
         	console.log('.')
-        	TW.loadComp($('#comps'),'/_webComps/List.html', compInit)
-        }//()
         
-        function compInit( ) {
-        	console.log('cinit')
-        	var xx = TW.cRegOrGet('list-el', ListEl)
-        
-        	let ch = document.querySelector('list-el')
-        	var values = [
-        		{
-        		url: 'http://www.yahoo.com',
-        		head_line: 'Yahoo'
-        		},
-        		{
-        		url: 'http://mail.google.com',
-        		head_line: 'Gmail'
-        		},
-        		{
-        		url: 'https://www.cnet.com/news/',
-        		head_line: 'News'
-        		}
-        	]
-        
-        	ch.init(values)
-        
-        }//()
-        
+        	var xx = TWcReg('circle-el', CircleEl)
+        }
         
       </script>
     </div>

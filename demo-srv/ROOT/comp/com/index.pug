@@ -23,25 +23,22 @@ block main
 
 			_blx = new BLX(null) // can / should have folder local class
 
-			TS.loadComp($('#comps'),'/_webComp/C1.html', UIComp1Init)
-			TS.loadComp($('#comps'),'/_webComp/C2.html', UIComp2Init)
+			TW.loadComp($('#comps'),'/_webComps/C1.html', UIComp1Init)
+			TW.loadComp($('#comps'),'/_webComps/C2.html', UIComp2Init)
 		}
 
 		function UIComp1Init() {
-			let m = defineEl('c-1', C1El)
-			m.init(_blx) // talk to it
+			TW.cReg ('c-1', C1El)
+			var c = document.querySelector('c-1')
+			c.init(_blx) // talk to it
 		}
 
 		function UIComp2Init() {
-			let m = defineEl('c-2', C2El)
-			m.init(_blx) // talk to it
+			TW.cReg ('c-2', C2El)
+			var c = document.querySelector('c-2')
+			c.init(_blx) // talk to it
 		}
-		function defineEl(elId, Klass) { //define and get element
-			var el = customElements.get(elId)
-			if(!el) // if it is not defined, define:
-				customElements.define(elId, Klass)
-			return document.querySelector(elId)
-		}
+
 
 
 block footer
