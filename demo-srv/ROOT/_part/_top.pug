@@ -1,24 +1,33 @@
 #appbar
 	#appbar--brand(onclick='openDrawer()') &nbsp; ☰ &nbsp;
-		span.mui--hidden-xs Topseed&trade; Poly
+		span.mui--hidden-xs Topseed&trade; Webcomps
 	ul#appbar--menu
 		li
 			a(href='/page/circle/') Circle
 		li
-			a(href='/page/list/') List
-		li
 			a(href='/page/gauge/') Gauge
+		li
+			a(href='/page/dashboard/') Dashboard
+		li
+			a(href='/page/list0/') List 0
+		li
+			a(href='/page/list/') List 1
 
 #sidedrawer(onclick='closeDrawer()')
-	#sidedrawer--brand &nbsp; ☰ Topseed&trade; Poly
+	#sidedrawer--brand &nbsp; ☰ Topseed&trade; Webcomps
 	.mui-divider
 	ul#sidedrawer--menu
 		li
 			a(href='/page/circle/') Circle
 		li
-			a(href='/page/list/') List
-		li
 			a(href='/page/gauge/') Gauge
+		li
+			a(href='/page/dashboard/') Dashboard
+		li
+			a(href='/page/list0/') List 0
+		li
+			a(href='/page/list/') List 1
+
 script.
 	function openDrawer(px, e) {
 		$('#sidedrawer').css('transform', 'translateX(201px)')
