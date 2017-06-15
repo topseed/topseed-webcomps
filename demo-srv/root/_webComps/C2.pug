@@ -1,0 +1,19 @@
+template#xc2-el
+	style.
+		p { color: orange; }
+	p Two
+
+script.
+	var C2El = Object.create(HTMLElement.prototype)
+	C2El.createdCallback = function() {
+		C2El._shadow = TW.attachShad('#xc2-el', this)
+	}//()
+
+	C2El.init = function(blx) {
+		console.log('comp2()')
+		console.log( blx.observer('c1') )
+		flyd.on(function(e) { console.log(e); }, blx.observer('c1'))
+	}
+
+
+
