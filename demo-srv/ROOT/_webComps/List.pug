@@ -1,0 +1,30 @@
+template#xlist-el
+	style.
+		li { color: orange; }
+	//p I'm Shady
+	#myList
+
+script#Lst1Tpl(type='text/x-dot-template').
+	{{~it.array :value:index}}
+		<li><a href={{=value.url}}> {{=value.head_line}}</a></li>
+	{{~}}
+script.
+	//http://www.javascriptoo.com/dot-js
+	console.log ('in temp list ') // don't forget #comps
+	var ListEl = Object.create(HTMLElement.prototype)
+	ListEl.createdCallback = function() {
+		ListEl._shadow = TW.attachShad('#xlist-el', this)
+	}//()
+
+	ListEl.init =function (values) {
+		console.log('!init!')
+		const tpl1 = document.getElementById('Lst1Tpl').text
+		var data2 = {'array': values}
+		var res = TW.dBind(tpl1,data2)
+		//console.log(res)
+		const lst = ListEl._shadow.querySelector('#myList')//ctx
+		lst.innerHTML=res
+
+		$("#myList", ListEl._shadow).append("<span id='list-ready'></span>")// SSR MAGIC!!
+	}//()
+
