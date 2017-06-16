@@ -246,7 +246,7 @@ var TW = { //class:
 		window.creg[name] = comp 
 	}
 
-	, register: function(tag, KlassEl) {//register class
+	, registerCustomElement: function(tag, KlassEl) {//register class
 		var xx
 		if(!TW._isCReg(tag)) {
             if (tag.indexOf('-')==-1)
@@ -259,7 +259,11 @@ var TW = { //class:
 		return xx
 	}
 
-	, attach: function (thiz, templ) {
+	, regC: function(tag, KlassEl) {
+		return TW.registerCustomElement(tag, KlassEl)
+	}	
+
+	, attachShadow: function(thiz, templ) {
 		var t = document.querySelector(templ)
 		var clone = document.importNode(t.content, true)
 		//var shadow = this.createShadowRoot() NOPE
@@ -268,6 +272,9 @@ var TW = { //class:
 		return shadow
 	}
 
+	, attS: function(thiz, templ){
+		return TW.attachShadow(thiz, templ)
+	}
 
 	, bind: function (tpl, data) { // take tmpl and bind w/ data
 		var tpl1Foo = doT.template(tpl)

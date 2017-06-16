@@ -7,9 +7,9 @@ template#xc1-el
 script.
 	var C1El = Object.create(HTMLElement.prototype)
 	C1El.createdCallback = function() {
-		C1El._shadow = TW.attach(this, '#xc1-el')
+		C1El._shadow = TW.attachShadow(this, '#xc1-el')
 	}//()
-	TW.register('c1-el', C1El) //could be in the page compInit callback
+	TW.registerCustomElement('c1-el', C1El) //could be in the page compInit callback
 
 	C1El.init = function(blx) {
 			console.log('comp1()')

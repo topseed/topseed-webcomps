@@ -10,7 +10,7 @@ template#xcircle-el
 script.
 	var CircleEl = Object.create(HTMLElement.prototype)
 	CircleEl.createdCallback = function() {
-		CircleEl._shadow = TW.attach(this, '#xcircle-el')
+		CircleEl._shadow = TW.attachShadow(this, '#xcircle-el')
 		CircleEl._loaded = false//trap
 		TS.load('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/circlesMOD.js', CircleEl.loadedLib )
 	}//created
@@ -39,4 +39,4 @@ script.
 			})
 	}//loaded
 
-	TW.register('circle-el', CircleEl) //could be in the page compInit callback
+	TW.registerCustomElement('circle-el', CircleEl) //could be in the page compInit callback
