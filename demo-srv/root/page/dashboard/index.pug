@@ -1,20 +1,23 @@
 extends  ../../_part/_baseShell
 
 block head
-	title Page Two
+	title Dashboard
 	include ../../_part/_header
 
 block main
 	.mui-container-fluid
-		p
-		P Dashboard
-
-		.mui-col-xs-12.mui-col-md-6.mui-col-xl-4
-			circle-el
-		.mui-col-xs-12.mui-col-md-6.mui-col-xl-4
-			gauge-el
-		.mui-col-xs-12.mui-col-md-6.mui-col-xl-4
-			list-el
+		.mui-col-xs-12 
+			p
+			p Dashboard
+		.mui-col-xs-6.mui-col-md-3
+			.mui-panel
+				circle-el
+		.mui-col-xs-6.mui-col-md-3
+			.mui-panel
+				list-el
+		.mui-col-xs-12.mui-col-md-6
+			.mui-panel
+				gauge-el
 
 
 	script.
