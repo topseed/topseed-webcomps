@@ -13,8 +13,9 @@
   	console.log('created')
   	
   	GaugeEl._loaded = false//trap
-  	TS.loadNX('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/justgage.js', GaugeEl.loadedLib )
+  	TS.load('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/justgage.js', GaugeEl.loadedLib )
   }//created
+  
   GaugeEl.loadedLib = function() {
   	if(GaugeEl._loaded) return
   	GaugeEl._loaded = true
@@ -29,5 +30,6 @@
   		title: 'Visitors'
   	})
   }//loaded
+  
   TW.register('gauge-el', GaugeEl) //could be in the page compInit callback
 </script>

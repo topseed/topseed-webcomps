@@ -8,7 +8,7 @@
 //'use strict'  // NOT in IE 11 w/ Class we can't
 
 var TS = { //class:
-	loadNX: function(lib, xfoo) { //load and exec
+	load: function(lib, xfoo) { //load and exec
 		loadjs([ lib ], // now load ps
 			{ success: function(){ 
 				xfoo()
@@ -37,7 +37,7 @@ var TS = { //class:
 	, loadOnAppReady: function(lib, pinit){
 		if(TS.appReady) {
 			console.log('main?')
-			TS.loadNX(lib, pinit)
+			TS.load(lib, pinit)
 		} else {
 			setTimeout(function() {//wait X milliseconds then loop and recheck if ready
 				console.log(',') // likey TS.signalAppReady() was not called

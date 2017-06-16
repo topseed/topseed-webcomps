@@ -11,10 +11,10 @@
   var CircleEl = Object.create(HTMLElement.prototype)
   CircleEl.createdCallback = function() {
   	CircleEl._shadow = TW.attach(this, '#xcircle-el')
-  
   	CircleEl._loaded = false//trap
-  	TS.loadNX('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/circlesMOD.js', CircleEl.loadedLib )
+  	TS.load('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/circlesMOD.js', CircleEl.loadedLib )
   }//created
+  
   CircleEl.loadedLib = function() {
   	if(CircleEl._loaded) return
   	CircleEl._loaded = true
@@ -38,5 +38,6 @@
   		styleText:           true
   		})
   }//loaded
+  
   TW.register('circle-el', CircleEl) //could be in the page compInit callback
 </script>
