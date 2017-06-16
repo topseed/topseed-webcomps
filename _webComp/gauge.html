@@ -8,7 +8,6 @@
 <!--http://justgage.com/-->
 <script>
   var GaugeEl = Object.create(HTMLElement.prototype)
-  TW.register('gauge-el', GaugeEl) //could be in the page compInit callback
   GaugeEl.createdCallback = function() {
   	GaugeEl._shadow = TW.attach(this, '#xgauge-el')
   	console.log('created')
@@ -30,4 +29,5 @@
   		title: 'Visitors'
   	})
   }//loaded
+  TW.register('gauge-el', GaugeEl) //could be in the page compInit callback
 </script>
