@@ -9,7 +9,7 @@
 <script>
   var GaugeEl = Object.create(HTMLElement.prototype)
   GaugeEl.createdCallback = function() {
-  	GaugeEl._shadow = TW.attachShad('#xgauge-el', this)
+  	GaugeEl._shadow = TW.attach(this, '#xgauge-el')
   	console.log('created')
   	
   	GaugeEl._loaded = false//trap

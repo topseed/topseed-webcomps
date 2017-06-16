@@ -246,18 +246,20 @@ var TW = { //class:
 		window.creg[name] = obj 
 	}
 
-	, cReg: function(tag, KlassEl) {//register class
+	, register: function(tag, KlassEl) {//register class
 		var xx
 		if(!TW._isCReg(tag)) {
+            if (tag.indexOf('-')==-1)
+                throw 'Custom element name must contain a - (dash)!'  
 			xx = document.registerElement(tag, {prototype: KlassEl})
-			TW._cReg(tag,xx)
+			TW._cReg(tag, xx)
 		}
 		console.log(window.creg)
 		xx = TW._isCReg(tag)	
 		return xx
 	}
 
-	, attachShad: function (templ, thiz) {
+	, attach: function (thiz, templ) {
 		var t = document.querySelector(templ)
 		var clone = document.importNode(t.content, true)
 		//var shadow = this.createShadowRoot() NOPE
@@ -267,7 +269,7 @@ var TW = { //class:
 	}
 
 
-	, dBind: function (tpl, data) { // take tmpl and bind w/ data
+	, bind: function (tpl, data) { // take tmpl and bind w/ data
 		var tpl1Foo = doT.template(tpl)
 		return tpl1Foo(data)
 	}

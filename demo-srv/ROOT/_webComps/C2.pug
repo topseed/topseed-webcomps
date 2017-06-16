@@ -6,7 +6,7 @@ template#xc2-el
 script.
 	var C2El = Object.create(HTMLElement.prototype)
 	C2El.createdCallback = function() {
-		C2El._shadow = TW.attachShad('#xc2-el', this)
+		C2El._shadow = TW.attach(this, '#xc2-el')
 	}//()
 
 	C2El.init = function(blx) {

@@ -1,0 +1,48 @@
+extends  ../../_part/_baseShell
+
+block head
+	title Prelist
+	include ../../_part/_header
+
+block main
+	.mui-container-fluid
+		p
+		p No-component list:
+		p My List Title
+		#myList
+
+	script#MyListTemplate(type='text/x-dot-template').
+		<ul>
+		{{~it.array :value:index}}
+			<li><a href={{=value.url}}> {{=value.head_line}}</a></li>
+		{{~}}
+		</ul>	
+	script.
+		TS.onAppReady(UIinit)
+
+		function UIinit() {
+
+			var values = [
+				{
+					url: 'http://www.yahoo.com',
+					head_line: 'Yahoo'
+				},
+				{
+					url: 'http://mail.google.com',
+					head_line: 'Gmail'
+				},
+				{
+					url: 'https://www.cnet.com/news/',
+					head_line: 'News'
+				}
+			]
+
+			//http://www.javascriptoo.com/dot-js
+			var templateText = document.getElementById('MyListTemplate').text
+			var templateFunction = doT.template(templateText)
+			document.getElementById('myList').innerHTML = templateFunction({'array': values})
+
+		}//()
+
+block footer
+	include ../../_part/_footer

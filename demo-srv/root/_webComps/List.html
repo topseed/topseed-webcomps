@@ -14,14 +14,14 @@
   console.log ('in temp list ') // don't forget #comps
   var ListEl = Object.create(HTMLElement.prototype)
   ListEl.createdCallback = function() {
-  	ListEl._shadow = TW.attachShad('#xlist-el', this)
+  	ListEl._shadow = TW.attach(this, '#xlist-el')
   }//()
   
   ListEl.init =function (values) {
   	console.log('!init!')
   	const tpl1 = document.getElementById('Lst1Tpl').text
   	var data2 = {'array': values}
-  	var res = TW.dBind(tpl1,data2)
+  	var res = TW.bind(tpl1,data2)
   	//console.log(res)
   	const lst = ListEl._shadow.querySelector('#myList')//ctx
   	lst.innerHTML=res

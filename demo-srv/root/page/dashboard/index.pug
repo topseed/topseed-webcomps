@@ -24,14 +24,14 @@ block main
 		TS.onAppReady(UIinit)
 		function UIinit() {
 			TW.loadComp($('#comps'),'https://rawgit.com/topseed/topseed-webcomps/master/_webComp/circle.html', 
-				function(){TW.cReg('circle-el', CircleEl)})
+				function(){TW.register('circle-el', CircleEl)})
 			TW.loadComp($('#comps'),'https://rawgit.com/topseed/topseed-webcomps/master/_webComp/gauge.html', 
-				function(){TW.cReg('gauge-el', GaugeEl)})
+				function(){TW.register('gauge-el', GaugeEl)})
 			TW.loadComp($('#comps'),'/_webComps/List.html', listInit)
 		}
 
 		function listInit( ) {
-			var xx = TW.cReg('list-el', ListEl)
+			var xx = TW.register('list-el', ListEl)
 
 			let ch = document.querySelector('list-el')
 			var values = [
