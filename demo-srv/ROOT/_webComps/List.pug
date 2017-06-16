@@ -19,14 +19,24 @@ script.
 	}//()
 	TW.register('list-el', ListEl) //could be in the page compInit callback
 	
-	ListEl.init = function (values) {
-		console.log('!init!')
+	ListEl.init = function(blx) {
+		console.log('ListEl.init')
+		//setup component communication, e.g.:
+		//const $button1 = $('#button1', ListEl._shadow)
+		//console.log($button1)
+		//const clicks = flyd.stream()
+		//button1.on('click', clicks)
+		//blx.regObserver('c1', clicks)
+	}//()
+
+	ListEl.list = function(values) {
+		console.log('ListEl.list')
 		const tpl = document.getElementById('Lst1Tpl').text
 		var data2 = {'array': values}
 		var res = TW.bind(tpl, data2)
 		//console.log(res)
-		const lst = ListEl._shadow.querySelector('#myList')//ctx
-		lst.innerHTML=res
+		const lst = ListEl._shadow.querySelector('#myList') 
+		lst.innerHTML = res
 
 		$("#myList", ListEl._shadow).append("<span id='list-ready'></span>")// SSR MAGIC!!
 	}//()

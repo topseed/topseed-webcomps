@@ -26,32 +26,15 @@ block main
 			TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_webComp/circle.html', 
 				$('#comps'), function(){})
 			TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_webComp/gauge.html', 
-				$('#comps'), function(){)})
-			TW.loadComp('/_webComps/List.html', $('#comps'), listInit) 
+				$('#comps'), function(){})
+			TS.loadNX('/page/list/ListBusiness.js',  function(){
+				TW.loadComp('/_webComps/List.html', $('#comps'), listInit)}) 
 		}
 
 		function listInit() {
-			//var xx = TW.register('list-el', ListEl)
-
-			let ch = document.querySelector('list-el')
-			var values = [
-				{
-				url: 'http://www.yahoo.com',
-				head_line: 'Yahoo'
-				},
-				{
-				url: 'http://mail.google.com',
-				head_line: 'Gmail'
-				},
-				{
-				url: 'https://www.cnet.com/news/',
-				head_line: 'News'
-				}
-			]
-			ch.init(values)
-		}//()
-
-
+			const sb = ListBusiness()
+			sb.compList('list-el')
+		}
 
 block footer
 	include ../../_part/_footer

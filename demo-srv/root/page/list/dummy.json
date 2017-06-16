@@ -1,0 +1,14 @@
+[
+    {
+        "url": "http://www.yahoo.com",
+        "head_line": "Yahoo"
+    },
+    {
+        "url": "http://mail.google.com",
+        "head_line": "Gmail"
+    },
+    {
+        "url": "https://www.cnet.com/news/",
+        "head_line": "News"
+    }
+]
