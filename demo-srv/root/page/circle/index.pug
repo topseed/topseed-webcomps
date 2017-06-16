@@ -14,12 +14,11 @@ block main
 	script.
 		TS.onAppReady(UIinit)
 		function UIinit() {
-			TW.loadComp($('#comps'),'https://rawgit.com/topseed/topseed-webcomps/master/_webComp/circle.html', UIComp1Init)
+			TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_webComp/circle.html', $('#comps'), UIComp1Init)
 		}
 
 		function UIComp1Init() {
 			console.log('.')
-			var xx = TW.register('circle-el', CircleEl)
 		}
 
 block footer

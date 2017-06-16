@@ -209,41 +209,41 @@ Class.extend = function(prop) {
 // COMPS ////////////////////////////////////////////////////////////////////////////////////////
 var TW = { //class:
 	_loadedComp : {'exComp': true} // don't load 2x
-	, loadComp: function($here, url, cb) { //load template, don't forget #comps
+	, loadComp: function(url, $here, callbackFunc) { //load template, don't forget #comps
 		if(url in TW._loadedComp) {//guard: we loaded it before, thank you very much
 			console.log('already loaded')
-			cb()
+			callbackFunc()
 			return
 		} else {
 			fetch(url, {
 				method: 'get'
-			}).then(function(reSPonse) {
-				if (!reSPonse.ok) {
+			}).then(function(response) {
+				if (!response.ok) {
 					console.log('not ok')
-					console.log(reSPonse)
-					throw Error(reSPonse.statusText)
+					console.log(response)
+					throw Error(response.statusText)
 				}
-				return reSPonse.text()
+				return response.text()
 			}).then(function(txt) {
 				console.log('loading (again?)')
 				TW._loadedComp[url] = true
 				$here.append( txt )
-				cb()
+				callbackFunc()
 			})
 		}
 	}//()
 
 	, _isCReg: function(name) {
-		if (window.creg && window.creg[name])
-			return window.creg[name]
-		return false
+		return (window.creg && window.creg.hasOwnProperty(name))
+		//	return window.creg[name]
+		//return false
 	}
-
-	, _cReg: function(name, obj) { // register a component
-		if(!window.creg)
+	
+	, _cReg: function(name, comp) { // register a component
+		if (!window.creg)
 			window.creg = {}
 		console.log('creg', name)
-		window.creg[name] = obj 
+		window.creg[name] = comp 
 	}
 
 	, register: function(tag, KlassEl) {//register class

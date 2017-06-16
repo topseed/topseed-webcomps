@@ -8,6 +8,7 @@ script.
 	C2El.createdCallback = function() {
 		C2El._shadow = TW.attach(this, '#xc2-el')
 	}//()
+	TW.register('c2-el', C2El) //could be in the page compInit callback
 
 	C2El.init = function(blx) {
 		console.log('comp2()')

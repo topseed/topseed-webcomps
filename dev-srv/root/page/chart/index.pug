@@ -15,7 +15,7 @@ block main
 		TS.onAppReady(UIinit)
 		function UIinit() {//don't forget #comps
 			console.log('.')
-			TS.loadComp($('#comps'),'/_webComp/Chart.html', compInit)
+			TS.loadComp('/_webComp/Chart.html', $('#comps'), compInit)
 		}
 
 		function compInit( ) {// 

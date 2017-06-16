@@ -15,12 +15,11 @@ block main
 		TS.onAppReady(UIinit)
 		function UIinit() {//don't forget #comps
 			console.log('.')
-			TW.loadComp($('#comps'),'/_webComps/List.html', compInit)
+			TW.loadComp('/_webComps/List.html', $('#comps'), compInit)
 		}//()
 
 		function compInit( ) {
-			console.log('cinit')
-			var xx = TW.register('list-el', ListEl)
+			console.log('compInit')
 
 			let ch = document.querySelector('list-el')
 			var values = [

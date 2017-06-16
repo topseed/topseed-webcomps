@@ -10,7 +10,6 @@
 <script>
   var CircleEl = Object.create(HTMLElement.prototype)
   CircleEl.createdCallback = function() {
-  	console.log('created')
   	CircleEl._shadow = TW.attach(this, '#xcircle-el')
   
   	CircleEl._loaded = false//trap
@@ -39,4 +38,5 @@
   		styleText:           true
   		})
   }//loaded
+  TW.register('circle-el', CircleEl) //could be in the page compInit callback
 </script>

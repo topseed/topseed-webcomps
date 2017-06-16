@@ -17,8 +17,9 @@ script.
 	ListEl.createdCallback = function() {
 		ListEl._shadow = TW.attach(this, '#xlist-el')
 	}//()
-
-	ListEl.init =function (values) {
+	TW.register('list-el', ListEl) //could be in the page compInit callback
+	
+	ListEl.init = function (values) {
 		console.log('!init!')
 		const tpl = document.getElementById('Lst1Tpl').text
 		var data2 = {'array': values}
