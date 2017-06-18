@@ -30,7 +30,7 @@ function pugComp(req,res) {
 	res.header('Content-Type', 'text/html')
 	U.cacheQuick(res)
 	const html = pug.renderFile(requestedResource, options)
-	res.send(html)
+	res.status(200).send( html).end()
 }
 
 //**************** */
@@ -54,7 +54,7 @@ exports.decide = function (req, res, next) {//decide based on port
 			U.cacheQuick(res)
 
 			const html = pug.renderFile(requestedResource, options)
-			res.send(html)
+			res.status(200).send( html).end()
 
 		} catch(err) {
 			console.log('err', err)
