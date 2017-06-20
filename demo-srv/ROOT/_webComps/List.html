@@ -30,7 +30,7 @@
   		window.open(url, "_blank")
   	else if (blx) 
   	{
-  		console.log('blx.emit')
+  		console.log('blx.emit'+circleVal)
   		blx.emit('mySelection', {"circleVal": circleVal, "gaugeVal": gaugeVal})	
   		console.log('blx.emit done')
   	}	
@@ -41,11 +41,10 @@
   	blx = _blx
   	//setup component communication, e.g.:
   	//const $button1 = $('#button1', ListEl._shadow)
-  	//console.log($button1)
-  	//const clicks = flyd.stream()
+  	const clicks = flyd.stream()
   	//button1.on('click', clicks)
   	//blx.regObserver('mySelection', clicks)
-  	//_blx.reg('mySelection')
+  	//console.log('ListEl.init, registered observer')
   	
   }//()
   

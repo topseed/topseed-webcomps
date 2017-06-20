@@ -50,7 +50,9 @@ script.
 		})*/
 
 		flyd.on(function(data) { 
-			console.log('received'+JSON.stringify(data))
+			if (!data)
+				console.log('circle received undefined')
+			console.log('circle received data:'+JSON.stringify(data))
 		
 		}, _blx.observer('mySelection'))
 
