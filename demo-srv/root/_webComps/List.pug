@@ -15,7 +15,7 @@ script#Lst1Tpl(type='text/x-dot-template').
 script.
 	//http://www.javascriptoo.com/dot-js
 	console.log ('in temp list ') // don't forget #comps
-	var blx
+	var blx = null
 	var ListEl = Object.create(HTMLElement.prototype)
 	ListEl.createdCallback = function() {
 		ListEl._shadow = TW.attachShadow(this, '#xlist-el')
@@ -25,19 +25,25 @@ script.
 	ListEl.nav = function(url, circleVal, gaugeVal){
 		if (confirm('Open '+url+'?'))
 			window.open(url, "_blank")
-		else
+		else if (blx) 
+		{
+			console.log('blx.emit')
 			blx.emit('mySelection', {"circleVal": circleVal, "gaugeVal": gaugeVal})	
+			console.log('blx.emit done')
+		}	
 	}
 
 	ListEl.init = function(_blx) {
-		console.log('ListEl.init')
+		console.log('ListEl.init, received _blx')
 		blx = _blx
 		//setup component communication, e.g.:
 		//const $button1 = $('#button1', ListEl._shadow)
 		//console.log($button1)
-		const clicks = flyd.stream()
+		//const clicks = flyd.stream()
 		//button1.on('click', clicks)
-		blx.regObserver('mySelection', clicks)
+		//blx.regObserver('mySelection', clicks)
+		//_blx.reg('mySelection')
+		
 	}//()
 
 	ListEl.list = function(values) {
