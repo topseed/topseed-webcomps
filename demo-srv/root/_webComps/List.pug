@@ -1,7 +1,6 @@
 template#xlist-el
 	style.
-		.blist-el span { color: orange; }
-		.blist-el li { color: orange; }
+		.blist-el span, .blist-el li { color: orange; }
 		.blist-el a { cursor: pointer; color: #2196F3}
 	.blist-el
 		span My List Title
@@ -10,12 +9,12 @@ template#xlist-el
 script#Lst1Tpl(type='text/x-dot-template').
 	<ul>
 	{{~it.array :value:index}}
-		<li><a onclick="ListEl.nav('{{=value.url}}','{{=value.circleVal}}','{{=value.gaugeVal}}')"> {{=value.head_line}}</a></li>
+		<li><a onclick="return ListEl.nav('{{=value.url}}','{{=value.circleVal}}','{{=value.gaugeVal}}')"> {{=value.head_line}}</a></li>
 	{{~}}
 	<ul>
 script.
 	//http://www.javascriptoo.com/dot-js
-	var blx = null //message bus to emit/broadcast to 
+	var blx = null//message bus to emit/broadcast to 
 
 	var ListEl = Object.create(HTMLElement.prototype)
 	ListEl.createdCallback = function() {
@@ -47,11 +46,11 @@ script.
 	}//()
 
 	ListEl.nav = function(url, circleVal, gaugeVal){
-		if (confirm('Open '+url+'?'))
-			window.open(url, "_blank")
+		if (blx != null) //blx not required when component doesn't broadcast
+			blx.emit('mySelection', {"circleVal": circleVal, "gaugeVal": gaugeVal})
 		else 
-		if (blx) //blx not required when component doesn't broadcast
-			blx.emit('mySelection', {"circleVal": circleVal, "gaugeVal": gaugeVal})	
+			window.open(url, "_blank")
+		return false;			
 	}
 
 
