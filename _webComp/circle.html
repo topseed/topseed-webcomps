@@ -44,10 +44,15 @@
   	//blx = _blx //for outgoing only
   	console.log('circle.init()')
   	//listen 
-  	_blx.on('mySelection', function(data) { 
+  	/*_blx.on('mySelection', function(data) { 
   			console.log('received'+JSON.stringify(data))
   			//CircleEl.loadedLib(data.circleVal) //recreate
-  	})
+  	})*/
+  
+  	flyd.on(function(data) { 
+  		console.log('received'+JSON.stringify(data))
+  	
+  	}, _blx.observer(''mySelection''))
   
   }
   
