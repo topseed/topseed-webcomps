@@ -72,8 +72,10 @@ var BDS = Class.extend({ //IE11-compatible base class for Data Access Object
 		return fetch_(ROOT_ + url_ , { //1 call
 				method: 'post'
 				, headers: {
-					'Content-Type': 'application/json'
-					, 'X-JToken' : JSON.stringify(token_)
+					'Content-Type': 'application/json',
+					'Accept':'application/json',
+					 credentials: 'same-origin'
+					 , 'X-JToken' : JSON.stringify(token_)
 				}
 				, body: JSON.stringify(data_)
 			}).then(function(response) { //2 returns a promise
