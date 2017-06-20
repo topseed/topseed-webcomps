@@ -1,8 +1,10 @@
 
 <template id="xgauge-el">
-  <style>span { color: orange; }</style><span>My Gauge Title (Shadow DOM)</span>
-  <div>
-    <div id="gauge1" style="width:400px; height:320px;"></div>
+  <style>.bgauge-el span { color: orange; }</style>
+  <div class="bgauge-el"><span>My Gauge Title (Shadow DOM)</span>
+    <div>
+      <div id="gauge1" style="width:400px; height:320px;"></div>
+    </div>
   </div>
 </template>
 <!--http://justgage.com/-->
@@ -30,6 +32,13 @@
   		title: 'Visitors'
   	})
   }//loaded
+  
+  GaugeEl.init = function(blx) {
+  	console.log('gauge.init()')
+  	console.log( blx.observer('mySelection') ) 
+  	//listen 
+  	flyd.on(function(e) { console.log(e); }, blx.observer('mySelection'))
+  }
   
   TW.registerCustomElement('gauge-el', GaugeEl) //could be in the page compInit callback
 </script>

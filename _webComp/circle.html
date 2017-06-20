@@ -1,6 +1,6 @@
 
 <template id="xcircle-el">
-  <style>span { color: orange; }</style><span>My Circle Title</span>
+  <style>.circle-el__title { color: orange; }</style><span class="circle-el__title">My Circle Title</span>
   <p></p>
   <div>
     <div id="c1"></div>
@@ -38,6 +38,13 @@
   		styleText:           true
   		})
   }//loaded
+  
+  CircleEl.init = function(blx) {
+  	console.log('circle.init()')
+  	console.log( blx.observer('mySelection') ) 
+  	//listen 
+  	flyd.on(function(e) { console.log(e); }, blx.observer('mySelection'))
+  }
   
   TW.registerCustomElement('circle-el', CircleEl) //could be in the page compInit callback
 </script>

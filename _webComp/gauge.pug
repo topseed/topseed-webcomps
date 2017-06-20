@@ -1,7 +1,7 @@
 template#xgauge-el
 	style.
 		.bgauge-el span { color: orange; }
-	.bgauge-el	
+	.bgauge-el
 		span My Gauge Title (Shadow DOM)
 		div
 			#gauge1(style='width:400px; height:320px')
@@ -35,7 +35,7 @@ script.
 	GaugeEl.init = function(blx) {
 		console.log('gauge.init()')
 		console.log( blx.observer('mySelection') ) 
-		//listen
+		//listen 
 		flyd.on(function(e) { console.log(e); }, blx.observer('mySelection'))
 	}
 	

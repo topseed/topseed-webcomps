@@ -42,7 +42,7 @@ script.
 	CircleEl.init = function(blx) {
 		console.log('circle.init()')
 		console.log( blx.observer('mySelection') ) 
-		//listen
+		//listen 
 		flyd.on(function(e) { console.log(e); }, blx.observer('mySelection'))
 	}
 

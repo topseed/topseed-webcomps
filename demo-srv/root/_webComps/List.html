@@ -1,32 +1,46 @@
 
 <template id="xlist-el">
-  <style>li, span { color: orange; }</style><span>My List Title</span>
-  <div id="myList"></div>
+  <style>
+    .blist-el span { color: orange; }
+    .blist-el li { color: orange; }
+  </style>
+  <div class="blist-el"><span>My List Title</span>
+    <div id="myList"></div>
+  </div>
 </template>
 <script id="Lst1Tpl" type="text/x-dot-template">
   <ul>
   {{~it.array :value:index}}
-  	<li><a href={{=value.url}}> {{=value.head_line}}</a></li>
+  	<li><a onclick="ListEl.nav('{{=value.url}}','{{=value.circleVal}}','{{=value.gaugeVal}}')"> {{=value.head_line}}</a></li>
   {{~}}
   <ul>
 </script>
 <script>
   //http://www.javascriptoo.com/dot-js
   console.log ('in temp list ') // don't forget #comps
+  var blx
   var ListEl = Object.create(HTMLElement.prototype)
   ListEl.createdCallback = function() {
   	ListEl._shadow = TW.attachShadow(this, '#xlist-el')
   }//()
   TW.registerCustomElement('list-el', ListEl) //could be in the page compInit callback
   
-  ListEl.init = function(blx) {
+  ListEl.nav = function(url, circleVal, gaugeVal){
+  	if (confirm('Open '+url+'?'))
+  		window.open(url, "_blank")
+  	else
+  		blx.emit('mySelection', {"circleVal": circleVal, "gaugeVal": gaugeVal})	
+  }
+  
+  ListEl.init = function(_blx) {
   	console.log('ListEl.init')
+  	blx = _blx
   	//setup component communication, e.g.:
   	//const $button1 = $('#button1', ListEl._shadow)
   	//console.log($button1)
-  	//const clicks = flyd.stream()
+  	const clicks = flyd.stream()
   	//button1.on('click', clicks)
-  	//blx.regObserver('c1', clicks)
+  	blx.regObserver('mySelection', clicks)
   }//()
   
   ListEl.list = function(values) {
