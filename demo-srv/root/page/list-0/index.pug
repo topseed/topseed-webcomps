@@ -14,7 +14,7 @@ block main
 	script#MyListTemplate(type='text/x-dot-template').
 		<ul>
 		{{~it.array :value:index}}
-			<li><a href={{=value.url}}> {{=value.head_line}}</a></li>
+			<li><a href="{{=value.url}}" target="_blank">{{=value.head_line}}</a></li>
 		{{~}}
 		</ul>	
 	script.

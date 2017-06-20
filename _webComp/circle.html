@@ -6,7 +6,7 @@
     <div id="c1"></div>
   </div>
 </template>
-<!--http://github.com/lugolabs/circles-->
+<!--http://github.com/lugolabs/circles  -->
 <script>
   var CircleEl = Object.create(HTMLElement.prototype)
   CircleEl.createdCallback = function() {
@@ -15,14 +15,18 @@
   	TS.load('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/circlesMOD.js', CircleEl.loadedLib )
   }//created
   
+  CircleEl.circle //circle implementation instance
+  
   //var blx
   CircleEl.loadedLib = function(circleVal) {
+  
+  	console.log('CircleEl.loadLib for value'+circleVal)
   	if(CircleEl._loaded) return
   	CircleEl._loaded = true
   	console.log('loaded')
   
   	var c = CircleEl._shadow.getElementById('c1')
-  	var myCircle = Circles.create({
+  	CircleEl.circle = Circles.create({
   		el:                  c,
   		radius:              60,
   		value:               circleVal||43,
@@ -42,19 +46,14 @@
   
   CircleEl.init = function(_blx) {
   	//blx = _blx //for outgoing only
-  	console.log('circle.init()')
   	//listen 
-  	/*_blx.on('mySelection', function(data) { 
-  			console.log('received'+JSON.stringify(data))
-  			//CircleEl.loadedLib(data.circleVal) //recreate
-  	})*/
-  
-  	flyd.on(function(data) { 
-  		if (!data)
-  			console.log('circle received undefined')
-  		console.log('circle received data:'+JSON.stringify(data))
-  	
-  	}, _blx.observer('mySelection'))
+  	_blx.on('mySelection', function(data) { 
+  		CircleEl.circle.update(data.circleVal)
+  	})
+  	//same as:
+  	/*flyd.on(function(data) { 
+  			CircleEl.circle.update(data.circleVal)
+  	}, _blx.observer('mySelection'))*/
   
   }
   

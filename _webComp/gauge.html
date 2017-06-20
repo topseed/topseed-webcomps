@@ -2,12 +2,13 @@
 <template id="xgauge-el">
   <style>.bgauge-el span { color: orange; }</style>
   <div class="bgauge-el"><span>My Gauge Title (Shadow DOM)</span>
+    <p></p>
     <div>
-      <div id="gauge1" style="width:400px; height:320px;"></div>
+      <div id="gauge1"></div>
     </div>
   </div>
 </template>
-<!--http://justgage.com/-->
+<!--http://justgage.com/ -->
 <script>
   var GaugeEl = Object.create(HTMLElement.prototype)
   GaugeEl.createdCallback = function() {
@@ -18,26 +19,34 @@
   	TS.load('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/justgage.js', GaugeEl.loadedLib )
   }//created
   
-  GaugeEl.loadedLib = function() {
-  	if(GaugeEl._loaded) return
+  GaugeEl.g //gauge implementation instance
+  
+  GaugeEl.loadedLib = function(gaugeVal) {
+  	if(!gaugeVal && GaugeEl._loaded) return
   	GaugeEl._loaded = true
   	console.log('loaded')
   
   	var c = $('#gauge1', GaugeEl._shadow)[0]
-  	var g = new JustGage({
+  	GaugeEl.g = new JustGage({
   		parentNode : c,
-  		value: 67,
+  		value: gaugeVal||67, 
   		min: 0,
   		max: 100,
   		title: 'Visitors'
   	})
   }//loaded
   
-  GaugeEl.init = function(blx) {
-  	console.log('gauge.init()')
-  	console.log( blx.observer('mySelection') ) 
+  GaugeEl.init = function(_blx) {
+  	//blx = _blx //for outgoing only
   	//listen 
-  	flyd.on(function(e) { console.log(e); }, blx.observer('mySelection'))
+  	_blx.on('mySelection', function(data) { 
+  		GaugeEl.g.refresh(data.gaugeVal)
+  	})
+  	//same as:
+  	/*flyd.on(function(data) { 
+  			GaugeEl.g.refresh(data.gaugeVal)
+  	}, _blx.observer('mySelection'))*/
+  
   }
   
   TW.registerCustomElement('gauge-el', GaugeEl) //could be in the page compInit callback

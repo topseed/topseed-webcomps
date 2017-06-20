@@ -2,6 +2,7 @@ template#xlist-el
 	style.
 		.blist-el span { color: orange; }
 		.blist-el li { color: orange; }
+		.blist-el a { cursor: pointer; color: #2196F3}
 	.blist-el
 		span My List Title
 		#myList
@@ -14,37 +15,14 @@ script#Lst1Tpl(type='text/x-dot-template').
 	<ul>
 script.
 	//http://www.javascriptoo.com/dot-js
-	console.log ('in temp list ') // don't forget #comps
-	var blx = null
+	var blx = null //message bus to emit/broadcast to 
+
 	var ListEl = Object.create(HTMLElement.prototype)
 	ListEl.createdCallback = function() {
 		ListEl._shadow = TW.attachShadow(this, '#xlist-el')
 	}//()
 	TW.registerCustomElement('list-el', ListEl) //could be in the page compInit callback
 	
-	ListEl.nav = function(url, circleVal, gaugeVal){
-		if (confirm('Open '+url+'?'))
-			window.open(url, "_blank")
-		else if (blx) 
-		{
-			console.log('blx.emit'+circleVal)
-			blx.emit('mySelection', {"circleVal": circleVal, "gaugeVal": gaugeVal})	
-			console.log('blx.emit done')
-		}	
-	}
-
-	ListEl.init = function(_blx) {
-		console.log('ListEl.init, received _blx')
-		blx = _blx
-		//setup component communication, e.g.:
-		//const $button1 = $('#button1', ListEl._shadow)
-		const clicks = flyd.stream()
-		//button1.on('click', clicks)
-		//blx.regObserver('mySelection', clicks)
-		//console.log('ListEl.init, registered observer')
-		
-	}//()
-
 	ListEl.list = function(values) {
 		console.log('ListEl.list')
 		const tpl = document.getElementById('Lst1Tpl').text
@@ -56,4 +34,24 @@ script.
 
 		$("#myList", ListEl._shadow).append("<span id='list-ready'></span>")// SSR MAGIC!!
 	}//()
+
+	ListEl.init = function(_blx) {
+		console.log('ListEl.init, received _blx')
+		blx = _blx //used in ListEl.nav
+		//if you have a DOM button, this is how you can register it to send the click event
+		//const $button1 = $('#button1', ListEl._shadow)
+		//onst clicks = flyd.stream()
+		//button1.on('click', clicks)
+		//blx.regObserver('mySelection', clicks)
+		
+	}//()
+
+	ListEl.nav = function(url, circleVal, gaugeVal){
+		if (confirm('Open '+url+'?'))
+			window.open(url, "_blank")
+		else 
+		if (blx) //blx not required when component doesn't broadcast
+			blx.emit('mySelection', {"circleVal": circleVal, "gaugeVal": gaugeVal})	
+	}
+
 

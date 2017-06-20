@@ -24,17 +24,14 @@ block main
 		TS.onAppReady(UIinit)
 		function UIinit() {
 			TS.load('/page/list/ListBusiness.js',  function(){
-				TW.loadComp('/_webComps/List.html', $('#comps'), listInit)}) 
-				TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_webComp/circle.html', 
-					$('#comps'), function(){ListBusiness().compInit('circle-el')})
-				TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_webComp/gauge.html', 
-					$('#comps'), function(){ListBusiness().compInit('gauge-el')})
-		}
-
-		function listInit() {
-			const sb = ListBusiness()
-			sb.compInit('list-el') //setup message bus, calls comp.init
-			sb.compList('list-el')
+				const sb = ListBusiness()
+				TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_webComp/circle.html', $('#comps'), function(){
+					sb.compInit('circle-el')})
+				TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_webComp/gauge.html', $('#comps'), function(){
+					sb.compInit('gauge-el')})
+				TW.loadComp('/_webComps/List.html', $('#comps'), function() {
+					sb.compInit('list-el'); sb.compList('list-el')})
+			}) 		
 		}
 
 block footer
