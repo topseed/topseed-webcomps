@@ -7,11 +7,11 @@ block head
 block main
 	.mui-container-fluid
 
-		p Show how event in c-1 affects c-2.
+		p Show how event in c1-el affects c2-el.
 
-		c-1
+		c1-el
 
-		c-2
+		c2-el
 
 	script.
 		TS.onAppReady(UIinit)
@@ -29,12 +29,12 @@ block main
 		}
 
 		function UIComp1Init() {
-			var c = document.querySelector('c-1')
+			var c = document.querySelector('c1-el')
 			c.init(_blx) // talk to it
 		}
 
 		function UIComp2Init() {
-			var c = document.querySelector('c-2')
+			var c = document.querySelector('c2-el')
 			c.init(_blx) // talk to it
 		}
 
