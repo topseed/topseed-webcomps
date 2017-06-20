@@ -15,6 +15,7 @@ script.
 		TS.load('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/circlesMOD.js', CircleEl.loadedLib )
 	}//created
 
+	var blx
 	CircleEl.loadedLib = function() {
 		if(CircleEl._loaded) return
 		CircleEl._loaded = true
@@ -39,11 +40,19 @@ script.
 			})
 	}//loaded
 
-	CircleEl.init = function(blx) {
+	CircleEl.init = function(_blx) {
 		console.log('circle.init()')
-		console.log( blx.observer('mySelection') ) 
+		//console.log( blx.observer('mySelection') )
+		blx = _blx 
 		//listen 
-		flyd.on(function(e) { console.log(e); }, blx.observer('mySelection'))
+		_blx.on('mySelection', function(data) { 
+				console.log('received'+JSON.stringify(data)); 
+		})
+
+		/*flyd.on(function(data) { 
+				console.log('received'+JSON.stringify(data)); 
+		
+			}, blx.observer('mySelection'))*/
 	}
 
 	TW.registerCustomElement('circle-el', CircleEl) //could be in the page compInit callback
