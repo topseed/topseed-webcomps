@@ -15,7 +15,7 @@
   	TS.load('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/circlesMOD.js', CircleEl.loadedLib )
   }//created
   
-  //var blx
+  var blx
   CircleEl.loadedLib = function(circleVal) {
   	if(CircleEl._loaded) return
   	CircleEl._loaded = true
@@ -41,11 +41,11 @@
   }//loaded
   
   CircleEl.init = function(_blx) {
-  	//blx = _blx //use for outgoing 
+  	blx = _blx //for outgoing only
   	console.log('circle.init()')
   	//listen 
-  	_blx.on('mySelection', function(data) { 
-  			console.log('received'+JSON.stringify(data)); 
+  	blx.on('mySelection', function(data) { 
+  			console.log('received'+JSON.stringify(data))
   			//CircleEl.loadedLib(data.circleVal) //recreate
   	})
   

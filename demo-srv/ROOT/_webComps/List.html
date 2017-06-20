@@ -38,9 +38,9 @@
   	//setup component communication, e.g.:
   	//const $button1 = $('#button1', ListEl._shadow)
   	//console.log($button1)
-  	//const clicks = flyd.stream()
+  	const clicks = flyd.stream()
   	//button1.on('click', clicks)
-  	//blx.regObserver('mySelection', clicks)
+  	blx.regObserver('mySelection', clicks)
   }//()
   
   ListEl.list = function(values) {
