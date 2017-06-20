@@ -15,8 +15,8 @@ script.
 		TS.load('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/circlesMOD.js', CircleEl.loadedLib )
 	}//created
 
-	var blx
-	CircleEl.loadedLib = function() {
+	//var blx
+	CircleEl.loadedLib = function(circleVal) {
 		if(CircleEl._loaded) return
 		CircleEl._loaded = true
 		console.log('loaded')
@@ -25,7 +25,7 @@ script.
 		var myCircle = Circles.create({
 			el:                  c,
 			radius:              60,
-			value:               43,
+			value:               circleVal||43,
 			maxValue:            100,
 			width:               10,
 			text:                function(value){return value + '%';},
@@ -42,17 +42,13 @@ script.
 
 	CircleEl.init = function(_blx) {
 		console.log('circle.init()')
-		//console.log( blx.observer('mySelection') )
-		blx = _blx 
+		//blx = _blx 
 		//listen 
 		_blx.on('mySelection', function(data) { 
 				console.log('received'+JSON.stringify(data)); 
+				this.loadedLib(data.circleVal) //recreate
 		})
 
-		/*flyd.on(function(data) { 
-				console.log('received'+JSON.stringify(data)); 
-		
-			}, blx.observer('mySelection'))*/
 	}
 
 	TW.registerCustomElement('circle-el', CircleEl) //could be in the page compInit callback
