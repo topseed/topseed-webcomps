@@ -1,14 +1,20 @@
 [
     {
         "url": "http://www.yahoo.com",
-        "head_line": "Yahoo"
+        "head_line": "Yahoo",
+        "circleVal": "47",
+        "gaugeVal": "27"
     },
     {
         "url": "http://mail.google.com",
-        "head_line": "Gmail"
+        "head_line": "Gmail",
+        "circleVal": "23",
+        "gaugeVal": "88"
     },
     {
         "url": "https://www.cnet.com/news/",
-        "head_line": "News"
+        "head_line": "News",
+        "circleVal": "35",
+        "gaugeVal": "55"
     }
 ]

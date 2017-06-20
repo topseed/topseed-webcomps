@@ -9,7 +9,7 @@ template#xlist-el
 script#Lst1Tpl(type='text/x-dot-template').
 	<ul>
 	{{~it.array :value:index}}
-		<li><a href={{=value.url}}> {{=value.head_line}}</a></li>
+		<li><a href="{{=value.url}}" target="_blank"> {{=value.head_line}}</a></li>
 	{{~}}
 	<ul>
 script.
@@ -21,14 +21,19 @@ script.
 	}//()
 	TW.registerCustomElement('list-el', ListEl) //could be in the page compInit callback
 	
+	ListEl.nav = function(){
+		alert('nav')
+		console.log('nav')
+	}
+
 	ListEl.init = function(blx) {
 		console.log('ListEl.init')
 		//setup component communication, e.g.:
 		//const $button1 = $('#button1', ListEl._shadow)
 		//console.log($button1)
-		//const clicks = flyd.stream()
+		const clicks = flyd.stream()
 		//button1.on('click', clicks)
-		//blx.regObserver('c1', clicks)
+		blx.regObserver('mySelection', clicks)
 	}//()
 
 	ListEl.list = function(values) {

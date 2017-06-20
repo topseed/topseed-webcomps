@@ -23,16 +23,17 @@ block main
 	script.
 		TS.onAppReady(UIinit)
 		function UIinit() {
-			TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_webComp/circle.html', 
-				$('#comps'), function(){})
-			TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_webComp/gauge.html', 
-				$('#comps'), function(){})
 			TS.load('/page/list/ListBusiness.js',  function(){
 				TW.loadComp('/_webComps/List.html', $('#comps'), listInit)}) 
+				TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_webComp/circle.html', 
+					$('#comps'), function(){ListBusiness().compInit('circle-el')})
+				TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_webComp/gauge.html', 
+					$('#comps'), function(){ListBusiness().compInit('gauge-el')})
 		}
 
 		function listInit() {
 			const sb = ListBusiness()
+			sb.compInit('list-el') //setup message bus, calls comp.init
 			sb.compList('list-el')
 		}
 
