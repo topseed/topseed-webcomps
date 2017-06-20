@@ -41,8 +41,8 @@
   }//loaded
   
   CircleEl.init = function(_blx) {
+  	//blx = _blx //use for outgoing 
   	console.log('circle.init()')
-  	//blx = _blx 
   	//listen 
   	_blx.on('mySelection', function(data) { 
   			console.log('received'+JSON.stringify(data)); 
