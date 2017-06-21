@@ -27,10 +27,10 @@ script.
 	ListEl.list = function(values) {
 		console.log('ListEl.list')
 		
-		var tpl = document.getElementById('Lst1Tpl').text
+		const tpl = document.getElementById('Lst1Tpl').text
 		var data2 = {'array': values}
 		var res = TW.bind(tpl, data2)
-		var lst = ListEl._shadow.querySelector('#myList') 
+		const lst = ListEl._shadow.querySelector('#myList') 
 		lst.innerHTML = res
 
 		$("#myList", ListEl._shadow).append("<span id='list-ready'></span>")// SSR MAGIC!!
@@ -44,7 +44,7 @@ script.
 		ListEl.blx = _blx //used in ListEl.nav
 		
 		//if you have a DOM button, this is how you can register it to send the click event
-		//var $button1 = $('#button1', ListEl._shadow)
+		//const $button1 = $('#button1', ListEl._shadow)
 		//onst clicks = flyd.stream()
 		//button1.on('click', clicks)
 		//blx.regObserver('mySelection', clicks)
