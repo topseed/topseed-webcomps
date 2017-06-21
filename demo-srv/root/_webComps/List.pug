@@ -26,7 +26,7 @@ script.
 	
 	ListEl.list = function(values) {
 		console.log('ListEl.list')
-
+		
 		var tpl = document.getElementById('Lst1Tpl').text
 		var data2 = {'array': values}
 		var res = TW.bind(tpl, data2)
@@ -44,7 +44,7 @@ script.
 		ListEl.blx = _blx //used in ListEl.nav
 		
 		//if you have a DOM button, this is how you can register it to send the click event
-		//const $button1 = $('#button1', ListEl._shadow)
+		//var $button1 = $('#button1', ListEl._shadow)
 		//onst clicks = flyd.stream()
 		//button1.on('click', clicks)
 		//blx.regObserver('mySelection', clicks)
