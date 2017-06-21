@@ -19,12 +19,12 @@ block main
 		}
 
 		function compInit( ) {// 
-			let el = customElements.get('chart-el')
+			var el = customElements.get('chart-el')
 			if(!el) customElements.define('chart-el', ChartEl)
 
-			let ch = document.querySelector('chart-el')
+			var ch = document.querySelector('chart-el')
 
-			let data = [
+			var data = [
 				{label: 'Download Sales',   value: 12},
 				{label: 'In-Store Sales',   value: 30},
 				{label: 'Mail-Order Sales', value: 20}

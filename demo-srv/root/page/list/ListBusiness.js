@@ -20,9 +20,12 @@ function ListBusiness() {// 'closure|module'-iso.
 		}
 
         , compList: function(componentName) {
+            //if (1==1) return
 			sb.siteListDao.selectList().then(function(values) {
 
+                    console.log('got data')
                     var comp = document.querySelector(componentName) //good if only one
+                    console.log('got component'+comp)
                     comp.list(values)
 
                 }).catch(function(error) {

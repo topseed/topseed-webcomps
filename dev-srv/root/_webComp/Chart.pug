@@ -10,7 +10,7 @@ script.
 		constructor() {
 			super()
 			console.log('chart cons')
-			let shadowRoot = this.attachShadow({mode: 'open'})
+			var shadowRoot = this.attachShadow({mode: 'open'})
 			const t = document.querySelector('#xchart-el')
 			const instance = t.content.cloneNode(true)
 			shadowRoot.appendChild(instance)
