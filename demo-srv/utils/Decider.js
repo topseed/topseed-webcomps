@@ -1,9 +1,6 @@
 const fs = require('fs')
 const pug = require('pug')
 
-const transformer = require('jstransformer')
-const bs = transformer(require('jstransformer-babel'))//make sure it is loaded
-
 const isj = require('is_js')
 
 const Util = require('topseed-util')

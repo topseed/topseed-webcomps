@@ -26,11 +26,11 @@ script.
 	
 	ListEl.list = function(values) {
 		console.log('ListEl.list')
-		
-		const tpl = document.getElementById('Lst1Tpl').text
+
+		var tpl = document.getElementById('Lst1Tpl').text
 		var data2 = {'array': values}
 		var res = TW.bind(tpl, data2)
-		const lst = ListEl._shadow.querySelector('#myList') 
+		var lst = ListEl._shadow.querySelector('#myList') 
 		lst.innerHTML = res
 
 		$("#myList", ListEl._shadow).append("<span id='list-ready'></span>")// SSR MAGIC!!
