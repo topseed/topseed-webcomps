@@ -15,7 +15,11 @@ script.
 		console.log('created')
 		
 		GaugeEl._loaded = false//trap
+
+		TS.load('https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/raphael.min.js', function(){
 		TS.load('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/justgage.js', GaugeEl.loadedLib )
+		})
+
 	}//created
 	
 	GaugeEl.g //gauge implementation instance

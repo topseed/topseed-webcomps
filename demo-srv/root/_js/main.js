@@ -5,7 +5,7 @@ loadjs.ready(['polyfills', 'keyLibs'], {// loaded setup libs
 	success: function(){
 		loadjs([
 			'https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/jquery.jsForm.min.js'
-			,'https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/raphael.min.js'
+			//,'https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/raphael.min.js'
 
 			,'/_js/BLX.js'
 			,'/_js/BDS.js'
