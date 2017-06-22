@@ -26,8 +26,8 @@ block main
 
 			Promise.all([
 				TS.load('/page/list/ListBusiness.js')
-				, TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_webComp//circle.html', $('#comps'))
-				, TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_webComp//gauge.html', $('#comps'))
+				, TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_sharedComps//circle.html', $('#comps'))
+				, TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_sharedComps//gauge.html', $('#comps'))
 				, TW.loadComp('/_webComp/List.html', $('#comps'))
 			]).then(function() {
 				TW.registerComp('circle-el', CircleEl) 
