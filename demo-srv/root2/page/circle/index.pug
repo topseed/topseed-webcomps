@@ -1,0 +1,28 @@
+extends  ../../_part/_baseShell
+
+block head
+	title Circle component
+	include ../../_part/_header
+
+block main
+	.mui-container-fluid
+		p
+		p Circle component:
+
+		circle-el
+
+	script.
+		TS.onAppReady(UIinit)
+		function UIinit() {
+			TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_webComp/circle.html', $('#comps'), UIComp1Init)
+		}
+
+		function UIComp1Init() {
+			console.log('.')
+			TW.registerCustomElement('circle-el', CircleEl) //could be in the page compInit callback
+
+		}
+
+block footer
+	include ../../_part/_footer
+	
