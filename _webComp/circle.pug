@@ -19,13 +19,13 @@ script.
 
 	CircleEl.circle //circle implementation instance
 
-	//var blx
 	CircleEl.loadedLib = function(circleVal) {
 
 		console.log('CircleEl.loadLib for value'+circleVal)
 		if (CircleEl._loaded) return
 		CircleEl._loaded = true
 		console.log('loaded')
+		TW.registerCustomElement('circle-el', CircleEl) 
 		
 		var c = CircleEl._shadow.getElementById('c1')
 		CircleEl.circle = Circles.create({
