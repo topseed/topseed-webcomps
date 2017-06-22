@@ -22,17 +22,17 @@ block main
 			var _blx = new BLX(null) // can / should have folder local class
 			
 			var c = document.querySelector('c1-el')
-			c.init(_blx) // talk to it
+			c.init(_blx) // registerComp and talk to it
 
 			var c = document.querySelector('c2-el')
-			c.init(_blx) // talk to it
+			c.init(_blx) // registerComp talk to it
 		}
 
 		function loadComps() {
 			//#comps is a div in _footer.pug
 			Promise.all([
-				TW.loadComp('/_webComps/C1.html', $('#comps')
-				TW.loadComp('/_webComps/C2.html', $('#comps')
+				TW.loadComp('/_webComp/C1.html', $('#comps')
+				TW.loadComp('/_webComp/C2.html', $('#comps')
 			]).then(UIinit)
 		}
 

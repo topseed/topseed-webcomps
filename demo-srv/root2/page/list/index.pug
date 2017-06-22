@@ -15,7 +15,7 @@ block main
 		TS.loadOnAppReady('/page/list/ListBusiness.js', loadComps) 
 
 		function UIinit() { 
-			TW.registerComp('list-el', ListEl)	
+			TW.registerComp('list-el', ListEl)
 			const sb = ListBusiness()
 			//sb.addComp('list-el') //if component communicates
 			sb.compList('list-el')
