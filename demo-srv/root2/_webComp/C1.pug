@@ -1,0 +1,22 @@
+template#xc1-el
+	style.
+		p { color: orange; }
+	p One
+	button#but1  But1 
+
+script.
+	var C1El = Object.create(HTMLElement.prototype)
+	C1El.createdCallback = function() {
+		C1El._shadow = TW.attachShadow(this, '#xc1-el')
+	}//()
+	
+	C1El.init = function(blx) {
+		TW.registerCompt('c1-el', C1El) 
+		console.log('comp1()')
+		const $but = $('#but1', C1El._shadow)
+		console.log($but)
+		const clicks = flyd.stream()
+		$but.on('click', clicks)
+		blx.regObserver('c1', clicks)
+	}
+

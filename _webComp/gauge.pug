@@ -10,33 +10,34 @@ template#xgauge-el
 //http://justgage.com/ 
 script.
 	var GaugeEl = Object.create(HTMLElement.prototype)
-	GaugeEl.createdCallback = function() {
-		GaugeEl._shadow = TW.attachShadow(this, '#xgauge-el')
-
-		GaugeEl._loaded = false//trap
-
-		TS.load('https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/raphael.min.js', function(){
-		TS.load('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/justgage.js', GaugeEl.loadedLib )
-		})
-
-	}//created
 	
 	GaugeEl.g //gauge implementation instance
 
-	GaugeEl.loadedLib = function(gaugeVal) {
-		if(!gaugeVal && GaugeEl._loaded) return
+	GaugeEl.loadedLib = function() {
+		if (GaugeEl._loaded) return
 		GaugeEl._loaded = true
 		console.log('GaugeEl loaded')
 
 		var c = $('#gauge1', GaugeEl._shadow)[0]
 		GaugeEl.g = new JustGage({
 			parentNode : c,
-			value: gaugeVal||67, 
+			value: 67, 
 			min: 0,
 			max: 100,
 			title: 'Visitors'
 		})
 	}//loaded
+
+	GaugeEl.createdCallback = function() {
+		GaugeEl._shadow = TW.attachShadow(this, '#xgauge-el')
+		GaugeEl._loaded = false //trap
+
+		Promise.all([
+			TS.load('https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/raphael.min.js'), 
+			TS.load('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/justgage.js')
+		]).then(function(){ GaugeEl.loadedLib() })
+		
+	}//created
 
 	GaugeEl.init = function(_blx) {
 		//blx = _blx //for outgoing only
@@ -48,7 +49,4 @@ script.
 		/*flyd.on(function(data) { 
 				GaugeEl.g.refresh(data.gaugeVal)
 		}, _blx.observer('mySelection'))*/
-
 	}
-	
-

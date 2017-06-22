@@ -12,17 +12,18 @@ block main
 		circle-el
 
 	script.
-		function UIComp1Init() {
+		TS.onAppReady(loadComps)
+
+		function UIInit() {
+			TW.registerComp('circle-el', CircleEl)
 			console.log('.')
 		}
 
-		function UIinit() {
-			TW.loadComp('/_webComps/circle.html', $('#comps'))
-			.then(function(){ TW.registerCustomElement('circle-el', CircleEl)})
-			.then(UIComp1Init)
+		function loadComps() {
+			TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_webComp/circle.html', $('#comps')).then(UIInit)
 		}
 
-		TS.onAppReady(UIinit)
+
 
 
 block footer

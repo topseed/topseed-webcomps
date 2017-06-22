@@ -12,22 +12,19 @@ block main
 		list-el loading...
 
 	script.
-		TS.loadOnAppReady('/page/list/ListBusiness.js', UIinit) 
+		TS.loadOnAppReady('/page/list/ListBusiness.js', loadComps) 
 
-		function UIinit() {
-			console.log('.')
-			TW.loadComp('/_webComps/List.html', $('#comps'))
-			.then(function(){compInit()})
-		}//()
-
-		function compInit() { 
-			TW.registerCustomElement('list-el', ListEl)	
-			console.log('**********compInit')
-			console.log('compInit')
+		function UIinit() { 
+			TW.registerComp('list-el', ListEl)	
 			const sb = ListBusiness()
-			//sb.compInit('list-el') //add this if component communicates
+			//sb.addComp('list-el') //if component communicates
 			sb.compList('list-el')
 		}//()
+
+		function loadComps() {
+			TW.loadComp('/_webComp/List.html', $('#comps')).then(UIinit)
+		}//()
+
 
 
 block footer

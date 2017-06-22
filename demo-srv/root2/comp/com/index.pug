@@ -14,31 +14,27 @@ block main
 		c2-el
 
 	script.
-		TS.onAppReady(UIinit)
-		
-		var _blx
+		TS.onAppReady(loadComps)
 		
 		function UIinit() {
 			console.log('pg')
 
-			_blx = new BLX(null) // can / should have folder local class
-
-			//#comps is a div in _footer.pug
-			TW.loadComp('/_webComps/C1.html', $('#comps'), UIComp1Init)
-			TW.loadComp('/_webComps/C2.html', $('#comps'), UIComp2Init)
-		}
-
-		function UIComp1Init() {
+			var _blx = new BLX(null) // can / should have folder local class
+			
 			var c = document.querySelector('c1-el')
 			c.init(_blx) // talk to it
-		}
 
-		function UIComp2Init() {
 			var c = document.querySelector('c2-el')
 			c.init(_blx) // talk to it
 		}
 
-
+		function loadComps() {
+			//#comps is a div in _footer.pug
+			Promise.all([
+				TW.loadComp('/_webComps/C1.html', $('#comps')
+				TW.loadComp('/_webComps/C2.html', $('#comps')
+			]).then(UIinit)
+		}
 
 block footer
 	include ../../_part/_footer

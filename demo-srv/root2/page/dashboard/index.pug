@@ -26,18 +26,18 @@ block main
 
 			Promise.all([
 				TS.load('/page/list/ListBusiness.js')
-				, TW.loadComp('/_webComps/circle.html', $('#comps'))
-				, TW.loadComp('/_webComps/gauge.html', $('#comps'))
-				, TW.loadComp('/_webComps/List.html', $('#comps'))
+				, TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_webComp//circle.html', $('#comps'))
+				, TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_webComp//gauge.html', $('#comps'))
+				, TW.loadComp('/_webComp/List.html', $('#comps'))
 			]).then(function() {
-				TW.registerCustomElement('circle-el', CircleEl) 
-				TW.registerCustomElement('gauge-el', GaugeEl) 
-				TW.registerCustomElement('list-el', ListEl) 
+				TW.registerComp('circle-el', CircleEl) 
+				TW.registerComp('gauge-el', GaugeEl) 
+				TW.registerComp('list-el', ListEl) 
 			}).then(function(){
 				const sb = ListBusiness()
-				sb.compInit('circle-el')
-				sb.compInit('gauge-el')
-				sb.compInit('list-el'); 
+				sb.addComp('circle-el')
+				sb.addComp('gauge-el')
+				sb.addComp('list-el'); 
 				sb.compList('list-el')
 			})
 		}

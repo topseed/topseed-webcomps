@@ -34,8 +34,8 @@ function ListBusiness() {// 'closure|module'-iso.
             );  
 		}
 
-        , compInit: function(componentName) {
-            var comp = document.querySelector(componentName)
+        , addComp: function(componentSelector) {
+            var comp = document.querySelector(componentSelector)
             comp.init(sb) //pass in sb as message bus
         }
 
