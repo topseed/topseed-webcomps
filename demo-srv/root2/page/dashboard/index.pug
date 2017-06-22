@@ -23,18 +23,23 @@ block main
 	script.
 		TS.onAppReady(UIinit)
 		function UIinit() {
-			TS.load('/page/list/ListBusiness.js',  function(){
+
+			Promise.all([
+				TS.load('/page/list/ListBusiness.js')
+				, TW.loadComp('/_webComps/circle.html', $('#comps'))
+				, TW.loadComp('/_webComps/gauge.html', $('#comps'))
+				, TW.loadComp('/_webComps/List.html', $('#comps'))
+			]).then(function() {
+				TW.registerCustomElement('circle-el', CircleEl) 
+				TW.registerCustomElement('gauge-el', GaugeEl) 
+				TW.registerCustomElement('list-el', ListEl) 
+			}).then(function(){
 				const sb = ListBusiness()
-				TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_webComp/circle.html', $('#comps'), function(){
-					TW.registerCustomElement('circle-el', CircleEl) 
-					sb.compInit('circle-el')})
-				TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_webComp/gauge.html', $('#comps'), function(){
-					TW.registerCustomElement('gauge-el', GaugeEl) 
-					sb.compInit('gauge-el')})
-				TW.loadComp('/_webComps/List.html', $('#comps'), function() {
-					TW.registerCustomElement('list-el', ListEl) 
-					sb.compInit('list-el'); sb.compList('list-el')})
-			}) 		
+				sb.compInit('circle-el')
+				sb.compInit('gauge-el')
+				sb.compInit('list-el'); 
+				sb.compList('list-el')
+			})
 		}
 
 block footer

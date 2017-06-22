@@ -1,0 +1,67 @@
+template#xgauge-el
+	style.
+		.bgauge-el span { color: orange; }
+	.bgauge-el
+		span My Gauge Title (Shadow DOM)
+		p
+		div
+			#gauge1
+
+//http://justgage.com/ 
+script.
+	var GaugeEl = Object.create(HTMLElement.prototype)
+	
+	GaugeEl.g //gauge implementation instance
+
+	GaugeEl.loadedLib = function() {
+		if (GaugeEl._loaded) return
+		GaugeEl._loaded = true
+		console.log('GaugeEl loaded')
+
+		var c = $('#gauge1', GaugeEl._shadow)[0]
+		GaugeEl.g = new JustGage({
+			parentNode : c,
+			value: 67, 
+			min: 0,
+			max: 100,
+			title: 'Visitors'
+		})
+	}//loaded
+
+	GaugeEl.createdCallback = function() {
+		GaugeEl._shadow = TW.attachShadow(this, '#xgauge-el')
+
+		GaugeEl._loaded = false//trap
+
+		Promise.all([
+			TS.load('https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/raphael.min.js'), 
+			TS.load('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/justgage.js')
+		]).then(function(){ GaugeEl.loadedLib() })
+
+		//works
+		/*TS.load('https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/raphael.min.js').then(function(){
+		TS.load('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/justgage.js').then(function(){
+			GaugeEl.loadedLib()})
+		})*/
+
+		//works
+		/*TS.loadOld('https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/raphael.min.js', function(){
+		   TS.loadOld('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/justgage.js', 
+		GaugeEl.loadedLib)})*/
+	}//created
+
+
+	GaugeEl.init = function(_blx) {
+		//blx = _blx //for outgoing only
+		//listen 
+		_blx.on('mySelection', function(data) { 
+			GaugeEl.g.refresh(data.gaugeVal)
+		})
+		//same as:
+		/*flyd.on(function(data) { 
+				GaugeEl.g.refresh(data.gaugeVal)
+		}, _blx.observer('mySelection'))*/
+
+	}
+	
+

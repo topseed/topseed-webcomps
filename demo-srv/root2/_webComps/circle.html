@@ -6,33 +6,23 @@
     <div id="c1"></div>
   </div>
 </template>
-<!--http://github.com/lugolabs/circles  -->
+<!--http://github.com/lugolabs/circles-->
 <script>
   var CircleEl = Object.create(HTMLElement.prototype)
-  CircleEl.createdCallback = function() {
-  	CircleEl._shadow = TW.attachShadow(this, '#xcircle-el')
-  
-  	CircleEl._loaded = false//trap
-  	//TS.load('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/circlesMOD.js', CircleEl.loadedLib )
-  	TS.loadPromise('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/circlesMOD.js')
-  		.then(CircleEl.loadedLib())
-  }//created
   
   CircleEl.circle //circle implementation instance
   
-  CircleEl.loadedLib = function(circleVal) {
+  CircleEl.loadedLib = function() {
   
-  	console.log('CircleEl.loadLib for value'+circleVal)
   	if (CircleEl._loaded) return
   	CircleEl._loaded = true
   	console.log('loaded')
-  	
   	
   	var c = CircleEl._shadow.getElementById('c1')
   	CircleEl.circle = Circles.create({
   		el:                  c,
   		radius:              60,
-  		value:               circleVal||43,
+  		value:               42,
   		maxValue:            100,
   		width:               10,
   		text:                function(value){return value + '%';},
@@ -46,6 +36,17 @@
   		styleText:           true
   		})
   }//loaded
+  
+  CircleEl.createdCallback = function() {
+  	CircleEl._shadow = TW.attachShadow(this, '#xcircle-el')
+  
+  	CircleEl._loaded = false//trap
+  	//TS.load('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/circlesMOD.js', CircleEl.loadedLib )
+  	TS.load('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_webComp/vendor/circlesMOD.js')
+  		.then(CircleEl.loadedLib)
+  }//created
+  
+  
   
   CircleEl.init = function(_blx) {
   	//blx = _blx //for outgoing only

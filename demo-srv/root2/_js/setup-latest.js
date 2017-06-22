@@ -9,7 +9,7 @@
 //'use strict'  // NOT in IE 11 w/ Class we can't
 
 var TS = { //class:
-	load: function(lib, xfoo) { //load and exec
+	loadOld: function(lib, xfoo) { //load and exec
 		loadjs([ lib ], // now load ps
 			{ success: function(){ 
 				xfoo()
@@ -17,11 +17,11 @@ var TS = { //class:
 			})//load ps.js	
 	}//()
 
-    ,loadPromise: function(lib) { //load and exec
+    ,load: function(lib) { //load and exec
         return new Promise(function (resolve, reject){
 			loadjs([ lib ], // now load ps
                 { success: function(){ 
-                    resolve()
+                    resolve('OK')
                 } 
 			})//load ps.js	
 		})
@@ -48,7 +48,7 @@ var TS = { //class:
 	, loadOnAppReady: function(lib, pinit){
 		if(TS.appReady) {
 			console.log('main?')
-			TS.load(lib, pinit)
+			TS.load(lib).then(pinit)
 		} else {
 			setTimeout(function() {//wait X milliseconds then loop and recheck if ready
 				console.log(',') // likey TS.signalAppReady() was not called

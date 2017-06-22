@@ -16,7 +16,8 @@ block main
 
 		function UIinit() {
 			console.log('.')
-			TW.loadComp('/_webComps/List.html', $('#comps'), compInit)
+			TW.loadComp('/_webComps/List.html', $('#comps'))
+			.then(function(){compInit()})
 		}//()
 
 		function compInit() { 

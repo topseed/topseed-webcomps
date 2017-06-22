@@ -13,15 +13,19 @@ block main
 			gauge-el
 
 	script.
-		TS.onAppReady(UIinit)
-		function UIinit() {
-			TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_webComp/gauge.html', $('#comps'), UIComp1Init)
-		}
-
 		function UIComp1Init() {
-			TW.registerCustomElement('gauge-el', GaugeEl) //could be in the page compInit callback
 			console.log('.')
 		}
+
+		function UIinit() {
+			//TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_webComp/gauge.html', $('#comps'))
+			TW.loadComp('/_webComps/gauge.html', $('#comps'))
+			.then(function(){ TW.registerCustomElement('gauge-el', GougeEl)})
+			.then(UIComp1Init)
+		}
+
+		TS.onAppReady(UIinit)
+
 
 block footer
 	include ../../_part/_footer
