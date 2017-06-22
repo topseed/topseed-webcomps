@@ -8,18 +8,17 @@
 </template>
 <!--http://github.com/lugolabs/circles-->
 <script>
-  var CircleEl = Object.create(HTMLElement.prototype)
-  
-  CircleEl.circle //circle implementation instance
+  var CircleEl = Object.create(HTMLElement.prototype) //prototype
+  var circleEl = null //instance, to keep state
   
   CircleEl.loadedLib = function() {
   
-  	if (CircleEl._loaded) return
-  	CircleEl._loaded = true
+  	if (circleEl._loaded) return
+  	circleEl._loaded = true
   	console.log('loaded')
   	
-  	var c = CircleEl._shadow.getElementById('c1')
-  	CircleEl.circle = Circles.create({
+  	var c = circleEl._shadow.getElementById('c1')
+  	circleEl.circle = Circles.create({
   		el:                  c,
   		radius:              60,
   		value:               42,
@@ -38,23 +37,26 @@
   }//loaded
   
   CircleEl.createdCallback = function() {
-  	CircleEl._shadow = TW.attachShadow(this, '#xcircle-el')
-  	CircleEl._loaded = false //trap
+  	circleEl = this
+  	circleEl._shadow = TW.attachShadow(circleEl, '#xcircle-el')
+  	circleEl._loaded = false //trap
   
   	TS.load('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_sharedComps/vendor/circlesMOD.js')
-  	.then(CircleEl.loadedLib)
+  	.then(circleEl.loadedLib)
   	
   }//created
   
+  //var blx = null //message bus to broadcast to
+  
   CircleEl.init = function(_blx) {
-  	//blx = _blx //for outgoing only
+  	//blx = _blx //required for outgoing/broadcast only
   	//listen 
-  	_blx.on('mySelection', function(data) { 
-  		CircleEl.circle.update(data.circleVal)
+  	_blx.on('mySelection', function(data) { //incoming
+  		circleEl.circle.update(data.circleVal)
   	})
   	//same as:
   	/*flyd.on(function(data) { 
-  			CircleEl.circle.update(data.circleVal)
+  			circleEl.circle.update(data.circleVal)
   	}, _blx.observer('mySelection'))*/
   
   }
