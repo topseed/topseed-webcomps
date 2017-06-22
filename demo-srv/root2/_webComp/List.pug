@@ -20,6 +20,7 @@ script.
 	ListEl.createdCallback = function() {
 		listEl = this
 		listEl._shadow = TW.attachShadow(listEl, '#xlist-el')
+		listEl.blx = null
 	}//()
 	
 	ListEl.list = function(values) {
@@ -33,11 +34,11 @@ script.
 		//$("#myList", ListEl._shadow).append("<span id='list-ready'></span>")// SSR MAGIC!!
 	}//()
 
-	var blx = null //message bus to emit/broadcast to
+	//var blx = null //message bus to emit/broadcast to
 
 	ListEl.init = function(_blx) {
 		console.log('ListEl.init, received _blx')
-		blx = _blx 
+		listEl.blx = _blx 
 		
 		//if you have a DOM button, this is how you can register it to send the click event
 		//var $button1 = $('#button1', ListEl._shadow)
@@ -47,8 +48,12 @@ script.
 	}//()
 
 	ListEl.nav = function(url, circleVal, gaugeVal){
-		if (blx != null) //blx not required when component doesn't broadcast
-			blx.emit('mySelection', {"circleVal": circleVal, "gaugeVal": gaugeVal})
+		console.log('listEl.nav')
+		if (listEl.blx != null) //blx not required when component doesn't broadcast
+		{
+			console.log('listEl.nav blx not null')
+			listEl.blx.emit('mySelection', {"circleVal": circleVal, "gaugeVal": gaugeVal})
+		}
 		else 
 			window.open(url, "_blank")
 		return false;		

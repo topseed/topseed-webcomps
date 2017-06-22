@@ -40,16 +40,15 @@
   	circleEl = this
   	circleEl._shadow = TW.attachShadow(circleEl, '#xcircle-el')
   	circleEl._loaded = false //trap
+  	//circleEl.blx = null //message bus to broadcast to
   
   	TS.load('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_sharedComps/vendor/circlesMOD.js')
   	.then(circleEl.loadedLib)
   	
   }//created
   
-  //var blx = null //message bus to broadcast to
-  
   CircleEl.init = function(_blx) {
-  	//blx = _blx //required for outgoing/broadcast only
+  	//circleEl.blx = _blx //required for outgoing/broadcast only
   	//listen 
   	_blx.on('mySelection', function(data) { //incoming
   		circleEl.circle.update(data.circleVal)

@@ -32,6 +32,7 @@
   	gaugeEl = this
   	gaugeEl._shadow = TW.attachShadow(gaugeEl, '#xgauge-el')
   	gaugeEl._loaded = false //trap
+  	//gaugeEl.blx = null //message bus to broadcast to
   
   	Promise.all([
   		TS.load('https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/raphael.min.js'), 
@@ -41,7 +42,7 @@
   }//created
   
   GaugeEl.init = function(_blx) {
-  	//blx = _blx //for outgoing only
+  	//gaugeEl.blx = _blx //for outgoing only
   	//listen 
   	_blx.on('mySelection', function(data) { 
   		gaugeEl.g.refresh(data.gaugeVal)
