@@ -26,9 +26,7 @@ script.
 	GaugeEl.loadedLib = function(gaugeVal) {
 		if(!gaugeVal && GaugeEl._loaded) return
 		GaugeEl._loaded = true
-		console.log('*****loaded')
-		TW.registerCustomElement('circle-el', CircleEl) 
-
+		console.log('GaugeEl loaded')
 
 		var c = $('#gauge1', GaugeEl._shadow)[0]
 		GaugeEl.g = new JustGage({

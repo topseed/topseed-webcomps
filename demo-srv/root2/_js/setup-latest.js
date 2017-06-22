@@ -17,6 +17,16 @@ var TS = { //class:
 			})//load ps.js	
 	}//()
 
+    ,loadPromise: function(lib) { //load and exec
+        return new Promise(function (resolve, reject){
+			loadjs([ lib ], // now load ps
+                { success: function(){ 
+                    resolve()
+                } 
+			})//load ps.js	
+		})
+	}//()
+
 	, signalAppReady: function() {
 		TS.appReady = true
 	}

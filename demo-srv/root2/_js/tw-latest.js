@@ -2,6 +2,39 @@
 // COMPS ////////////////////////////////////////////////////////////////////////////////////////
 var TW = { //class:
 	_loadedComp : {'exComp': true} // don't load 2x
+    , loadCompPromise : function(url, $here){
+        return new Promise(function (resolve, reject){
+            if (url in TW._loadedComp) {//guard: we loaded it before, thank you very much
+                console.log('already loaded')
+                //callbackFunc()
+                resolve(JSON.stringify('OK'))
+                
+            } else {
+                fetch(url, {
+                    method: 'get'
+                }).then(function(response) {
+                    if (!response.ok) {
+                        console.log('not ok')
+                        console.log(response)
+                        //throw Error(response.statusText)
+                        reject(new Error('Invalid token'))
+                    }
+                    console.log('returning response.text()'+response.text())
+                    //return response.text()
+                    resolve(response.text())
+                }).then(function(txt) {
+                    TW._loadedComp[url] = true
+                    console.log('loading (again?)1,  if error in IE, then not es5:', url)
+                    $here.append( txt )
+                    console.log('loading (again?)2!')
+
+                    //callbackFunc()
+                    resolve(JSON.stringify('OK'))
+                })
+            }
+        })    
+    }
+
 	, loadComp: function(url, $here, callbackFunc) { //load template, don't forget #comps
 		if(url in TW._loadedComp) {//guard: we loaded it before, thank you very much
 			console.log('already loaded')
