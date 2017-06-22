@@ -9,17 +9,19 @@ template#xlist-el
 script#Lst1Tpl(type='text/x-dot-template').
 	<ul>
 	{{~it.array :value:index}}
-		<li><a onclick="return ListEl.nav('{{=value.url}}','{{=value.circleVal}}','{{=value.gaugeVal}}')"> {{=value.head_line}}</a></li>
+		<li><a onclick="return listEl.nav('{{=value.url}}','{{=value.circleVal}}','{{=value.gaugeVal}}')"> {{=value.head_line}}</a></li>
 	{{~}}
 	<ul>
 //-http://www.javascriptoo.com/dot-js
 script.
-	var ListEl = Object.create(HTMLElement.prototype)
+	var ListEl = Object.create(HTMLElement.prototype) //prototype
+	var listEl = null//instance, to keep state
+
 	ListEl.createdCallback = function() {
 		ListEl._shadow = TW.attachShadow(this, '#xlist-el')
+		listEl = this
+		listEl.blx = null //message bus to emit/broadcast to
 	}//()
-
-	ListEl.blx = null //message bus to emit/broadcast to 
 	
 	ListEl.list = function(values) {
 		console.log('ListEl.list')
@@ -34,7 +36,7 @@ script.
 
 	ListEl.init = function(_blx) {
 		console.log('ListEl.init, received _blx')
-		ListEl.blx = _blx //used in ListEl.nav
+		listEl.blx = _blx 
 		
 		//if you have a DOM button, this is how you can register it to send the click event
 		//var $button1 = $('#button1', ListEl._shadow)
@@ -44,8 +46,8 @@ script.
 	}//()
 
 	ListEl.nav = function(url, circleVal, gaugeVal){
-		if (ListEl.blx != null) //blx not required when component doesn't broadcast
-			ListEl.blx.emit('mySelection', {"circleVal": circleVal, "gaugeVal": gaugeVal})
+		if (listEl.blx != null) //blx not required when component doesn't broadcast
+			listEl.blx.emit('mySelection', {"circleVal": circleVal, "gaugeVal": gaugeVal})
 		else 
 			window.open(url, "_blank")
 		return false;		
