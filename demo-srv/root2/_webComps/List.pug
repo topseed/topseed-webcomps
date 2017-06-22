@@ -9,7 +9,7 @@ template#xlist-el
 script#Lst1Tpl(type='text/x-dot-template').
 	<ul>
 	{{~it.array :value:index}}
-		<li><a onclick="return ListEl.nav('{{=value.url}}','{{=value.circleVal}}','{{=value.gaugeVal}}')"> {{=value.head_line}}</a></li>
+		<li><a onclick="return list-el.nav('{{=value.url}}','{{=value.circleVal}}','{{=value.gaugeVal}}')"> {{=value.head_line}}</a></li>
 	{{~}}
 	<ul>
 //-http://www.javascriptoo.com/dot-js
@@ -19,11 +19,14 @@ script.
 		ListEl._shadow = TW.attachShadow(this, '#xlist-el')
 	}//()
 
+
 	ListEl.blx = null //message bus to emit/broadcast to 
+	ListEl.name = 'list-el'
 	
 	ListEl.list = function(values) {
 		console.log('ListEl.list')
-		
+		TW.registerCustomElement('list-el', ListEl) //first use
+
 		var tpl = document.getElementById('Lst1Tpl').text
 		var data2 = {'array': values}
 		var res = TW.bind(tpl, data2)
