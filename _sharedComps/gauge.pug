@@ -9,17 +9,16 @@ template#xgauge-el
 
 //http://justgage.com/ 
 script.
-	var GaugeEl = Object.create(HTMLElement.prototype)
-	
-	GaugeEl.g //gauge implementation instance
+	var GaugeEl = Object.create(HTMLElement.prototype)  //prototype
+	var gaugeEl = null //instance, to keep state
 
 	GaugeEl.loadedLib = function() {
-		if (GaugeEl._loaded) return
-		GaugeEl._loaded = true
+		if (gaugeEl._loaded) return
+		gaugeEl._loaded = true
 		console.log('GaugeEl loaded')
 
-		var c = $('#gauge1', GaugeEl._shadow)[0]
-		GaugeEl.g = new JustGage({
+		var c = $('#gauge1', gaugeEl._shadow)[0]
+		gaugeEl.g = new JustGage({ //implementation instance
 			parentNode : c,
 			value: 67, 
 			min: 0,
@@ -29,13 +28,14 @@ script.
 	}//loaded
 
 	GaugeEl.createdCallback = function() {
-		GaugeEl._shadow = TW.attachShadow(this, '#xgauge-el')
-		GaugeEl._loaded = false //trap
+		gaugeEl = this
+		gaugeEl._shadow = TW.attachShadow(gaugeEl, '#xgauge-el')
+		gaugeEl._loaded = false //trap
 
 		Promise.all([
 			TS.load('https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/raphael.min.js'), 
 			TS.load('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_sharedComps/vendor/justgage.js')
-		]).then(function(){ GaugeEl.loadedLib() })
+		]).then(function(){ gaugeEl.loadedLib() })
 		
 	}//created
 
@@ -43,10 +43,10 @@ script.
 		//blx = _blx //for outgoing only
 		//listen 
 		_blx.on('mySelection', function(data) { 
-			GaugeEl.g.refresh(data.gaugeVal)
+			gaugeEl.g.refresh(data.gaugeVal)
 		})
 		//same as:
 		/*flyd.on(function(data) { 
-				GaugeEl.g.refresh(data.gaugeVal)
+				gaugeEl.g.refresh(data.gaugeVal)
 		}, _blx.observer('mySelection'))*/
 	}
