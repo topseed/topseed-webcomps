@@ -1,4 +1,3 @@
-//-script#xlist-el(type="text/template")
 template#xlist-el
 	style.
 		.blist-el span, .blist-el li { color: orange; }
@@ -17,9 +16,8 @@ script#Lst1Tpl(type='text/x-dot-template').
 script.
 	var ListEl = Object.create(HTMLElement.prototype)
 	ListEl.createdCallback = function() {
-		console.log('List createdCallback 1')
 		ListEl._shadow = TW.attachShadow(this, '#xlist-el')
-		console.log('List createdCallback 2')
+		TW.registerCustomElement('list-el', ListEl)	
 	}//()
 
 	ListEl.blx = null //message bus to emit/broadcast to 
@@ -58,6 +56,3 @@ script.
 			window.open(url, "_blank")
 		return false;		
 	}
-	/*
-	TW.registerCustomElement('list-el', ListEl) //could be in the page compInit callback
-	*/
