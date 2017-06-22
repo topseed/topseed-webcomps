@@ -20,11 +20,11 @@ block main
 		}//()
 
 		function compInit() {
+			TW.registerCustomElement('list-el', ListEl)	
 			console.log('compInit')
 			const sb = ListBusiness()
 			//sb.compInit('list-el') //add this if component communicates
 			sb.compList('list-el')
-
 		}//()
 
 

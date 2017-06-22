@@ -19,6 +19,7 @@ block main
 		}
 
 		function UIComp1Init() {
+			TW.registerCustomElement('gauge-el', GaugeEl) //could be in the page compInit callback
 			console.log('.')
 		}
 

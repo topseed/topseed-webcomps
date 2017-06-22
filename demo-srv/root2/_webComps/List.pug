@@ -17,7 +17,6 @@ script.
 	var ListEl = Object.create(HTMLElement.prototype)
 	ListEl.createdCallback = function() {
 		ListEl._shadow = TW.attachShadow(this, '#xlist-el')
-		TW.registerCustomElement('list-el', ListEl)	
 	}//()
 
 	ListEl.blx = null //message bus to emit/broadcast to 

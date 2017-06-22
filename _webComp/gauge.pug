@@ -12,10 +12,7 @@ script.
 	var GaugeEl = Object.create(HTMLElement.prototype)
 	GaugeEl.createdCallback = function() {
 		GaugeEl._shadow = TW.attachShadow(this, '#xgauge-el')
-		TW.registerCustomElement('gauge-el', GaugeEl) //could be in the page compInit callback
 
-		console.log('created')
-		
 		GaugeEl._loaded = false//trap
 
 		TS.load('https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/raphael.min.js', function(){

@@ -26,10 +26,13 @@ block main
 			TS.load('/page/list/ListBusiness.js',  function(){
 				const sb = ListBusiness()
 				TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_webComp/circle.html', $('#comps'), function(){
+					TW.registerCustomElement('circle-el', CircleEl) 
 					sb.compInit('circle-el')})
 				TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_webComp/gauge.html', $('#comps'), function(){
+					TW.registerCustomElement('gauge-el', GaugeEl) 
 					sb.compInit('gauge-el')})
 				TW.loadComp('/_webComps/List.html', $('#comps'), function() {
+					TW.registerCustomElement('list-el', ListEl) 
 					sb.compInit('list-el'); sb.compList('list-el')})
 			}) 		
 		}
