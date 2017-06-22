@@ -37,7 +37,7 @@
   	Promise.all([
   		TS.load('https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/raphael.min.js'), 
   		TS.load('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_sharedComps/vendor/justgage.js')
-  	]).then(function(){ gaugeEl.loadedLib() })
+  	]).then(gaugeEl.loadedLib)
   	
   }//created
   
