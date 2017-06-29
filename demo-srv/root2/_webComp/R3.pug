@@ -1,0 +1,8 @@
+r-3
+	p 33
+	script.
+		this.init =function(blx) {
+			console.log('r')
+			console.log( blx.observer('c1') )
+			flyd.on(function(e) { console.log(e) }, blx.observer('c1'))
+		}

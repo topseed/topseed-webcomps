@@ -6,11 +6,12 @@ loadjs.ready(['polyfills', 'keyLibs'], {// loaded setup libs
 		loadjs([
 			'https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/jquery.jsForm.min.js'
 
+			,'//cdn.jsdelivr.net/riot/3.4.4/riot+compiler.min.js'
 			,'/_js/BLX.js'
 			,'/_js/BDS.js'
 			], { success: function(){
-					libsLoaded()
-				//})
+				libsLoaded()
+			//})
 		}
 		})//loadjs
 	}//suc
