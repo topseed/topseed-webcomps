@@ -13,6 +13,10 @@
   var GaugeEl = Object.create(HTMLElement.prototype)  //prototype
   var gaugeEl = null //instance, to keep state
   
+  registerComp = function(){
+  	TW.registerComp('gauge-el', GaugeEl)
+  }
+  
   GaugeEl.loadedLib = function() {
   	if (gaugeEl._loaded) return
   	gaugeEl._loaded = true

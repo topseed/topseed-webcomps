@@ -17,12 +17,18 @@ script.
 	var ListEl = Object.create(HTMLElement.prototype) //prototype
 	var listEl = null //instance, to keep state
 
+	registerComp = function(){
+		TW.registerComp('list-el', ListEl)
+	}
+
 	ListEl.createdCallback = function() {
 		listEl = this
 		listEl._shadow = TW.attachShadow(listEl, '#xlist-el')
-		listEl.blx = null
+		listEl.blx = null 
+
 	}//()
-	
+
+
 	ListEl.list = function(values) {
 		console.log('ListEl.list')
 		var tpl = document.getElementById('Lst1Tpl').text
@@ -58,3 +64,8 @@ script.
 			window.open(url, "_blank")
 		return false;		
 	}
+
+
+
+
+	

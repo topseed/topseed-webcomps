@@ -29,11 +29,6 @@ block main
 				, TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_sharedComps/circle.html', $('#comps'))
 				, TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_sharedComps/gauge.html', $('#comps'))
 				, TW.loadComp('/_webComp/List.html', $('#comps'))
-			]).then(function() {
-				//polyfills needs this here, in future move to component createdCallback
-				TW.registerComp('circle-el', CircleEl)
-				TW.registerComp('gauge-el', GaugeEl)
-				TW.registerComp('list-el', ListEl)
 			}).then(function(){
 				const sb = ListBusiness()
 				sb.addComp('circle-el') //for communication

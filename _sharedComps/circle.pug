@@ -12,6 +12,11 @@ script.
 	var CircleEl = Object.create(HTMLElement.prototype) //prototype
 	var circleEl = null //instance, to keep state
 
+	registerComp = function(){
+		TW.registerComp('circle-el', CircleEl)
+	}
+
+
 	CircleEl.loadedLib = function() {
 
 		if (circleEl._loaded) return
