@@ -57,14 +57,7 @@ var TS = { //class:
 		}//else
 	}
 
-    , loadPromise: function() {
-        if (!window.Promise)
-            TS._load('//cdn.jsdelivr.net/es6-promise-polyfill/1.2.0/promise.min.js', TS.promiseLoaded)
-        else
-            TS.promiseLoaded() 
-    }
-
-	, loadIE: function() { 
+ 	, loadIE: function() { 
 		if (!bowser.msie && bowser.a)
 			return Promise.resolve('NotIE')
 		//if (bowser.msie||!bowser.a) { //IE or worse
@@ -109,6 +102,13 @@ var TS = { //class:
 			TS.loadBowser().then(function(){loadjs.done('polyfills')})
 			, TS.loadKeylibs().then(function(){loadjs.done('keyLibs')})
 		])
+    }
+
+   , loadPromise: function() {
+        if (!window.Promise)
+            TS._load('//cdn.jsdelivr.net/es6-promise-polyfill/1.2.0/promise.min.js', TS.promiseLoaded)
+        else
+            TS.promiseLoaded() 
     }
 
 }//class
