@@ -57,7 +57,7 @@ var TS = { //class:
 		}//else
 	}
 
-    , loadPolyfills: function() {
+    , loadPromise: function() {
         if (!window.Promise)
             TS._load('//cdn.jsdelivr.net/es6-promise-polyfill/1.2.0/promise.min.js', TS.promiseLoaded)
         else
@@ -114,7 +114,7 @@ var TS = { //class:
 }//class
 
 // load stuff:
-TS.loadPolyfills() //etc
+TS.loadPromise() //etc
 
 //bower install Polymer/polymer#^1.0.0
 
