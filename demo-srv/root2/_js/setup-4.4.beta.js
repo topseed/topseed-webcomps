@@ -10,20 +10,23 @@
 
 var TS = { //class:
 
-	_load: function(url, callback){
+	_load: function(url, resolve, reject){
 		var script = document.createElement('script')
-		script.src = url;
-		script.async = true;
+		script.src = url
+		script.async = true
 		script.onload = function(){ //IE9 min
-			callback();
-		};
-		var ref = window.document.getElementsByTagName('script')[0];
-		ref.parentNode.insertBefore(script, ref);
+			resolve(url)
+		}
+		script.onerror = function(){ 
+			reject(url)
+		}
+		var ref = window.document.getElementsByTagName('script')[0]
+		ref.parentNode.insertBefore(script, ref)
     }
 
 	,load: function(url){
 		return new Promise(function (resolve, reject) {
-			TS._load(url, resolve)
+			TS._load(url, resolve, reject)
 		})  
     }
 
