@@ -1,6 +1,7 @@
 'use strict'
 console.log('main')
 
+//requires setup-5.0.js or higher
 function loadLibs(){
 
 	//most of these could be in manifest
@@ -31,4 +32,4 @@ function loadLibs(){
 	})
 }
 
-TS.ready(['polyfills', 'keyLibs', 'jQuery'], loadLibs)
+TS.ready(['polyfills', 'keyLibs'], loadLibs)
