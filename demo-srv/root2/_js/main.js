@@ -8,7 +8,7 @@ function loadLibs(){
 	return Promise.all([
 		TS.load('https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/jquery.jsForm.min.js')
 		, TS.load('//cdn.jsdelivr.net/dot.js/1.1.1/doT.min.js')
-		, TS.load('https://cdn.rawgit.com/topseed/topseed-turbo/master/webComps/tw0-1.0.js').then(function(){TW.init}) //Support for Standard Web Component
+		, TS.load('https://cdn.rawgit.com/topseed/topseed-turbo/master/webComps/tw0-1.0.js').then(function(){TW.init()}) //Support for Standard Web Component
 		, TS.load('//cdn.jsdelivr.net/riot/3.4.4/riot+compiler.min.js') //Support for RIOT
 		, TS.load('https://rawgit.com/topseed/topseed-turbo/master/release/topseed-turbo-latest.js')
 		, TS.load('/_js/BLX.js')
