@@ -1,13 +1,13 @@
 # topseed-webcomps
 
-This is a "Best Practices" complete starter project that uses standard web components in a multi-page application. No more "Component already registered" errors. It supports late-loading
-components for utra-rapid page loads. Confirmed to work in all major browsers and IE11.
+This is a complete "Best Practices" starter project that uses standard web components in a multi-page application. No more "Component already registered" errors. For ulta-rapid page display, all components are late-loaded. Loosely coupled component communication using streams.
+Confirmed to work in all major browsers and IE11.
 
 <img src='webcomps.png'/>
 
 # Usage:
 
-To setup and run, follow [these instructions](https://docs.topseed.io/tutorial/9-comps/). This is part of a [10-step Best Practices Tutorial](https://docs.topseed.io/tutorial/0-agenda/). Refer to tutorial chapters 1-8 for the concepts and tools used in this project.
+To setup and run, follow [these instructions](https://docs.topseed.io/tutorial/9-comps/), beginning with item 6 (Download and unzip...). This is part of a [10-step Web App Best Practices Tutorial](https://docs.topseed.io/tutorial/0-agenda/). Refer to chapters 1-8 for the concepts applied in this project.
 
 A printed version of the tutorials/Lab Book is available from <https://m.appthings.io> .
 
@@ -23,9 +23,9 @@ A printed version of the tutorials/Lab Book is available from <https://m.appthin
 9. Use Web Component libraries _in ways that avoid lock-in_
 10. Use Phonegap/Cordova in-app browser for efficient Mobile apps
 
-# Where to go next
+# Where to go next:
 
-Do the [Tutorials](https://docs.topseed.io/tutorial/0-agenda/), and/or contact <https://m.appthings.io> for commercial support and training.  
+Do the [Tutorials](https://docs.topseed.io/tutorial/0-agenda/), and/or contact <https://m.appthings.io> for commercial support and training. 
 
 
 
