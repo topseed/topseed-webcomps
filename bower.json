@@ -15,7 +15,7 @@
 		"web-components"
 	],
 	"dependencies": {
-		"ts-circle": "~0.9.2"
+		"ts-circle": "~v0.9.2"
 	}
 }
  
