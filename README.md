@@ -5,7 +5,7 @@ Confirmed to work in all major browsers and IE11.
 
 <img src='webcomps.png'/>
 
-Individual components are part of the starter project and not separately published.
+The starter project contains a number of individual components. One sample component is published though this collection.
 
 # Usage:
 
