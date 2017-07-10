@@ -9,7 +9,7 @@ Individual components are part of the starter project and not separately publish
 
 # Usage:
 
-To setup and run, follow [these instructions](https://docs.topseed.io/tutorial/9-comps/), beginning with item 6 (Download and unzip...). This is part of a[10-step Web App Best Practices Tutorial](https://docs.topseed.io/tutorial/0-agenda/). Refer to chapters 1-8 for the concepts applied in this project.
+To setup and run, follow [these instructions](https://docs.topseed.io/tutorial/9-comps/), beginning with item 6 (Download and unzip...). This is part of a [10-step Web App Best Practices Tutorial](https://docs.topseed.io/tutorial/0-agenda/). Refer to chapters 1-8 for the concepts applied in this project.
 
 A printed version of the tutorials/Lab Book is available from <https://m.appthings.io> .
 
