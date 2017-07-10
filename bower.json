@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"description": "Collection",
 	"main": "_sharedComps/circle.html",
+	"homepage": "https://github.com/topseed/topseed-webcomps",
 	"authors": [
 		"wgehner@appthings.io"
 	],
@@ -15,7 +16,7 @@
 		"web-components"
 	],
 	"dependencies": {
-		"ts-circle": "~v0.9.2"
+		"ts-circle": "topseed/ts-circle"
 	}
 }
  
