@@ -1,10 +1,10 @@
 {
-	"name": "country-select",
-	"version": "0.0.1",
+	"name": "topseed-webcomps",
+	"version": "1.0.0",
 	"description": "Collection",
-	"main": "country-select.html",
+	"main": "_sharedComps/circle.html",
 	"authors": [
-		"wolfgang@gmail.com"
+		"wgehner@appthings.io"
 	],
 	"license": "MIT",
 	"keywords": [

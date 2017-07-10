@@ -1,2 +1,37 @@
 # topseed-webcomps
-Some standard web components 
+
+This is a "Best Practices" complete starter project that uses standard web components in a multi-page application. No more "Component already registered" errors. It supports late-loading
+components for utra-rapid page loads. Confirmed to work in all major browsers and IE11.
+
+<img src='webcomps.png'/>
+
+# Usage:
+
+To setup and run, follow [these instructions](https://docs.topseed.io/tutorial/9-comps/). This is part of a [10-step Best Practices Tutorial](https://docs.topseed.io/tutorial/0-agenda/). Refer to tutorial chapters 1-8 for the concepts and tools used in this project.
+
+A printed version of the tutorials/Lab Book is available from <https://m.appthings.io> .
+
+# Some best practices demonstrated:
+1. Apply design guidelines (e.g. Material Design, MUICSS) for beauty and consistency
+2. Use SASS, BEM and Preprocessors for clean and maintainable CSS
+3. Use Pug to improve reuse and make your HTML more maintainable (static or node)
+4. Go max. static; deploy to CDN edge cache to scale for performance
+5. Use AppShell and page transitions for SPA/rich client feel _and_ SEO
+6. Use AMP to speed up time-to-glass with viewport rendering and early completion
+7. Be DOM-centric to be more friendly with team that includes interactive designers that code
+8. Use PageBusiness, Promises and Fetch(microservice) for cleaner code
+9. Use Web Component libraries _in ways that avoid lock-in_
+10. Use Phonegap/Cordova in-app browser for efficient Mobile apps
+
+# Where to go next
+
+Do the [Tutorials](https://docs.topseed.io/tutorial/0-agenda/), and/or contact <https://m.appthings.io> for commercial support and training.  
+
+
+
+
+
+
+
+
+
