@@ -1,0 +1,41 @@
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width,minimum-scale=1,initial-scale=1')
+		link(rel='icon', href='/favicon.ico')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		title ListBusinessTest
+		link(rel='stylesheet', href='/_sass/main.css')
+		link(rel='stylesheet', href='//code.jquery.com/qunit/qunit-2.3.2.css')
+		script(src='//code.jquery.com/jquery-3.2.1.slim.min.js', async)
+		script(src='//cdn.rawgit.com/topseed/topseed-turbo/master/setup/setup-6.0.js')
+		script(src='//code.jquery.com/qunit/qunit-2.3.2.js')
+	body
+		#content-wrapper
+			#qunit
+			#qunit-fixture
+			//-script(src='test.js')
+
+			script.
+				TS.loadOnAppReady('/page/list/ListBusiness.js', UIinit) 
+
+				function UIinit() { 
+					
+					const sb = ListBusiness()
+					QUnit.test( 'test: fetch()', function(assert) {
+						//assert.expect(1)
+						const done = assert.async()
+
+						const pro = sb.siteListDao.selectList()
+						pro.then(function(val) {
+							console.log(val)
+							assert.ok(true, 'we got data')
+							done()
+
+						}).catch(function (er) {
+							console.log(er)
+						})//c
+					})
+				}
+
