@@ -6,56 +6,46 @@
   <div id="myChart" style="width: 200px;"></div>
 </template>
 <script>
-  console.log ('in temp chart')
-  class ChartEl extends HTMLElement {
-  	constructor() {
-  		super()
-  		console.log('chart cons')
-  		let shadowRoot = this.attachShadow({mode: 'open'})
-  		const t = document.querySelector('#xchart-el')
-  		const instance = t.content.cloneNode(true)
-  		shadowRoot.appendChild(instance)
+  var ChartEl = Object.create(HTMLElement.prototype) //prototype
+  var chartEl = null //instance, to keep state
   
-  		//this._emit = flyd.stream()
-  		this.loadDeps()
-  	}//()
+  registerComp = function(){
+  	TW.registerComp('chart-el', ChartEl)
+  }
   
-  	init(data_) {
-  		const thiz = this
-  		loadjs.ready(['morris'], {
-  			success: function(){
-  				Morris.Donut({
-  					element: thiz.shadowRoot.querySelector('#myChart', this) //ctx
-  					, data: data_
-  				})
-  				$("#myChart").append("<span id='chart-ready'></span>")// MAGIC!!
-  		}//suc
-  		})//load
-  	}//()
+  ChartEl.createdCallback = function() {
+  	console.log('chartEl created')
+  	chartEl = this
+  	chartEl._shadow = TW.attachShadow(chartEl, '#xchart-el')
+  	chartEl._loaded = false //trap
+  	//chartEl.blx = null //message bus to broadcast to
   
-  	loadDeps() {
-  		loadjs([
-  				'https://cdn.jsdelivr.net/raphael/2.2.7/raphael.js'
-  				,'https://cdn.jsdelivr.net/morris.js/0.5.1/morris.min.js'
-  				,'https://cdn.jsdelivr.net/morris.js/0.5.1/morris.css'
-  			], { success: function(){
-  				loadjs.done('morris')
-  			}
-  		})//loadjs
-  	}//()
+  	Promise.all([
+  		TS.load('https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/raphael.min.js')
+  		, TS.load('https://cdn.jsdelivr.net/morris.js/0.5.1/morris.min.js')
+  		, TS.load('https://cdn.jsdelivr.net/morris.js/0.5.1/morris.css')
+  	
+  	]).then(function(){
+  		console.log('dependencies loaded done')
+  		chartEl._loaded = true
+  	})
+  }//created
   
-  	/*
-  	set receiver(stream) {
-  		this._rec = stream
-  		//flyd.on(_handleRec, stream)
+  ChartEl.init = function(data_) {
+  	console.log('chartEl.init')
+  	if (chartEl._loaded) {
+  		console.log('create morris donut')
+  		Morris.Donut({
+  			element: chartEl._shadow.querySelector('#myChart') //ctx
+  			, data: data_
+  		})
+  		$("#myChart").append("<span id='chart-ready'></span>")
   	}
-  	_handleRec(el) {
-  		console.log(el)
+  	else {
+  		setTimeout(function() {//wait X milliseconds then loop and recheck if ready
+  			console.log('-') 
+  			chartEl.init(data_) //loop
+  		} ,60)	
   	}
-  	get emitter() {
-  		return this._emit
-  	}
-  	*/
-  
-  }//class
+  }	
 </script>

@@ -9,24 +9,22 @@
     <link rel="icon" href="/favicon.ico">
     <link rel="stylesheet" href="/_sass/main.css">
     <script src="//code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/loadjs.min.js"></script>
-    <script src="https://rawgit.com/topseed/topseed-turbo/master/setup/setup-latest.js"></script>
-    <script src="/_js/main.js" async=""></script>
+    <script src="//cdn.rawgit.com/topseed/topseed-turbo/master/setup/setup-6.1.js"></script>
   </head>
   <body>
     <div id="appbar">
       <div id="appbar--brand" onclick="openDrawer()">&nbsp; ☰ &nbsp;<span class="mui--hidden-xs">Topseed&trade; Hello World</span></div>
       <ul id="appbar--menu">
-        <li><a href="/page/one/">One</a></li>
-        <li><a href="/page/two/">Two</a></li>
+        <li><a href="/page/chart/">Chart</a></li>
+        <li><a href="/page/ssr/">SSR</a></li>
       </ul>
     </div>
     <div id="sidedrawer" onclick="closeDrawer()">
       <div id="sidedrawer--brand">&nbsp; ☰ Topseed&trade; Hello World</div>
       <div class="mui-divider"></div>
       <ul id="sidedrawer--menu">
-        <li><a href="/page/one/">One</a></li>
-        <li><a href="/page/two/">Two</a></li>
+        <li><a href="/page/chart/">Chart</a></li>
+        <li><a href="/page/ssr/">SSR</a></li>
       </ul>
     </div>
     <script>
@@ -41,26 +39,25 @@
       <div class="mui-container-fluid">
         <p></p>
         <p>Hello from Page One!</p>
-        <chart-el>not yet</chart-el>
+        <chart-el>loading...</chart-el>
       </div>
       <script>
         TS.onAppReady(UIinit)
+        
         function UIinit() {//don't forget #comps
-        	console.log('.')
-        	TS.loadComp($('#comps'),'/_webComp/Chart.html', compInit)
+        	console.log('page.chart.UIinit')
+        	TW.loadComp('/_webComp/Chart.html', $('#comps')).then(compInit)
         }
         
         function compInit( ) {// 
-        	let el = customElements.get('chart-el')
-        	if(!el) customElements.define('chart-el', ChartEl)
         
-        	let ch = document.querySelector('chart-el')
-        
-        	let data = [
+        	console.log('---page compInit')
+        	var data = [
         		{label: 'Download Sales',   value: 12},
         		{label: 'In-Store Sales',   value: 30},
         		{label: 'Mail-Order Sales', value: 20}
         		]
+        	var ch = document.querySelector('chart-el')
         	ch.init(data)
         }//()
         
@@ -71,7 +68,7 @@
       <div id="footer_div"><a href="https://gitter.im/topseed/Lobby" target="_blank">Forum </a>
         <div id="footer_div--right"><a href="https://github.com/topseed/topseed" target="_blank">Kitchen Sink</a></div>
       </div>
-      <div id="comps"></div>
+      <div id="comps"> </div>
     </div>
   </body>
 </html>

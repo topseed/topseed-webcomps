@@ -9,26 +9,25 @@ block main
 		p
 		p Hello from Page One!
 
-		chart-el not yet
+		chart-el loading...
 
 	script.
 		TS.onAppReady(UIinit)
+
 		function UIinit() {//don't forget #comps
-			console.log('.')
-			TS.loadComp('/_webComp/Chart.html', $('#comps'), compInit)
+			console.log('page.chart.UIinit')
+			TW.loadComp('/_webComp/Chart.html', $('#comps')).then(compInit)
 		}
 
 		function compInit( ) {// 
-			var el = customElements.get('chart-el')
-			if(!el) customElements.define('chart-el', ChartEl)
 
-			var ch = document.querySelector('chart-el')
-
+			console.log('---page compInit')
 			var data = [
 				{label: 'Download Sales',   value: 12},
 				{label: 'In-Store Sales',   value: 30},
 				{label: 'Mail-Order Sales', value: 20}
 				]
+			var ch = document.querySelector('chart-el')
 			ch.init(data)
 		}//()
 
