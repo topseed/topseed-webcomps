@@ -2,12 +2,12 @@ meta(charset='utf-8')
 meta(name='viewport', content='width=device-width,minimum-scale=1,initial-scale=1')
 meta(http-equiv='X-UA-Compatible', content='IE=edge')
 meta(name='description', content='')
-
 link(rel='icon', href='/favicon.ico')
 
 script(src='//code.jquery.com/jquery-3.2.1.slim.min.js', async)
 //- setup loads polyfills and /_js/main.js 
-//-script(src='//cdn.rawgit.com/topseed/topseed-turbo/master/setup/setup-5.0.js')
-script(src='https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/loadjs.min.js')
-script(src='https://cdn.rawgit.com/topseed/topseed-turbo/master/setup/setup-4.3.js')
-script(src='/_js/main.js', async)
+script(src='//cdn.rawgit.com/topseed/topseed-turbo/master/setup/setup-6.0.js')
+
+//- Css loaded in body sets opacity to 1. This avoids page yank.	
+style.
+	body {opacity: 0.1;}

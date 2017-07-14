@@ -1836,6 +1836,7 @@ html {
   min-height: 100vh; }
 
 body {
+  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

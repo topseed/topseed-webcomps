@@ -16,12 +16,12 @@ block main
 		TS.onAppReady(loadComps)
 
 		function UIInit() {
-			TW.registerComp('gauge-el', GaugeEl)
 			console.log('.')
 		}
 
 		function loadComps() {
-			TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_sharedComps/gauge.html', $('#comps')).then(UIInit)
+			TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_sharedComps/gauge.html', $('#comps'))
+			.then(UIInit)
 		}
 
 block footer
