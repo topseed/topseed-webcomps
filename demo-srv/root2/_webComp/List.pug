@@ -1,9 +1,11 @@
 template#xlist-el
 	style.
-		.blist-el span, .blist-el li { color: orange; }
-		.blist-el a { cursor: pointer; color: #2196F3}
-	.blist-el
-		span My List Title
+		.list-el__title { color: var(--list-el__title-color, black) }
+		.list-el__list li { color: orange }
+		.list-el__list a { cursor: pointer; color: #2196F3 }
+		
+	#title.list-el__title My List Title
+	.list-el__list
 		#myList
 
 script#Lst1Tpl(type='text/x-dot-template').
@@ -25,9 +27,10 @@ script.
 		listEl = this
 		listEl._shadow = TW.attachShadow(listEl, '#xlist-el')
 		listEl.blx = null 
+		if (listEl.getAttribute('title'))
+			listEl._shadow.getElementById('title').innerHTML = listEl.getAttribute('title')
 
 	}//()
-
 
 	ListEl.list = function(values) {
 		console.log('ListEl.list')

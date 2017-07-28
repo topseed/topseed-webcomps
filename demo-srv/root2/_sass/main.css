@@ -2033,3 +2033,6 @@ body {
     height: 48px; }
   #footer_div {
     height: 48px; } }
+
+list-el {
+  --list-el__title-color: orange; }
