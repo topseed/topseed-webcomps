@@ -3,7 +3,7 @@ const pug = require('pug')
 
 const isj = require('is_js')
 
-const Util = require('topseed-util')
+const Util = require('topseed-utils')
 const U = new Util() 
 
 // ###################### middle filter
@@ -21,13 +21,36 @@ var options = {}
 options.pretty = true
 
 function pugComp(req,res) {
-	const pgPath = U.getPath(ROOT,req)
+	var pgPath = U.getPath(ROOT,req)
+	
+	const ignore = pathContains(pgPath, ServerConfig.PUG_EXCLUDE)
+	
+	//U.getPath appends a trailing slash, for linux we need to remove it.
+	if (isj.endWith(pgPath,'/')) {
+		pgPath = pgPath.substring(0, (pgPath.length)-1)
+	}
+
 	const requestedResource = U.replace(pgPath, '.html', '.pug')
-	console.log('requested:'+requestedResource )
 	res.header('Content-Type', 'text/html')
 	U.cacheQuick(res)
-	const html = pug.renderFile(requestedResource, options)
-	res.status(200).send( html).end()
+	if (!ignore && fs.existsSync(requestedResource)) {
+		console.log('requested:'+requestedResource )
+		const html = pug.renderFile(requestedResource, options)
+		res.status(200).send( html).end()
+	} else {
+		fs.readFile(pgPath, 'utf8', function(err, data) {
+			res.send(data).end()
+		})
+	}
+}
+
+function pathContains(path, arr)
+{
+	if (!arr) return false
+	for (i = 0; i < arr.length; i++) {
+		if (path.indexOf(arr[i])> -1) return true
+	}
+	return false			
 }
 
 //**************** */
