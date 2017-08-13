@@ -40,8 +40,8 @@ block main
 		function loadComps() {
 			//#comps is a div in _footer.pug
 			Promise.all([
-				TW.loadComp('/_webComp/C1.html', $('#comps'))
-				,TW.loadComp('/_webComp/C2.html', $('#comps'))
+				TW.loadComp('/_webComp/C1.html')
+				,TW.loadComp('/_webComp/C2.html')
 			]).then(UIinit)
 		}
 
