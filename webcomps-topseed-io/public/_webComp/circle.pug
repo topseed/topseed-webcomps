@@ -1,0 +1,83 @@
+template#xcircle-el
+	style.
+		.circle-el__title { color: orange; }
+	span#title.circle-el__title My Circle Title
+	p
+	div
+		#c1
+
+	//http://github.com/lugolabs/circles
+script.
+	var CircleEl = Object.create(HTMLElement.prototype) //prototype
+	//var circleEl //instance, to keep state
+
+	registerComp = function(){
+		TW.registerComp('circle-el', CircleEl)
+		console.log('circle registerComp')
+	}
+
+	CircleEl.loadedLib = function() {
+
+		if (this._loaded) return
+		this._loaded = true
+		console.log('loaded')
+		
+		var c = this.shadow.getElementById('c1')
+		this.circle = Circles.create({
+			el:                  c,
+			radius:              60,
+			value:               42,
+			maxValue:            100,
+			width:               10,
+			text:                function(value){return value + '%';},
+			colors:              ['#D3B6C6', '#4B253A'],
+			duration:            400,
+			wrpClass:            'circles-wrp',
+			textClass:           'circles-text',
+			valueStrokeClass:    'circles-valueStroke',
+			maxValueStrokeClass: 'circles-maxValueStroke',
+			styleWrapper:        true,
+			styleText:           true
+			})
+	}//loaded
+
+	CircleEl.createdCallback = function() {
+		var id = this.getAttribute('id')||'default'
+
+		//circleEl = this
+		this.shadow = TW.attachShadow(this, '#xcircle-el')
+		this._loaded = false //trap
+		//this.blx = null //message bus to broadcast to
+
+		if (this.getAttribute('title'))
+			this.shadow.getElementById('title').innerHTML = this.getAttribute('title')
+
+		console.log('------------circle createdCallback'+this.getAttribute('id'))
+		
+		var that = this
+
+		TS.load('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_sharedComps/vendor/circlesMOD.js')
+		.then(function() {that.loadedLib() })
+		
+	}//created
+
+	CircleEl.init = function(_blx) {
+
+		console.log('circleEl init')
+		//circleEl.blx = _blx //required for outgoing/broadcast only
+		var circleEl = this
+		//listen 
+		_blx.on('mySelection', function(data) { //incoming
+			console.log('circle mySelection incoming')
+			var bind = circleEl.getAttribute('bind')||'circleVal'
+			circleEl.circle.update(data[bind])
+		})
+		//same as:
+		/*flyd.on(function(data) { 
+				this.circle.update(data.circleVal)
+		}, _blx.observer('mySelection'))*/
+
+	}
+
+
+

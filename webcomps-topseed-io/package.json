@@ -1,0 +1,31 @@
+{
+	"name": "topseed-webcomps",
+	"description": "Best Practices for Web Components",
+	"version": "1.0.2",
+	"repository": {
+			"type": "git",
+			"url": "https://github.com/topseed/topseed-webcomps.git"
+	},
+	"license": "SEE LICENSE IN LICENSE.md",
+	"engines": {
+			"npm": ">=5.04",
+			"node": ">=8.1"
+	},
+	"scripts": {
+			"start": "node index"
+	},
+	"dependencies": {
+			"body-parser": ">=1.1",
+			"cheerio": ">=0.2",
+			"compression": ">=1.6",
+			"cors": ">=2.8",
+			"express": ">=4.15",
+			"flyd": ">=0.2.4",
+			"is_js": ">=0.9",
+			"markdown-it": ">=8.3",
+			"moment": ">=2.1",
+			"node-fetch": ">=1.6",
+			"pug": ">=2.0.0-rc.2",
+			"topseed-utils": ">=25.0.1"
+	}
+}
